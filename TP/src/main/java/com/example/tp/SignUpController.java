@@ -48,7 +48,7 @@ public class SignUpController {
         orthophonist.setUserName(username.getText().toString());
         orthophonist.setAdr(adr.getText().toString());
         orthophonist.affichInfo();
-        m.changeScene("Home.fxml");
+        m.changeScene("Home.fxml",600,400);
         }
 
     }

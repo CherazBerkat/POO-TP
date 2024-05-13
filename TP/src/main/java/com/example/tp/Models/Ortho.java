@@ -78,7 +78,7 @@ public class Ortho implements  Serializable{
     public void setUserName(String userName) {
         this.userName = userName;
     }
-     public String getUserNAme(){
+     public String getUserName(){
         return userName;
      }
      public void setAdr(String a){

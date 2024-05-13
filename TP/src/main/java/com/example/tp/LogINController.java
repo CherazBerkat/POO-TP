@@ -33,10 +33,10 @@ public class LogINController {
 
     public void checkLogin() throws IOException {
         HelloApplication m = new HelloApplication();
-        if(username.getText().toString().equals(orthophonist.getUserNAme()) && password.getText().toString().equals(orthophonist.getPasswd())) {
+        if(username.getText().toString().equals(orthophonist.getUserName()) && password.getText().toString().equals(orthophonist.getPasswd())) {
             wrongLogIn.setText("Success!");
 
-            m.changeScene("Home.fxml");
+            m.changeScene("Home.fxml",600,400);
         }
 
         else if(username.getText().isEmpty() && password.getText().isEmpty()) {
@@ -50,7 +50,7 @@ public class LogINController {
 
     public void signUp () throws IOException {
         HelloApplication m = new HelloApplication();
-        m.changeScene("SignUp.fxml");
+        m.changeScene("SignUp.fxml",400,500);
     }
 
 }

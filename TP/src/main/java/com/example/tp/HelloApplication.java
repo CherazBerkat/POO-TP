@@ -55,9 +55,15 @@ public class HelloApplication extends Application {
         }
     }
 
-    public void changeScene(String fxml) throws IOException {
+    public void changeScene(String fxml, long x, long y) throws IOException {
+        // Load the FXML content
         Parent pane = FXMLLoader.load(getClass().getResource(fxml));
-        stg.getScene().setRoot(pane);
+
+        // Create a new Scene with the specified width and height
+        Scene scene = new Scene(pane, x, y);
+
+        // Set the new Scene to the Stage
+        stg.setScene(scene);
     }
     public static void main(String[] args) {
         launch();

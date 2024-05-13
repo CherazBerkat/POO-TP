@@ -1,2 +1,2 @@
-public class AnamnesEnfant extends AnamneseEnfant{
+public class AnamnesEnfant extends Anamnese{
 }

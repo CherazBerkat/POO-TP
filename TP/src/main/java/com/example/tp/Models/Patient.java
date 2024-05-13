@@ -1,4 +1,4 @@
-package com.example.tp;
+package com.example.tp.Models;
 import java.io.Serializable;
 import java.time.LocalDate;
 public class Patient extends Person implements Serializable {

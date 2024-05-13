@@ -11,7 +11,7 @@ import java.io.ObjectInputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-
+import com.example.tp.Models.*;
 
 public class HelloApplication extends Application {
     private static Stage stg;

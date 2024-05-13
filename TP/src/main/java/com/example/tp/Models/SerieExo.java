@@ -1,4 +1,4 @@
-package com.example.tp;
+package com.example.tp.Models;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Scanner;

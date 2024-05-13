@@ -1,4 +1,4 @@
-package com.example.tp;
+package com.example.tp.Models;
 
 import java.io.IOException;
 import java.io.ObjectOutputStream;

@@ -33,12 +33,12 @@ public class SeanceSuivi extends RendezVous {
         System.out.println("Entrer le nom du numero de dossier du patient");
         numeroDossier=sc.nextInt();
         System.out.println("Entrer la Facon de deroulement du rendez-vous");
-        deroulement=valueof(sc.nextLine());
+      //  deroulement=valueof(sc.nextLine()); ////jsp mais il ya un errur la
     }
 
     public void affichRendezVous()
     {
-        super();
-        System.ou.println("Le numero du dossier : "+numeroDossier+" et le deroulement de la seance : "+Deroulement);
+      //  super();/////////////////////////////////////
+      //  System.out.println("Le numero du dossier : "+numeroDossier+" et le deroulement de la seance : "+Deroulement);
     }
 }

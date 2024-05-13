@@ -15,6 +15,8 @@ public class LogINController {
     @FXML
     private Button login;
     @FXML
+    private Button signUp;
+    @FXML
     private Label wrongLogIn;
     @FXML
     private TextField username;
@@ -25,7 +27,11 @@ public class LogINController {
 
     }
 
-    private void checkLogin() throws IOException {
+    public void userSignUp(ActionEvent event)throws IOException {
+        signUp();
+    }
+
+    public void checkLogin() throws IOException {
         HelloApplication m = new HelloApplication();
         if(username.getText().toString().equals(orthophonist.getUserNAme()) && password.getText().toString().equals(orthophonist.getPasswd())) {
             wrongLogIn.setText("Success!");
@@ -42,5 +48,9 @@ public class LogINController {
         }
     }
 
+    public void signUp () throws IOException {
+        HelloApplication m = new HelloApplication();
+        m.changeScene("SignUp.fxml");
+    }
 
 }

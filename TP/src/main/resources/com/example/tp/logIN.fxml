@@ -20,7 +20,7 @@
             <Line endX="-55.20001220703125" endY="3.0517578125E-5" layoutX="194.0" layoutY="398.0" startX="-200.0" startY="3.0517578125E-5" stroke="#05ed6f" />
             <Line endX="108.0" endY="3.0517578125E-5" layoutX="292.0" layoutY="398.0" startX="-29.399993896484375" startY="3.0517578125E-5" stroke="#05ed6f" />
             <Text fill="#736c6c" layoutX="188.0" layoutY="402.0" strokeType="OUTSIDE" strokeWidth="0.0" text="OR" />
-            <Button layoutX="110.0" layoutY="422.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="188.0" style="-fx-background-color: #48efa6; -fx-font-family: poppins; -fx-font-weight: 700;" text="Sign In" textFill="WHITE" />
+            <Button fx:id="signUp" layoutX="110.0" layoutY="422.0" mnemonicParsing="false" onAction="#userSignUp" prefHeight="26.0" prefWidth="188.0" style="-fx-background-color: #48efa6; -fx-font-family: poppins; -fx-font-weight: 700;" text="Sign Up" textFill="WHITE" />
             <Label fx:id="wrongLogIn" layoutX="116.0" layoutY="303.0" prefHeight="18.0" prefWidth="166.0" textAlignment="CENTER" textFill="#dc0707" />
          </children>
       </AnchorPane>

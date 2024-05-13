@@ -11,6 +11,7 @@ public class Ortho implements  Serializable{
     private String nom;
     private String prenom;
     private String tel;
+    private String adr;
     private String mail;
     private String passwd;
     private String userName;
@@ -80,6 +81,12 @@ public class Ortho implements  Serializable{
      public String getUserNAme(){
         return userName;
      }
+     public void setAdr(String a){
+        adr=a;
+     }
+     public String getAdr(){
+        return adr;
+     }
 
      /***********************************************************************************************/
     public void addSerieExos(SerieExo s){
@@ -142,6 +149,17 @@ public class Ortho implements  Serializable{
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    /****************************************************************************************************/
+    public  void affichInfo(){
+        System.out.println("Nom: "+nom);
+        System.out.println("Prenom: "+prenom);
+        System.out.println("Adress: "+adr);
+        System.out.println("telephone: "+tel);
+        System.out.println("email: "+mail);
+        System.out.println("psswd: "+passwd);
+        System.out.println("username: "+userName);
     }
 
 }

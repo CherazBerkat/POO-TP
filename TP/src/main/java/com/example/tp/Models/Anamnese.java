@@ -1,4 +1,7 @@
 package com.example.tp.Models;
-public abstract class Anamnese {
+
+import java.io.Serializable;
+
+public abstract class Anamnese implements Serializable {
 
 }

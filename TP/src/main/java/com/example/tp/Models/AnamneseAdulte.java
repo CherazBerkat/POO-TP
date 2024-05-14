@@ -1,3 +1,7 @@
 package com.example.tp.Models;
-public class AnamneseAdulte extends Anamnese{
+import java.util.ArrayList;
+import java.io.Serializable;
+public class AnamneseAdulte extends Anamnese implements Serializable{
+    //??private ArrayList<TypeAnamneseAdulte> questions
+
 }

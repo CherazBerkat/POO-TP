@@ -1,6 +1,8 @@
 package com.example.tp.Models;
 
-public enum TypeTrouble {
+import java.io.Serializable;
+
+public enum TypeTrouble implements Serializable {
     DEGLUTITION,
     NEURODEVELOPPEMENTAUX,
     COGNITIFS

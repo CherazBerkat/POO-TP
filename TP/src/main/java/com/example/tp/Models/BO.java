@@ -1,8 +1,11 @@
 package com.example.tp.Models;
-public class BO {
+
+import java.io.Serializable;
+import java.util.ArrayList;
+
+public class BO implements Serializable {
     private Diagnostic diagnostic;
-    private EpreuveClinique[] epreuveClinique = new EpreuveClinique[100];
-    private int nbepreuves = 0;
+    private ArrayList<EpreuveClinique> epreuveClinique = new ArrayList<>();
     private String projetTherapeutique;
     public BO(String p)
     {
@@ -10,16 +13,8 @@ public class BO {
     }
     public void ajouterEpreuveClinique(EpreuveClinique ec)
     {
-        epreuveClinique[nbepreuves] = ec;
-        nbepreuves++;
-    }
-
-    public void affichEpreuveClinique() {
-        for (int i = 0; i < nbepreuves; i++) {
-          //  System.out.println(epreuveClinique[i].affichEpreuveClinique()); makachha fe epreuve clinique
-            //  }
+        epreuveClinique.add(ec);
     }
 
 
-}
 }

@@ -1,6 +1,8 @@
 package com.example.tp.Models;
 
-public enum TypeAnamneseEnfant {
+import java.io.Serializable;
+
+public enum TypeAnamneseEnfant implements Serializable {
     STRUCTUREFAMILIALE,
     DYNAMIQUEFAMILIALE,
     ANTECEDENTSFAMILIAUX,

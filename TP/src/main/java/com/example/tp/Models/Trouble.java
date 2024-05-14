@@ -1,6 +1,8 @@
 package com.example.tp.Models;
 
-public class Trouble {
+import java.io.Serializable;
+
+public class Trouble implements Serializable {
     private String nom;
     private TypeTrouble type;
 
@@ -8,10 +10,5 @@ public class Trouble {
     {
         nom = n;
         type = type;
-    }
-
-    public void affichTrouble()
-    {
-        System.out.println("Le nom du trouble : "+nom+" et son type : "+type);
     }
 }

@@ -1,14 +1,15 @@
 package com.example.tp.Models;
 
+import java.io.Serializable;
 import java.util.Scanner;
 import java.time.*;
-public class SeanceSuivi extends RendezVous {
+public class SeanceSuivi extends RendezVous implements Serializable {
     private int numeroDossier;
     private Deroulement deroulement;
 
-    public SeanceSuivi(LocalDate d, LocalTime h, BO bo, int n)
+    public SeanceSuivi(LocalDate d, LocalTime h, int n)
     {
-      //  super(d,h,bo); makach super //////////////////////////////////////////
+        super(d,h);
         numeroDossier = n;
     }
 
@@ -34,12 +35,6 @@ public class SeanceSuivi extends RendezVous {
         System.out.println("Entrer le nom du numero de dossier du patient");
         numeroDossier=sc.nextInt();
         System.out.println("Entrer la Facon de deroulement du rendez-vous");
-      //  deroulement=valueof(sc.nextLine()); ////jsp mais il ya un errur la
-    }
-
-    public void affichRendezVous()
-    {
-      //  super();/////////////////////////////////////
-      //  System.out.println("Le numero du dossier : "+numeroDossier+" et le deroulement de la seance : "+Deroulement);
+        deroulement=Deroulement.valueOf(sc.nextLine());
     }
 }

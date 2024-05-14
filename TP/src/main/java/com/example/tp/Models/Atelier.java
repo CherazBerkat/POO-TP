@@ -1,15 +1,17 @@
-import java.*;
+package com.example.tp.Models;
+
+import java.util.Scanner;
+
 public class Atelier extends RendezVous {
     private String thematique;
-    private Patient[] patients;
+   // private Patient[] patients;///should be integers array list
 
-    public Atelier(Date d, Heure h, BO bo, String t)
+   /* public Atelier(Date d, Heure h, BO bo, String t) //Rendez vous n'a pas de constructeur marakich dayratalha.
     {
         super(d,h,bo);
         thematique = t;
         patients = new Patient[50];
-    }
-
+    }*/
     public String getThematique() {
         return thematique;
     }
@@ -29,11 +31,10 @@ public class Atelier extends RendezVous {
         System.out.println("Entrer le nombre des patients");
         n = sc.nextInt();
         System.out.println("Entrer la thematique de l'atelier");
-        prenom = sc.nextLine();
+        thematique = sc.nextLine();
         for (int i = 0; i < n; i++) {
             System.out.println("Entrer le numero de dossier du patient" + i);
-            patient[i] = sc.nextInt();
+          //  patients[i] = sc.nextInt();
         }
-    }
     }
 }

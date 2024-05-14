@@ -1,3 +1,4 @@
+package com.example.tp.Models;
 public class Dossier {
     private static int num=0;
     private int numeroDossier;
@@ -11,7 +12,7 @@ public class Dossier {
     public Dossier()
     {
         numeroDossier = num;
-        num++
+        num++;
     }
 
     public int getNumeroDossier() {
@@ -28,33 +29,33 @@ public class Dossier {
         nbrv++;
     }
 
-    public void ajouterBO(BO bo)
+  /*  public void ajouterBO(BO bo)
     {
         rendezVous[nbbos] = bo;
         nbbo++;
-    }
+    }*/ //jsp mais there is an error n it should be an array list michi tab
 
-    public void ajouterFicheSuivi(FicheSuivi fiche)
+   /* public void ajouterFicheSuivi(FicheSuivi fiche)
     {
         rendezVous[nbfiches] = fiche;
         nbfiches++;
-    }
+    }*/
 
-    public void affichRVs() {
+  /*  public void affichRVs() {
         for (int i = 0; i < nbrv; i++) {
             System.out.println(rendezVous[i].affichRendezVous());
         }
-    }
+    }*/
 
-    public void affichBOs() {
+  /*  public void affichBOs() {
         for (int i = 0; i < nbbos; i++) {
             System.out.println(bos[i].affichBO());
         }
-    }
+    }*/
 
-    public void affichFiches() {
+   /* public void affichFiches() {
         for (int i = 0; i < nbfiches; i++) {
             System.out.println(fichesSuivis[i].affichFicheSuivi());
         }
-    }
+    }*/
 }

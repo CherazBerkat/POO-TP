@@ -1,17 +1,16 @@
+package com.example.tp.Models;
+import java.time.*;
+import java.util.Date;
 public abstract class RendezVous
 {
-    private Date date;
-    private Heure heure;
-    private final String duree="1h";
-    private BO bo;
+    private LocalDate date;
+    private LocalTime heure;
+    //private BO bo;
 
-    public abstract void programmerRendezVous()
+    public abstract void programmerRendezVous();
+    /*public void affichRendezVous()
     {
-
-    }
-    public void affichRendezVous()
-    {
-        System.ou.println("date : "+date+" heure : "+heure+" duree : "+duree+"\n");
-        bo.affichBO();
-    }
+        System.out.println("date : "+date+" heure : "+heure+"\n");
+      //  bo.affichBO();// ya pas affiche BO dans Bo marakich dayratha.
+    }*/
 }

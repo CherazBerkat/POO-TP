@@ -1,8 +1,11 @@
+
+package com.example.tp.Models;
+
 public class PremierBO extends BO {
     private Anamnese anamnese;
-    public PremierBO(Diagnostic d, Epreuves Cliniques e, String p, Anamnese a)
+    public PremierBO(String p, Anamnese a) ////chofihaaa rahi fiha zyada jsp
     {
-        super(d,e,p);
+        super(p);
         anamnese = a;
     }
 

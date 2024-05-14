@@ -1,9 +1,12 @@
+package com.example.tp.Models;
+
 import java.util.Scanner;
+
 public class Objectif {
     private String nom;
-    private TypeObjectifs type;
+    private TypeObjectif type;
     private int note;
-    public Objectif(String n, TypeObjectifs t)
+    public Objectif(String n, TypeObjectif t)
     {
         nom = n;
         type = t;
@@ -25,18 +28,18 @@ public class Objectif {
         this.note = note;
     }
 
-    public TypeObjectifs getType() {
+    public TypeObjectif getType() {
         return type;
     }
 
-    public void setType(TypeObjectifs type) {
+    public void setType(TypeObjectif type) {
         this.type = type;
     }
 
-    public void evaluer()
+    public void evaluerObjectif()
     {
         Scanner sc = new Scanner(System.in);
         System.out.println("Entrer la note entre 1 et 5 que vous voulez attribuer");
-        nom=sc.nextInt();
+        note=sc.nextInt();
     }
 }

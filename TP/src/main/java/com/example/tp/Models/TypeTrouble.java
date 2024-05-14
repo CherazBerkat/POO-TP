@@ -1,5 +1,7 @@
+package com.example.tp.Models;
+
 public enum TypeTrouble {
     DEGLUTITION,
-    NEURO DEVELOPPEMENTAUX,
+    NEURODEVELOPPEMENTAUX,
     COGNITIFS
 }

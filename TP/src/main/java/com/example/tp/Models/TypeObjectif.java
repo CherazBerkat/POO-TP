@@ -1,5 +1,7 @@
+package com.example.tp.Models;
+
 public enum TypeObjectif {
-    COURT TERME,
-    MOYEN TERME,
-    LONG TERME
+    COURTTERME,
+    MOYENTERME,
+    LONGTERME
 }

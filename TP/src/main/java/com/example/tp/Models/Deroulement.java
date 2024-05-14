@@ -1,3 +1,5 @@
+package com.example.tp.Models;
+
 public enum Deroulement {
-    EN LIGNE,
-    EN PRESENTIEL }
+    ENLIGNE,
+    PRESENTIEL }

@@ -1,3 +1,5 @@
+package com.example.tp.Models;
+
 public class Diagnostic
 {
     private Trouble[] troubles = new Trouble[100];
@@ -5,7 +7,7 @@ public class Diagnostic
 
     public void affichTroubles() {
         for (int i = 0; i < nbtrouble; i++) {
-            System.out.println(troubles[i].affichTrouble());
+           // System.out.println(troubles[i].affichTrouble()); makachha
         }
     }
 

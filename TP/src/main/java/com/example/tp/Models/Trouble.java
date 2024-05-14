@@ -1,3 +1,5 @@
+package com.example.tp.Models;
+
 public class Trouble {
     private String nom;
     private TypeTrouble type;
@@ -5,11 +7,11 @@ public class Trouble {
     public Trouble(String n, TypeTrouble t)
     {
         nom = n;
-        type = type
+        type = type;
     }
 
     public void affichTrouble()
     {
-        System.ou.println("Le nom du trouble : "+nom+" et son type : "+type);
+        System.out.println("Le nom du trouble : "+nom+" et son type : "+type);
     }
 }

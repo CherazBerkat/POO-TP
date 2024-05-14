@@ -1,4 +1,5 @@
+package com.example.tp.Models;
+
 public enum TypeAnamneseAdulte {
-    HISTOIRE DE MALADIE,
-    SUIVI MEDICAL
-}
+    HISTOIREDEMALADIE,
+    SUIVIMEDICAL}

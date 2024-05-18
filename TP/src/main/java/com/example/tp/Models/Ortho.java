@@ -90,7 +90,15 @@ public class Ortho implements  Serializable{
      public String getAdr(){
         return adr;
      }
-
+     public ArrayList<Anamnese> getAnamneses(){
+        return anamneses;
+     }
+     public ArrayList<SerieExo> getSerieExos(){
+        return serieExos;
+     }
+    public ArrayList<SerieQuestion> getSerieQuestions(){
+        return serieQuestions;
+    }
      /***********************************************************************************************/
     public void addSerieExos(SerieExo s){
         serieExos.add(s);
@@ -122,6 +130,7 @@ public class Ortho implements  Serializable{
         }
     }
     public void deleteAnamneseIndx (int index){
+        System.out.println("index: "+index);
         if (index >= 0 && index < anamneses.size()) {
             anamneses.remove(index);
         } else {
@@ -179,7 +188,6 @@ public class Ortho implements  Serializable{
     public Map<Trouble, Float> countTroublesPercentages(Map<Trouble, Integer> ini) {
         Map<Trouble, Float> troublePercentages = new HashMap<>();
         int totalDossiers = dossiers.size();
-        System.out.println("nb ds: "+totalDossiers);
         for (Map.Entry<Trouble, Integer> entry : ini.entrySet()) {
             Trouble trouble = entry.getKey();
             int count = entry.getValue();
@@ -189,22 +197,5 @@ public class Ortho implements  Serializable{
 
         return troublePercentages;
     }
-   /* public void tst() {
-        ArrayList<Trouble> allTroubles = new ArrayList<>();
-        boolean exists=false;
-        for (Dossier doss: dossiers){
-            for (BO bo : doss.getBos()){
-                for(Trouble trouble : bo.getDiagnostic().getTrouble()){
-                     for (Trouble trouble1 : allTroubles){
-                         if (trouble.equals(trouble1)) exists=true;
-                     }
-                     if (!exists){
-                         allTroubles.add(trouble);
-                     }
-                     exists=false;
-                }
-            }
-        }
-    }*/
 
 }

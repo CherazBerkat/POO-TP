@@ -13,12 +13,17 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
-import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.util.Duration;
 import java.io.IOException;
 import javafx.scene.chart.XYChart;
+import javafx.scene.control.ListCell;
+import javafx.scene.control.ListView;
+import javafx.scene.layout.HBox;
+import javafx.scene.text.Text;
+import javafx.util.Callback;
+import javafx.scene.layout.Region;
+import javafx.scene.layout.Priority;
 import com.example.tp.Models.*;
 
 import static com.example.tp.HelloApplication.orthophonist;
@@ -47,6 +52,8 @@ public class HomeController {
     private BarChart barChart;
     @FXML
     private PieChart pieChart;
+    @FXML
+    private ListView<Anamnese> anamList;
     @FXML
     public void initialize() {
         // Create a timeline
@@ -89,6 +96,60 @@ public class HomeController {
 
         pieChartData.forEach(data -> data.nameProperty().bind(Bindings.concat(data.getName(),": ",data.pieValueProperty(),"%")));
         pieChart.getData().addAll(pieChartData);
+
+        //Anamneses list
+
+            ObservableList<Anamnese> observableAnamneses = FXCollections.observableArrayList(orthophonist.getAnamneses());
+            anamList.setItems(observableAnamneses);
+            anamList.setCellFactory(new Callback<>() {
+                @Override
+                public ListCell<Anamnese> call(ListView<Anamnese> listView) {
+                    return new ListCell<Anamnese>() {
+                        @Override
+                        protected void updateItem(Anamnese item, boolean empty) {
+                            super.updateItem(item, empty);
+                            if (item != null && !empty) {
+                                HBox hBox = new HBox(20);
+                                Text name = new Text("Anamnese" + (getIndex() + 1));
+
+                                Button supprimerButton = new Button("Supprimer");
+                                Button modifierButton = new Button("Modifier");
+
+                                // Styling buttons
+                                supprimerButton.setStyle("-fx-background-color:white; -fx-text-fill: #48efa6; -fx-font-weight: 700;");
+                                modifierButton.setStyle("-fx-background-color: white; -fx-text-fill: #48efa6; -fx-font-weight: 700;");
+
+                                // Set button actions
+                                supprimerButton.setOnAction(event -> {
+                                    getListView().getItems().remove(item);
+                                    orthophonist.deleteAnamneseIndx(getIndex());
+                                });
+
+                                modifierButton.setOnAction(event -> {
+                                   System.out.println("in modifier");//////////////////////////////////////////////
+                                });
+
+                                // Create a nested HBox for buttons
+                                HBox buttonsBox = new HBox(10);
+                                buttonsBox.getChildren().addAll(supprimerButton, modifierButton);
+
+                                // Add a region to create space between name and buttons
+                                Region spacer = new Region();
+                                HBox.setHgrow(spacer, Priority.ALWAYS);
+
+                                // Add elements to outer HBox
+                                hBox.getChildren().addAll(name, spacer, buttonsBox);
+                                setGraphic(hBox);
+                            } else {
+                                setGraphic(null);
+                            }
+                        }
+
+                    };
+
+                }
+            });
+        anamList.refresh();
     }
 
     public void updateInfos(ActionEvent event)throws IOException {

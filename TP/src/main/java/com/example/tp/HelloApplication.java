@@ -37,7 +37,7 @@ public class HelloApplication extends Application {
             createFile();
         }
         /************************************************test Data***********************************************/
-      /* TypeTrouble troubleType1 = TypeTrouble.DEGLUTITION;
+     /* TypeTrouble troubleType1 = TypeTrouble.DEGLUTITION;
         TypeTrouble troubleType2 = TypeTrouble.NEURODEVELOPPEMENTAUX;
         TypeTrouble troubleType3 = TypeTrouble.COGNITIFS;
 
@@ -88,7 +88,13 @@ public class HelloApplication extends Application {
 
         d2.ajouterBO(b21);
         d2.ajouterBO(b22);
-        orthophonist.addDossier(d2);*/
+        orthophonist.addDossier(d2);
+       for (int i=0;i<=10;i++) {
+            orthophonist.addAnamnese(new AnamneseAdulte());
+            orthophonist.addAnamnese(new AnamneseEnfant());
+       }*/
+
+
         /*******************************************************************************************************/
         stage.setTitle("CabinetPro ManageX");
         stage.setScene(scene);

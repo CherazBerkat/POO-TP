@@ -52,7 +52,7 @@
                         <Text fx:id="textBookApp" fill="#48efa6" layoutX="35.0" layoutY="49.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 30; -fx-font-family: poppins; -fx-font-weight: 700;" text="Book an appointment" wrappingWidth="361.336669921875" />
                         <Accordion layoutY="68.0" prefHeight="303.0" prefWidth="600.0">
                           <panes>
-                            <TitledPane fx:id="accordionRDV" animated="false" prefHeight="386.0" prefWidth="600.0" style="-fx-background-color: #000000; -fx-header-color: white;" text="Consultation">
+                            <TitledPane fx:id="accordionRDV" animated="false" prefHeight="286.0" prefWidth="600.0" style="-fx-background-color: #000000; -fx-header-color: white;" text="Consultation">
                               <content>
                                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: white;">
                                        <children>
@@ -73,7 +73,7 @@
                                        </children></AnchorPane>
                               </content>
                             </TitledPane>
-                            <TitledPane animated="false" prefHeight="392.0" prefWidth="600.0" style="-fx-background-color: white;" text="Séance De Suivi">
+                            <TitledPane animated="false" prefHeight="370.0" prefWidth="600.0" style="-fx-background-color: white;" text="Séance De Suivi">
                               <content>
                                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                        <children>

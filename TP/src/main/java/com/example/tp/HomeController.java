@@ -2,14 +2,11 @@ package com.example.tp;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
 import javafx.util.Duration;
 import java.io.IOException;
 
@@ -35,6 +32,20 @@ public class HomeController {
     @FXML
     private Label label1;
     private Timeline timeline;
+    @FXML
+    private DatePicker datepickerDateC;
+    @FXML
+    private DatePicker datepickerDateAG;
+    @FXML
+    private DatePicker datepickerDateSS;
+    @FXML
+    private TextField textfieldDateC;
+    @FXML
+    private TextField textfieldDateAG;
+    @FXML
+    private TextField textfieldDateSS;
+
+
 
     @FXML
     public void initialize() {

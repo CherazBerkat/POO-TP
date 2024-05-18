@@ -1,6 +1,4 @@
 package com.example.tp.Models;
-
-
 public class FicheSuivi {
     private Objectif[] objectifs = new Objectif[100];
     private int nbObjectifs;
@@ -15,14 +13,14 @@ public class FicheSuivi {
     {
         for(int i=0; i<nbObjectifs; i++)
         {
-           // objectifs[i].affichObjectif(); method doesn't exist
+            // objectifs[i].affichObjectif(); method doesn't exist
         }
     }
     public void evaluerObjectifs()
     {
         for(int i=0; i<nbObjectifs; i++)
         {
-           // objectifs[i].evaluerObjectif();
+            // objectifs[i].evaluerObjectif();
         }
     }
 }

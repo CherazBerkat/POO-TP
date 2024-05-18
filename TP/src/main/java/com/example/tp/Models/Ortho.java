@@ -5,6 +5,9 @@ import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.nio.file.Files;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+
 import static com.example.tp.HelloApplication.*;
 
 public class Ortho implements  Serializable{
@@ -161,5 +164,47 @@ public class Ortho implements  Serializable{
         System.out.println("psswd: "+passwd);
         System.out.println("username: "+userName);
     }
+
+    public Map<Trouble, Integer> countTroubles() {
+        Map<Trouble, Integer> troubleCounts = new HashMap<>();
+
+        for (Dossier doss : dossiers) {
+            for (Trouble trouble : doss.allTroubles()){
+                troubleCounts.put(trouble, troubleCounts.getOrDefault(trouble, 0) + 1);
+            }
+        }
+        return troubleCounts;
+    }
+
+    public Map<Trouble, Float> countTroublesPercentages(Map<Trouble, Integer> ini) {
+        Map<Trouble, Float> troublePercentages = new HashMap<>();
+        int totalDossiers = dossiers.size();
+        System.out.println("nb ds: "+totalDossiers);
+        for (Map.Entry<Trouble, Integer> entry : ini.entrySet()) {
+            Trouble trouble = entry.getKey();
+            int count = entry.getValue();
+            float percentage = (float) count / totalDossiers;
+            troublePercentages.put(trouble, percentage);
+        }
+
+        return troublePercentages;
+    }
+   /* public void tst() {
+        ArrayList<Trouble> allTroubles = new ArrayList<>();
+        boolean exists=false;
+        for (Dossier doss: dossiers){
+            for (BO bo : doss.getBos()){
+                for(Trouble trouble : bo.getDiagnostic().getTrouble()){
+                     for (Trouble trouble1 : allTroubles){
+                         if (trouble.equals(trouble1)) exists=true;
+                     }
+                     if (!exists){
+                         allTroubles.add(trouble);
+                     }
+                     exists=false;
+                }
+            }
+        }
+    }*/
 
 }

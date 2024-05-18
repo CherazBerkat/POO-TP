@@ -1,6 +1,8 @@
 package com.example.tp.Models;
 
-public enum TypeObjectif {
+import java.io.Serializable;
+
+public enum TypeObjectif implements Serializable {
     COURTTERME,
     MOYENTERME,
     LONGTERME

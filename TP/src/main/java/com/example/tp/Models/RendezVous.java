@@ -1,16 +1,17 @@
 package com.example.tp.Models;
-
-public abstract class RendezVous
+import java.io.Serializable;
+import java.time.*;
+import java.util.Date;
+public abstract class RendezVous implements Serializable
 {
-    private Date date;
-    private Heure heure;
-    private final String duree="1h";
+    private LocalDate date;
+    private LocalTime heure;
     private BO bo;
 
-    public abstract void programmerRendezVous();
-    public void affichRendezVous()
+    public RendezVous(LocalDate d, LocalTime h)
     {
-        System.out.println("date : "+date+" heure : "+heure+" duree : "+duree+"\n");
-      //  bo.affichBO();// ya pas affiche BO dans Bo marakich dayratha.
+        date=d;
+        heure=h;
     }
+    public abstract void programmerRendezVous();
 }

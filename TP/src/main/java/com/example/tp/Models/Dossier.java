@@ -1,14 +1,15 @@
 package com.example.tp.Models;
 
-public class Dossier {
+import java.io.Serializable;
+import java.util.*;
+
+import com.example.tp.Models.Trouble;
+public class Dossier implements Serializable {
     private static int num=0;
     private int numeroDossier;
-    private RendezVous[] rendezVous = new RendezVous[1000];
-    private int nbrv = 0;
-    private BO[] bos = new BO[1000];
-    private int nbbos = 0;
-    private FicheSuivi[] fichesSuivis = new FicheSuivi[1000];
-    private int nbfiches = 0;
+    private ArrayList<RendezVous> rendezVous = new ArrayList<>();
+    private ArrayList<BO> BOs = new ArrayList<>();
+    private ArrayList<FicheSuivi> ficheSuivis = new ArrayList<>();
 
     public Dossier()
     {
@@ -26,37 +27,38 @@ public class Dossier {
 
     public void ajouterRendezVous(RendezVous rv)
     {
-        rendezVous[nbrv] = rv;
-        nbrv++;
+        rendezVous.add(rv);
     }
 
-  /*  public void ajouterBO(BO bo)
+    public void ajouterBO(BO bo)
     {
-        rendezVous[nbbos] = bo;
-        nbbo++;
-    }*/ //jsp mais there is an error n it should be an array list michi tab
+        BOs.add(bo);
+    }
 
-   /* public void ajouterFicheSuivi(FicheSuivi fiche)
+    public void ajouterFicheSuivi(FicheSuivi f)
     {
-        rendezVous[nbfiches] = fiche;
-        nbfiches++;
-    }*/
+        ficheSuivis.add(f);
+    }
+    public ArrayList<BO> getBos() {
+        return BOs;
+    }
 
-  /*  public void affichRVs() {
-        for (int i = 0; i < nbrv; i++) {
-            System.out.println(rendezVous[i].affichRendezVous());
+    public Set<Trouble> allTroubles(){
+        Set<Trouble> troubles = new HashSet<>();
+        for (BO bo : BOs) {
+            if (bo != null) { // Check if bo is not null
+                Diagnostic diagnostic = bo.getDiagnostic();
+                if (diagnostic != null) { // Check if diagnostic is not null
+                    for (Trouble trouble : diagnostic.getTroubles()) {
+                      if(!troubles.contains(trouble)){
+                          troubles.add(trouble);
+                      }
+                    }
+                }
+            }
         }
-    }*/
-
-  /*  public void affichBOs() {
-        for (int i = 0; i < nbbos; i++) {
-            System.out.println(bos[i].affichBO());
-        }
-    }*/
-
-   /* public void affichFiches() {
-        for (int i = 0; i < nbfiches; i++) {
-            System.out.println(fichesSuivis[i].affichFicheSuivi());
-        }
-    }*/
+        return troubles;
+    }
 }
+
+

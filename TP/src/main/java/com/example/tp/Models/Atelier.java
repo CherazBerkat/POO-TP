@@ -1,18 +1,18 @@
 package com.example.tp.Models;
 
+import java.io.Serializable;
 import java.util.Scanner;
-
-public class Atelier extends RendezVous {
+import java.time.*;
+import java.util.ArrayList;
+public class Atelier extends RendezVous implements Serializable {
     private String thematique;
-   // private Patient[] patients;///should be integers array list
+    private ArrayList<Integer>patients= new ArrayList<Integer>();///should be integers array list
 
-   /* public Atelier(Date d, Heure h, BO bo, String t) //Rendez vous n'a pas de constructeur marakich dayratalha.
+    public Atelier(LocalDate d, LocalTime h, BO bo, String t) //Rendez vous n'a pas de constructeur marakich dayratalha.
     {
-        super(d,h,bo);
+        super(d, h);
         thematique = t;
-        patients = new Patient[50];
-    }*/
-
+    }
     public String getThematique() {
         return thematique;
     }
@@ -21,9 +21,10 @@ public class Atelier extends RendezVous {
         this.thematique = thematique;
     }
 
-    public void afficherPatients()
-    {
-
+    public void affichPatients() {
+        for (int patient : patients) {
+            //e.affichPatient();
+        }
     }
 
     public void programmerRendezVous() {
@@ -35,7 +36,7 @@ public class Atelier extends RendezVous {
         thematique = sc.nextLine();
         for (int i = 0; i < n; i++) {
             System.out.println("Entrer le numero de dossier du patient" + i);
-          //  patients[i] = sc.nextInt();
+            patients.add(sc.nextInt());
         }
     }
 }

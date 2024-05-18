@@ -1,3 +1,11 @@
 package com.example.tp.Models;
-public class AnamneseAdulte extends Anamnese{
+import java.util.HashMap;
+import java.io.Serializable;
+public class AnamneseAdulte extends Anamnese implements Serializable{
+    private HashMap<TypeAnamneseAdulte,String> questions = new HashMap<>();
+
+    public void ajouterQuestion(TypeAnamneseAdulte type, String question){
+        questions.put(type,question);
+    }
+
 }

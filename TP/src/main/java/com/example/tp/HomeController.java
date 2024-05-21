@@ -8,17 +8,12 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.chart.*;
-import javafx.scene.control.Button;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
-import javafx.scene.control.Label;
 import javafx.util.Duration;
 import java.io.IOException;
 import javafx.scene.chart.XYChart;
-import javafx.scene.control.ListCell;
-import javafx.scene.control.ListView;
 import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
 import javafx.util.Callback;
@@ -48,6 +43,19 @@ public class HomeController {
     @FXML
     private Label label1;
     private Timeline timeline;
+    @FXML
+    private DatePicker datepickerDateC;
+    @FXML
+    private DatePicker datepickerDateAG;
+    @FXML
+    private DatePicker datepickerDateSS;
+    @FXML
+    private TextField textfieldDateC;
+    @FXML
+    private TextField textfieldDateAG;
+    @FXML
+    private TextField textfieldDateSS;
+
     @FXML
     private BarChart barChart;
     @FXML
@@ -112,12 +120,15 @@ public class HomeController {
                                 HBox hBox = new HBox(20);
                                 Text name = new Text("Anamnese" + (getIndex() + 1));
 
+
                                 Button supprimerButton = new Button("Supprimer");
                                 Button modifierButton = new Button("Modifier");
+
 
                                 // Styling buttons
                                 supprimerButton.setStyle("-fx-background-color:white; -fx-text-fill: #48efa6; -fx-font-weight: 700;");
                                 modifierButton.setStyle("-fx-background-color: white; -fx-text-fill: #48efa6; -fx-font-weight: 700;");
+
 
                                 // Set button actions
                                 supprimerButton.setOnAction(event -> {

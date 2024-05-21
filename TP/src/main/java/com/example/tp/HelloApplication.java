@@ -2,7 +2,9 @@ package com.example.tp;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.Scene;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.scene.Parent;
 
@@ -124,7 +126,17 @@ public class HelloApplication extends Application {
 
         // Set the new Scene to the Stage
         stg.setScene(scene);
+
+        // Center the Stage
+        centerStage(stg);
     }
+
+    private void centerStage(Stage stage) {
+        Rectangle2D screenBounds = Screen.getPrimary().getVisualBounds();
+        stage.setX((screenBounds.getWidth() - stage.getWidth()) / 2);
+        stage.setY((screenBounds.getHeight() - stage.getHeight()) / 2);
+    }
+
     public static void main(String[] args) {
         launch();
     }

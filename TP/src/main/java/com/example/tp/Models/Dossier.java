@@ -3,6 +3,7 @@ package com.example.tp.Models;
 import java.io.Serializable;
 import java.util.ArrayList;
 public class Dossier implements Serializable {
+    private Patient patient;
     private static int num=0;
     private int numeroDossier;
     private ArrayList<RendezVous> rendezVous = new ArrayList<>();

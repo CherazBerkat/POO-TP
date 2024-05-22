@@ -9,15 +9,17 @@
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.TitledPane?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Text?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.tp.HomeController">
+<Pane maxHeight="400.0" maxWidth="600.0" minHeight="400.0" minWidth="600.0" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.tp.HomeController">
    <children>
-      <TabPane prefHeight="400.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE">
+      <TabPane prefHeight="400.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE" tabMaxWidth="600.0">
         <tabs>
           <Tab text="Accueil">
             <content>
@@ -49,7 +51,7 @@
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <Text fx:id="textBookApp" fill="#48efa6" layoutX="35.0" layoutY="49.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 30; -fx-font-family: poppins; -fx-font-weight: 700;" text="Book an appointment" wrappingWidth="361.336669921875" />
+                        <Text fx:id="textBookApp" fill="#48efa6" layoutX="35.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 30; -fx-font-family: poppins; -fx-font-weight: 700;" text="Book an appointment" wrappingWidth="361.336669921875" />
                         <Accordion layoutY="68.0" prefHeight="303.0" prefWidth="600.0">
                           <panes>
                             <TitledPane fx:id="accordionRDV" animated="false" prefHeight="286.0" prefWidth="600.0" style="-fx-background-color: #000000; -fx-header-color: white;" text="Consultation">
@@ -114,7 +116,20 @@
             </Tab>
             <Tab text="Dossiers">
               <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <Text fx:id="textPatientsFiles" fill="#48efa6" layoutX="35.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-family: poppins; -fx-font-size: 30; -fx-font-weight: 700;" text="Patients Files" />
+                        <TableView fx:id="textieldDateAG" layoutY="95.0" prefHeight="276.0" prefWidth="600.0">
+                          <columns>
+                            <TableColumn fx:id="tablecolumnNumero" prefWidth="150.0" text="Numéro" />
+                            <TableColumn fx:id="tablecolumnNom" prefWidth="150.0" text="Nom" />
+                              <TableColumn fx:id="tablecolumnPrenom" prefWidth="150.0" text="Prenom" />
+                              <TableColumn fx:id="tablecolumnAge" prefWidth="150.0" text="Age" />
+                          </columns>
+                        </TableView>
+                        <Button fx:id="buttonSupprimer" layoutX="491.0" layoutY="60.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="89.0" style="-fx-background-color: #48efa6; -fx-font-family: poppins; -fx-font-weight: 700;" text="Supprimer" textFill="WHITE" />
+                        <Button fx:id="buttonAjouter" layoutX="380.0" layoutY="60.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="89.0" style="-fx-background-color: #48efa6; -fx-font-family: poppins; -fx-font-weight: 700;" text="Ajouter" textFill="WHITE" />
+                     </children></AnchorPane>
               </content>
             </Tab>
             <Tab text="Tests">

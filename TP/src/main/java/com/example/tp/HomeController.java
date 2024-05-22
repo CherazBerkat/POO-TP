@@ -1,5 +1,6 @@
 package com.example.tp;
 
+import java.util.ArrayList;
 import java.util.Map;
 
 import javafx.beans.binding.Bindings;
@@ -63,6 +64,10 @@ public class HomeController {
     @FXML
     private ListView<Anamnese> anamList;
     @FXML
+    private ListView<SerieQuestion> serieQ;
+    @FXML
+    private ListView<SerieExo> serieE;
+    @FXML
     public void initialize() {
         // Create a timeline
         timeline = new Timeline();
@@ -104,7 +109,125 @@ public class HomeController {
 
         pieChartData.forEach(data -> data.nameProperty().bind(Bindings.concat(data.getName(),": ",data.pieValueProperty(),"%")));
         pieChart.getData().addAll(pieChartData);
+        //Serie Questions list
+        ObservableList<SerieQuestion> observableQuestions = FXCollections.observableArrayList(orthophonist.getSerieQuestions());
+        serieQ.setItems(observableQuestions);
+        serieQ.setCellFactory(new Callback<>() {
+            @Override
+            public ListCell<SerieQuestion> call(ListView<SerieQuestion> listView) {
+                return new ListCell<SerieQuestion>() {
+                    @Override
+                    protected void updateItem(SerieQuestion item, boolean empty) {
+                        super.updateItem(item, empty);
+                        if (item != null && !empty) {
+                            HBox hBox = new HBox(20);
+                            Text name = new Text("SerieQuestion" + (getIndex() + 1));
+                            Text nom = new Text(item.getNom());
+                            Text capacite= new Text(item.getCapacite());
+                            Button supprimerButton = new Button("Supprimer");
+                            Button modifierButton = new Button("Modifier");
 
+
+                            // Styling buttons
+                            supprimerButton.setStyle("-fx-background-color:white; -fx-text-fill: #48efa6; -fx-font-weight: 700;");
+                            modifierButton.setStyle("-fx-background-color: white; -fx-text-fill: #48efa6; -fx-font-weight: 700;");
+
+
+                            // Set button actions
+                            supprimerButton.setOnAction(event -> {
+                                getListView().getItems().remove(item);
+                                orthophonist.deleteSerieQuestionsIndx(getIndex());
+                            });
+
+                            modifierButton.setOnAction(event -> {
+                                System.out.println("in modifier");//////////////////////////////////////////////
+                            });
+
+                            // Add hover effect
+                            setOnMouseEntered(event -> setStyle("-fx-background-color: #e6e7e5;"));
+                            setOnMouseExited(event -> setStyle("-fx-background-color: white;"));
+
+                            // Create a nested HBox for buttons
+                            HBox buttonsBox = new HBox(10);
+                            buttonsBox.getChildren().addAll(supprimerButton, modifierButton);
+
+                            // Add a region to create space between name and buttons
+                            Region spacer = new Region();
+                            HBox.setHgrow(spacer, Priority.ALWAYS);
+
+                            // Add elements to outer HBox
+                            hBox.getChildren().addAll(name,nom,capacite, spacer, buttonsBox);
+                            setGraphic(hBox);
+                        } else {
+                            setGraphic(null);
+                        }
+                    }
+
+                };
+
+            }
+        });
+        serieQ.refresh();
+        //Serie Exercices list
+        ObservableList<SerieExo> observableExos = FXCollections.observableArrayList(orthophonist.getSerieExos());
+        serieE.setItems(observableExos);
+        serieE.setCellFactory(new Callback<>() {
+            @Override
+            public ListCell<SerieExo> call(ListView<SerieExo> listView) {
+                return new ListCell<SerieExo>() {
+                    @Override
+                    protected void updateItem(SerieExo item, boolean empty) {
+                        super.updateItem(item, empty);
+                        if (item != null && !empty) {
+                            HBox hBox = new HBox(20);
+                            Text name = new Text("SerieExo" + (getIndex() + 1));
+                            Text nom = new Text(item.getNom());
+                            Text capacite= new Text(item.getCapacite());
+
+                            Button supprimerButton = new Button("Supprimer");
+                            Button modifierButton = new Button("Modifier");
+
+
+                            // Styling buttons
+                            supprimerButton.setStyle("-fx-background-color:white; -fx-text-fill: #48efa6; -fx-font-weight: 700;");
+                            modifierButton.setStyle("-fx-background-color: white; -fx-text-fill: #48efa6; -fx-font-weight: 700;");
+
+
+                            // Set button actions
+                            supprimerButton.setOnAction(event -> {
+                                getListView().getItems().remove(item);
+                                orthophonist.deleteSerieExosIndx(getIndex());
+                            });
+
+                            modifierButton.setOnAction(event -> {
+                                System.out.println("in modifier");//////////////////////////////////////////////
+                            });
+
+                            // Add hover effect
+                            setOnMouseEntered(event -> setStyle("-fx-background-color: #e6e7e5;"));
+                            setOnMouseExited(event -> setStyle("-fx-background-color: white;"));
+
+                            // Create a nested HBox for buttons
+                            HBox buttonsBox = new HBox(10);
+                            buttonsBox.getChildren().addAll(supprimerButton, modifierButton);
+
+                            // Add a region to create space between name and buttons
+                            Region spacer = new Region();
+                            HBox.setHgrow(spacer, Priority.ALWAYS);
+
+                            // Add elements to outer HBox
+                            hBox.getChildren().addAll(name,nom,capacite, spacer, buttonsBox);
+                            setGraphic(hBox);
+                        } else {
+                            setGraphic(null);
+                        }
+                    }
+
+                };
+
+            }
+        });
+        serieE.refresh();
         //Anamneses list
 
             ObservableList<Anamnese> observableAnamneses = FXCollections.observableArrayList(orthophonist.getAnamneses());
@@ -119,7 +242,7 @@ public class HomeController {
                             if (item != null && !empty) {
                                 HBox hBox = new HBox(20);
                                 Text name = new Text("Anamnese" + (getIndex() + 1));
-
+                                Text type = new Text(item.getClass().getSimpleName());
 
                                 Button supprimerButton = new Button("Supprimer");
                                 Button modifierButton = new Button("Modifier");
@@ -140,6 +263,10 @@ public class HomeController {
                                    System.out.println("in modifier");//////////////////////////////////////////////
                                 });
 
+                                // Add hover effect
+                                setOnMouseEntered(event -> setStyle("-fx-background-color: #e6e7e5;"));
+                                setOnMouseExited(event -> setStyle("-fx-background-color: white;"));
+
                                 // Create a nested HBox for buttons
                                 HBox buttonsBox = new HBox(10);
                                 buttonsBox.getChildren().addAll(supprimerButton, modifierButton);
@@ -148,8 +275,9 @@ public class HomeController {
                                 Region spacer = new Region();
                                 HBox.setHgrow(spacer, Priority.ALWAYS);
 
+
                                 // Add elements to outer HBox
-                                hBox.getChildren().addAll(name, spacer, buttonsBox);
+                                hBox.getChildren().addAll(name,type, spacer, buttonsBox);
                                 setGraphic(hBox);
                             } else {
                                 setGraphic(null);

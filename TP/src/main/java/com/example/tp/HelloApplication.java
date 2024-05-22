@@ -39,7 +39,7 @@ public class HelloApplication extends Application {
             createFile();
         }
         /************************************************test Data***********************************************/
-     /*  TypeTrouble troubleType1 = TypeTrouble.DEGLUTITION;
+      /* TypeTrouble troubleType1 = TypeTrouble.DEGLUTITION;
         TypeTrouble troubleType2 = TypeTrouble.NEURODEVELOPPEMENTAUX;
         TypeTrouble troubleType3 = TypeTrouble.COGNITIFS;
 
@@ -91,7 +91,12 @@ public class HelloApplication extends Application {
         d2.ajouterBO(b21);
         d2.ajouterBO(b22);
         orthophonist.addDossier(d2);
+         String nom, capacite;
        for (int i=0;i<=10;i++) {
+            nom="nom"+i;
+            capacite="capacite"+i;
+            orthophonist.addSerieQuestions(new SerieQuestion(nom,capacite));
+            orthophonist.addSerieExos(new SerieExo(nom,capacite));
             orthophonist.addAnamnese(new AnamneseAdulte());
             orthophonist.addAnamnese(new AnamneseEnfant());
        }*/

@@ -5,6 +5,9 @@ import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.nio.file.Files;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+
 import static com.example.tp.HelloApplication.*;
 
 public class Ortho implements  Serializable{
@@ -87,7 +90,15 @@ public class Ortho implements  Serializable{
      public String getAdr(){
         return adr;
      }
-
+     public ArrayList<Anamnese> getAnamneses(){
+        return anamneses;
+     }
+     public ArrayList<SerieExo> getSerieExos(){
+        return serieExos;
+     }
+    public ArrayList<SerieQuestion> getSerieQuestions(){
+        return serieQuestions;
+    }
      /***********************************************************************************************/
     public void addSerieExos(SerieExo s){
         serieExos.add(s);
@@ -119,6 +130,7 @@ public class Ortho implements  Serializable{
         }
     }
     public void deleteAnamneseIndx (int index){
+        System.out.println("index: "+index);
         if (index >= 0 && index < anamneses.size()) {
             anamneses.remove(index);
         } else {
@@ -160,6 +172,30 @@ public class Ortho implements  Serializable{
         System.out.println("email: "+mail);
         System.out.println("psswd: "+passwd);
         System.out.println("username: "+userName);
+    }
+
+    public Map<Trouble, Integer> countTroubles() {
+        Map<Trouble, Integer> troubleCounts = new HashMap<>();
+
+        for (Dossier doss : dossiers) {
+            for (Trouble trouble : doss.allTroubles()){
+                troubleCounts.put(trouble, troubleCounts.getOrDefault(trouble, 0) + 1);
+            }
+        }
+        return troubleCounts;
+    }
+
+    public Map<Trouble, Float> countTroublesPercentages(Map<Trouble, Integer> ini) {
+        Map<Trouble, Float> troublePercentages = new HashMap<>();
+        int totalDossiers = dossiers.size();
+        for (Map.Entry<Trouble, Integer> entry : ini.entrySet()) {
+            Trouble trouble = entry.getKey();
+            int count = entry.getValue();
+            float percentage = (float) count / totalDossiers;
+            troublePercentages.put(trouble, percentage);
+        }
+
+        return troublePercentages;
     }
 
 }

@@ -7,10 +7,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Text?>
 
-
 <AnchorPane prefHeight="500.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.tp.SignUpController">
    <children>
-      <Text fill="#48efa6" layoutX="124.0" layoutY="68.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-family: poppins; -fx-font-weight: 700; -fx-font-size: 35;" text="Sign Up" wrappingWidth="137.33673095703125" />
+      <Text fill="#48efa6" layoutX="131.0" layoutY="82.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-family: poppins; -fx-font-weight: 700; -fx-font-size: 35;" text="Sign Up" wrappingWidth="137.33673095703125" />
       <TextField fx:id="nom" layoutX="66.0" layoutY="109.0" prefHeight="26.0" prefWidth="266.0" promptText="Nom" />
       <TextField fx:id="prenom" layoutX="66.0" layoutY="150.0" prefHeight="26.0" prefWidth="266.0" promptText="Prenom" />
       <TextField fx:id="email" layoutX="66.0" layoutY="278.0" prefHeight="26.0" prefWidth="266.0" promptText="email" />

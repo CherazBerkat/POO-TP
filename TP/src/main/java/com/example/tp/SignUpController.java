@@ -36,7 +36,6 @@ public class SignUpController {
         if(username.getText().isEmpty() || passwd.getText().isEmpty() || email.getText().isEmpty()||
                 nom.getText().isEmpty() || prenom.getText().isEmpty() ||
                 tel.getText().isEmpty() || username.getText().isEmpty() || adr.getText().isEmpty()) {
-            System.out.println("here");
             wrongLogIn.setText("Please fill all your data.");
         }else{
         HelloApplication m = new HelloApplication();
@@ -48,7 +47,7 @@ public class SignUpController {
         orthophonist.setUserName(username.getText().toString());
         orthophonist.setAdr(adr.getText().toString());
         orthophonist.affichInfo();
-        m.changeScene("Home.fxml",600,400);
+        m.changeScene("Home.fxml",900,600);
         }
 
     }

@@ -11,10 +11,17 @@ public class BO implements Serializable {
     {
         projetTherapeutique = p;
     }
+    public BO (){}
     public void ajouterEpreuveClinique(EpreuveClinique ec)
     {
         epreuveClinique.add(ec);
     }
+    public  void setDiagnostic(Diagnostic d){
+        diagnostic=d;
+    }
 
+    public  Diagnostic getDiagnostic(){
+        return diagnostic;
+    }
 
 }

@@ -1,9 +1,10 @@
 package com.example.tp.Models;
 
 import java.io.Serializable;
-import java.util.ArrayList;
+import java.util.*;
+
+import com.example.tp.Models.Trouble;
 public class Dossier implements Serializable {
-    private Patient patient;
     private static int num=0;
     private int numeroDossier;
     private ArrayList<RendezVous> rendezVous = new ArrayList<>();
@@ -38,5 +39,24 @@ public class Dossier implements Serializable {
     {
         ficheSuivis.add(f);
     }
+    public ArrayList<BO> getBos() {
+        return BOs;
+    }
 
+    public Set<Trouble> allTroubles(){
+        Set<Trouble> troubles = new HashSet<>();
+        for (BO bo : BOs) {
+            if (bo != null) { // Check if bo is not null
+                Diagnostic diagnostic = bo.getDiagnostic();
+                if (diagnostic != null) { // Check if diagnostic is not null
+                    for (Trouble trouble : diagnostic.getTroubles()) {
+                      if(!troubles.contains(trouble)){
+                          troubles.add(trouble);
+                      }
+                    }
+                }
+            }
+        }
+        return troubles;
+    }
 }

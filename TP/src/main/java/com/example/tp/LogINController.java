@@ -36,7 +36,7 @@ public class LogINController {
         if(username.getText().toString().equals(orthophonist.getUserName()) && password.getText().toString().equals(orthophonist.getPasswd())) {
             wrongLogIn.setText("Success!");
 
-            m.changeScene("Home.fxml",600,400);
+            m.changeScene("Home.fxml",900,600);
         }
 
         else if(username.getText().isEmpty() && password.getText().isEmpty()) {

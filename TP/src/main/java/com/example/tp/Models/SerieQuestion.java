@@ -7,9 +7,13 @@ import java.util.List;
 import java.util.ArrayList;
 public class SerieQuestion extends Test implements Serializable {
     Set<Question> questions = new HashSet<>();
+
+
     public SerieQuestion (String n,String c){
        super(n,c);
     }
+
+
     public float calculerScoreTotale(){
         float sum=0;
         for(Question q: questions){
@@ -17,6 +21,8 @@ public class SerieQuestion extends Test implements Serializable {
         }
         return sum/questions.size();
     }
+
+
     public  void compteRendu(){
         Scanner scanner = new Scanner(System.in);
         for(Question q: questions){
@@ -31,6 +37,8 @@ public class SerieQuestion extends Test implements Serializable {
                 q.setScore(score);
         }
     }
+
+
     public void addQuestion(Question question) {
         if (!questions.contains(question)) {
             questions.add(question);
@@ -38,6 +46,8 @@ public class SerieQuestion extends Test implements Serializable {
             System.out.println("The question already exists in the set.");
         }
     }
+
+
     public void deleteQuestion(Question question) {
         if (!questions.contains(question)) {
             System.out.println("The question does not exist in the set.");
@@ -45,6 +55,8 @@ public class SerieQuestion extends Test implements Serializable {
             questions.remove(question);
         }
     }
+
+
     public void deleteQuestionByIndex(int index) {
         if (index < 0 || index >= questions.size()) {
             System.out.println("Invalid index. No question deleted.");
@@ -55,7 +67,5 @@ public class SerieQuestion extends Test implements Serializable {
         questionList.remove(index);
         questions = new HashSet<>(questionList);
     }
-
-
 }
 

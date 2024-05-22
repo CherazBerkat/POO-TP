@@ -1,8 +1,9 @@
 package com.example.tp.Models;
 
+import java.io.Serializable;
 import java.util.Scanner;
 
-public class Objectif {
+public class Objectif implements Serializable {
     private String nom;
     private TypeObjectif type;
     private int note;

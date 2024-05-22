@@ -13,7 +13,7 @@ public class Consultation extends RendezVous implements Serializable {
 
     public Consultation(LocalDate d, LocalTime h, String n, String p, int a, boolean ad)
     {
-      super(d,h);
+        super(d,h);
         nom = n;
         prenom = p;
         age = a;
@@ -57,7 +57,7 @@ public class Consultation extends RendezVous implements Serializable {
     }
 
     public void setAdult(boolean adult) {
-            this.adult = adult;
+        this.adult = adult;
     }
 
     public void programmerRendezVous()
@@ -71,6 +71,6 @@ public class Consultation extends RendezVous implements Serializable {
         age=sc.nextInt();
         System.out.println("Est-ce-que le patient est : 0-enfant 1-adulte ?");
         if (sc.nextInt()==0){
-        adult=false;}else adult=true;
+            adult=false;}else adult=true;
     }
 }

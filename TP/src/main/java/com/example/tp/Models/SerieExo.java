@@ -11,6 +11,7 @@ public class SerieExo extends Test implements Serializable {
     public void addExo(Exo exo) {
         exos.add(exo);
     }
+
     // Method to delete all the occurences
     public void deleteExo(Exo exoToDelete) {
         ArrayList<Exo> exosToRemove = new ArrayList<>();

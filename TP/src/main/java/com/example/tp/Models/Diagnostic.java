@@ -9,4 +9,8 @@ public class Diagnostic implements Serializable
     {
         troubles.add(t);
     }
+
+    public ArrayList<Trouble> getTroubles(){
+        return troubles;
+    }
 }

@@ -55,7 +55,7 @@ public class HomeController {
     @FXML
     private TextField textfieldHeureC;
     @FXML
-    private TextField TextfieldHeureAG;
+    private TextField textfieldHeureAG;
     @FXML
     private TextField textfieldHeureSS;
     @FXML
@@ -82,7 +82,10 @@ public class HomeController {
     private TextField textfieldNumDossier;
     @FXML
     private ListView listviewPatients;
-
+    @FXML
+    private TextField textfieldNum;
+    @FXML
+    private Button buttonAjouterPatient;
 
 
     @FXML
@@ -429,18 +432,28 @@ public class HomeController {
         seance= new SeanceSuivi(datepickerDateSS.getValue(),heure,Integer.parseInt(textfieldNumDossier.getText().toString()));
         seance.setDeroulement(Deroulement.valueOf(comboboxDeroulement.getValue().toString()));
         orthophonist.addRendezVous(seance);
+        orthophonist.recherchePatient(Integer.parseInt(textfieldNumDossier.getText().toString())).ajouterRendezVous(seance);
         orthophonist.afficherRendezVous();
     }
 
     public void ajouterAtelierGroupe()
     {
-        /*Atelier atelier;
-        String timeText = textfieldHeureSS.getText();
+        Atelier atelier;
+        String timeText = textfieldHeureAG.getText();
         LocalTime heure = parseTime(timeText);
-        seance= new SeanceSuivi(datepickerDateSS.getValue(),heure,Integer.parseInt(textfieldNumDossier.getText().toString()));
-        seance.setDeroulement(Deroulement.valueOf(comboboxDeroulement.getValue().toString()));
-        orthophonist.addRendezVous(seance);
-        orthophonist.afficherRendezVous();*/
+        atelier = new Atelier(datepickerDateAG.getValue(),heure,textfieldThematique.getText().toString());
+        for(int i=0;i<listviewPatients.getItems().size();i++)
+        {
+            atelier.ajouterPatient(Integer.parseInt(listviewPatients.getItems().get(i).toString()));
+            orthophonist.recherchePatient(Integer.parseInt(listviewPatients.getItems().get(i).toString())).ajouterRendezVous(atelier);
+        }
+        orthophonist.addRendezVous(atelier);
+        orthophonist.afficherRendezVous();
+    }
+
+    public void ajouterNum()
+    {
+        listviewPatients.getItems().add(textfieldNum.getText().toString());
     }
 
     public  void signOut ()throws IOException{

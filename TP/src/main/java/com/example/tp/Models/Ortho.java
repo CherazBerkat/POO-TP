@@ -193,6 +193,15 @@ public class Ortho implements  Serializable{
         return troubleCounts;
     }
 
+    public Dossier recherchePatient(int n)
+    {
+        for(Dossier d : dossiers)
+        {
+            if(n==d.getNumeroDossier()) return d;
+        }
+        return null;
+    }
+
     public Map<Trouble, Float> countTroublesPercentages(Map<Trouble, Integer> ini) {
         Map<Trouble, Float> troublePercentages = new HashMap<>();
         int totalDossiers = dossiers.size();

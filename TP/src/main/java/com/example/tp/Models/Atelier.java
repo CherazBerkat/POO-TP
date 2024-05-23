@@ -8,7 +8,7 @@ public class Atelier extends RendezVous implements Serializable {
     private String thematique;
    private ArrayList<Integer>patients= new ArrayList<Integer>();///should be integers array list
 
-    public Atelier(LocalDate d, LocalTime h, BO bo, String t) //Rendez vous n'a pas de constructeur marakich dayratalha.
+    public Atelier(LocalDate d, LocalTime h, String t) //Rendez vous n'a pas de constructeur marakich dayratalha.
     {
         super(d, h);
         thematique = t;
@@ -25,6 +25,10 @@ public class Atelier extends RendezVous implements Serializable {
         for (int patient : patients) {
             //e.affichPatient();
         }
+    }
+
+    public void ajouterPatient(int id) {
+        patients.add(id);
     }
 
     public void programmerRendezVous() {

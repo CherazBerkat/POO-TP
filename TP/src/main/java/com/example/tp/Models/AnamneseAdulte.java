@@ -1,18 +1,15 @@
 package com.example.tp.Models;
-import java.util.HashMap;
+import java.util.ArrayList;
 import java.io.Serializable;
+
+
 public class AnamneseAdulte extends Anamnese implements Serializable{
-    private HashMap<TypeAnamneseAdulte,String> questions = new HashMap<>();
 
-    public void ajouterQuestion(TypeAnamneseAdulte type, String question){
-        questions.put(type,question);
+    /************************************************* METHODS ********************************************************/
+    public void ajouterQuestion(QuestionAnam q) {
+        if (q instanceof QuestionAnamAdult) {
+            questions.add((QuestionAnamAdult) q);
+        }
     }
-
-   /* public boolean equals(Object obj) {
-        if (this == obj) return true;
-        if (obj == null || getClass() != obj.getClass()) return false;
-        AnamneseAdulte other = (AnamneseAdulte) obj;
-        return questions.equals(other.questions);
-    }*/
 
 }

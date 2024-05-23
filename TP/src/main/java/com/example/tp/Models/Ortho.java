@@ -25,9 +25,6 @@ public class Ortho implements  Serializable{
     private ArrayList<RendezVous> rendezVous=new ArrayList<>();
 
 
-
-
-
     public Ortho (String n,String p,String t,String m,String pd){
         nom=n;
         prenom=p;

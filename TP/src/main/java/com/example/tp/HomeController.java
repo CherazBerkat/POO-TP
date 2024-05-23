@@ -24,6 +24,9 @@ import com.example.tp.Models.*;
 import static com.example.tp.HelloApplication.orthophonist;
 
 public class HomeController {
+    public static Anamnese anam;
+    public static SerieExo sExo;
+    public static SerieQuestion sQuest;
     @FXML
     private TextField username;
     @FXML
@@ -156,7 +159,8 @@ public class HomeController {
                             });
 
                             modifierButton.setOnAction(event -> {
-                                System.out.println("in modifier");
+                                sQuest=item;
+
                             });
 
                             // Add hover effect
@@ -231,7 +235,12 @@ public class HomeController {
                             });
 
                             modifierButton.setOnAction(event -> {
-                                System.out.println("in modifier");
+                               sExo=item;
+                                try {
+                                    m.changeScene("modifSerieExo.fxml",900,600);
+                                } catch (IOException e) {
+                                    throw new RuntimeException(e);
+                                }
                             });
 
                             // Add hover effect
@@ -301,6 +310,7 @@ public class HomeController {
                             });
 
                             modifierButton.setOnAction(event -> {
+                                anam=item;
                                 try {
                                     m.changeScene("modifAnam.fxml",900,600);
                                 } catch (IOException e) {

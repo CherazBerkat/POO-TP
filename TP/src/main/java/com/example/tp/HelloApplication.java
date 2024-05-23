@@ -39,7 +39,7 @@ public class HelloApplication extends Application {
             createFile();
         }
         /************************************************test Data***********************************************/
-      /* TypeTrouble troubleType1 = TypeTrouble.DEGLUTITION;
+      /*  TypeTrouble troubleType1 = TypeTrouble.DEGLUTITION;
         TypeTrouble troubleType2 = TypeTrouble.NEURODEVELOPPEMENTAUX;
         TypeTrouble troubleType3 = TypeTrouble.COGNITIFS;
 
@@ -93,14 +93,23 @@ public class HelloApplication extends Application {
         orthophonist.addDossier(d2);
          String nom, capacite;
        for (int i=0;i<=10;i++) {
-            nom="nom"+i;
-            capacite="capacite"+i;
-            orthophonist.addSerieQuestions(new SerieQuestion(nom,capacite));
-            orthophonist.addSerieExos(new SerieExo(nom,capacite));
-            orthophonist.addAnamnese(new AnamneseAdulte());
-            orthophonist.addAnamnese(new AnamneseEnfant());
-       }*/
-
+           nom = "nom" + i;
+           capacite = "capacite" + i;
+           orthophonist.addSerieQuestions(new SerieQuestion(nom, capacite));
+           orthophonist.addSerieExos(new SerieExo(nom, capacite));
+           orthophonist.addAnamnese(new AnamneseAdulte());
+           orthophonist.addAnamnese(new AnamneseEnfant());
+       }
+       Anamnese anam=orthophonist.getAnamneses().get(0);
+        String txt;
+        for (int i=0;i<=10;i++){
+            txt="text"+i;
+            anam.ajouterQuestion(new QuestionAnamAdult(txt,TypeAnamneseAdulte.HISTOIREDEMALADIE));
+        }
+        SerieExo s=orthophonist.getSerieExos().get(0);
+        for (int i=0;i<=5;i++){
+            s.addExo(new Exo("consigne0","materiel0"));
+        }*/
 
         /*******************************************************************************************************/
         stage.setTitle("CabinetPro ManageX");

@@ -5,11 +5,17 @@ import java.util.Scanner;
 public class SerieExo extends Test implements Serializable {
 
     private ArrayList<Exo> exos = new ArrayList<>();
+
+
     public SerieExo(String n,String c){
         super(n,c);
     }
+
     public void addExo(Exo exo) {
         exos.add(exo);
+    }
+    public ArrayList<Exo> getExos(){
+        return exos;
     }
 
     // Method to delete all the occurences
@@ -22,6 +28,7 @@ public class SerieExo extends Test implements Serializable {
         }
         exos.removeAll(exosToRemove);
     }
+
     // Method to delete an Exo from the list based on index
     public void deleteExoIndx(int index) {
         if (index >= 0 && index < exos.size()) {
@@ -30,6 +37,7 @@ public class SerieExo extends Test implements Serializable {
             System.out.println("Invalid index. No Exo deleted.");
         }
     }
+
     public void compteRendu() {
         Scanner scanner = new Scanner(System.in);
         for (Exo exo : exos) {

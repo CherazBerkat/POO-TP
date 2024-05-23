@@ -174,6 +174,14 @@ public class Ortho implements  Serializable{
         System.out.println("username: "+userName);
     }
 
+    public void afficherRendezVous()
+    {
+        for (RendezVous r : rendezVous)
+        {
+            r.affichRendezVous();
+        }
+    }
+
     public Map<Trouble, Integer> countTroubles() {
         Map<Trouble, Integer> troubleCounts = new HashMap<>();
 

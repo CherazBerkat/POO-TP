@@ -75,12 +75,12 @@
                                                     <TextField fx:id="textfieldPrenom" layoutX="500.0" layoutY="164.0" prefHeight="26.0" prefWidth="250.0" />
                                                     <TextField fx:id="textfieldAge" layoutX="164.0" layoutY="231.0" prefHeight="25.0" prefWidth="250.0" />
                                                     <ComboBox fx:id="comboboxAge" layoutX="490.0" layoutY="230.0" prefHeight="25.0" prefWidth="270.0" promptText="Choose" />
-                                                    <TextField layoutX="164.0" layoutY="292.0" prefHeight="25.0" prefWidth="250.0" />
-                                                    <Button fx:id="buttonSauvgarderC" layoutX="748.0" layoutY="340.0" mnemonicParsing="false" onAction="#updateInfos" prefHeight="26.0" prefWidth="93.0" style="-fx-background-color: #48efa6; -fx-font-family: poppins; -fx-font-weight: 700;" text="Sauvegarder" textFill="WHITE" />
+                                                    <TextField fx:id="textfieldDuree" layoutX="164.0" layoutY="292.0" prefHeight="25.0" prefWidth="250.0" />
+                                                    <Button fx:id="buttonSauvgarderC" layoutX="748.0" layoutY="340.0" mnemonicParsing="false" onAction="#ajouterConsultation" prefHeight="26.0" prefWidth="93.0" style="-fx-background-color: #48efa6; -fx-font-family: poppins; -fx-font-weight: 700;" text="Sauvegarder" textFill="WHITE" />
                                                 </children></AnchorPane>
                                         </content>
                                     </TitledPane>
-                                    <TitledPane animated="false" prefHeight="370.0" prefWidth="600.0" style="-fx-background-color: white;" text="Séance De Suivi">
+                                    <TitledPane animated="false" prefHeight="0.0" prefWidth="900.0" style="-fx-background-color: white;" text="Séance De Suivi">
                                         <content>
                                             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                                 <children>
@@ -92,11 +92,11 @@
                                                     <ComboBox fx:id="comboboxDeroulement" layoutX="216.0" layoutY="154.0" prefHeight="25.0" prefWidth="550.0" />
                                                     <Text fx:id="textNumDossier" layoutX="35.0" layoutY="241.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Numéro Du Dossier :" />
                                                     <TextField fx:id="textfieldNumDossier" layoutX="216.0" layoutY="224.0" prefHeight="25.0" prefWidth="550.0" />
-                                                    <Button fx:id="buttonSauvgarderSS" layoutX="700.0" layoutY="335.0" mnemonicParsing="false" onAction="#updateInfos" prefHeight="26.0" prefWidth="93.0" style="-fx-background-color: #48efa6; -fx-font-family: poppins; -fx-font-weight: 700;" text="Sauvegarder" textFill="WHITE" />
+                                                    <Button fx:id="buttonSauvgarderSS" layoutX="700.0" layoutY="335.0" mnemonicParsing="false" onAction="#ajouterSeanceSuivi" prefHeight="26.0" prefWidth="93.0" style="-fx-background-color: #48efa6; -fx-font-family: poppins; -fx-font-weight: 700;" text="Sauvegarder" textFill="WHITE" />
                                                 </children></AnchorPane>
                                         </content>
                                     </TitledPane>
-                                    <TitledPane animated="false" prefHeight="560.0" prefWidth="600.0" style="-fx-background-color: white;" text="Atelier De Groupe">
+                                    <TitledPane animated="false" prefHeight="847.0" prefWidth="900.0" style="-fx-background-color: white;" text="Atelier De Groupe">
                                         <content>
                                             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                                 <children>
@@ -123,17 +123,17 @@
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <Text fx:id="textPatientsFiles" fill="#48efa6" layoutX="35.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-family: poppins; -fx-font-size: 30; -fx-font-weight: 700;" text="Patients Files" />
-                        <TableView fx:id="textieldDateAG" layoutY="95.0" prefHeight="276.0" prefWidth="600.0">
+                        <Text fx:id="textPatientsFiles" fill="#48efa6" layoutX="50.0" layoutY="70.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-family: poppins; -fx-font-size: 50; -fx-font-weight: 700;" text="Patients Files" />
+                        <TableView fx:id="textieldDateAG" layoutY="126.0" prefHeight="444.0" prefWidth="900.0">
                           <columns>
-                            <TableColumn fx:id="tablecolumnNumero" prefWidth="150.0" text="Numéro" />
-                            <TableColumn fx:id="tablecolumnNom" prefWidth="150.0" text="Nom" />
-                              <TableColumn fx:id="tablecolumnPrenom" prefWidth="150.0" text="Prenom" />
-                              <TableColumn fx:id="tablecolumnAge" prefWidth="150.0" text="Age" />
+                            <TableColumn fx:id="tablecolumnNumero" prefWidth="225.0" text="Numéro" />
+                            <TableColumn fx:id="tablecolumnNom" prefWidth="225.0" text="Nom" />
+                              <TableColumn fx:id="tablecolumnPrenom" prefWidth="225.0" text="Prenom" />
+                              <TableColumn fx:id="tablecolumnAge" prefWidth="225.0" text="Age" />
                           </columns>
                         </TableView>
-                        <Button fx:id="buttonSupprimer" layoutX="491.0" layoutY="60.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="89.0" style="-fx-background-color: #48efa6; -fx-font-family: poppins; -fx-font-weight: 700;" text="Supprimer" textFill="WHITE" />
-                        <Button fx:id="buttonAjouter" layoutX="380.0" layoutY="60.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="89.0" style="-fx-background-color: #48efa6; -fx-font-family: poppins; -fx-font-weight: 700;" text="Ajouter" textFill="WHITE" />
+                        <Button fx:id="buttonSupprimer" layoutX="758.0" layoutY="85.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="93.0" style="-fx-background-color: #48efa6; -fx-font-family: poppins; -fx-font-weight: 700;" text="Supprimer" textFill="WHITE" />
+                        <Button fx:id="buttonAjouter" layoutX="620.0" layoutY="85.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="93.0" style="-fx-background-color: #48efa6; -fx-font-family: poppins; -fx-font-weight: 700;" text="Ajouter" textFill="WHITE" />
                      </children></AnchorPane>
               </content>
             </Tab>

@@ -14,4 +14,9 @@ public abstract class RendezVous implements Serializable
         heure=h;
     }
     public abstract void programmerRendezVous();
+
+    public void affichRendezVous()
+    {
+        System.out.println("la date : "+date+" et l'heure : "+heure);
+    }
 }

@@ -1,6 +1,9 @@
 package com.example.tp;
 
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.util.Map;
+import java.time.*;
 
 import javafx.beans.binding.Bindings;
 import javafx.collections.FXCollections;
@@ -55,11 +58,37 @@ public class HomeController {
     @FXML
     private DatePicker datepickerDateSS;
     @FXML
-    private TextField textfieldDateC;
+    private TextField textfieldHeureC;
     @FXML
-    private TextField textfieldDateAG;
+    private TextField TextfieldHeureAG;
     @FXML
-    private TextField textfieldDateSS;
+    private TextField textfieldHeureSS;
+    @FXML
+    private TextField textfieldNom;
+    @FXML
+    private TextField textfieldPrenom;
+    @FXML
+    private TextField textfieldAge;
+    @FXML
+    private TextField textfieldDuree;
+    @FXML
+    private ComboBox comboboxAge;
+    @FXML
+    private Button buttonSauvegarderC;
+    @FXML
+    private Button buttonSauvegarderSS;
+    @FXML
+    private Button buttonSauvegarderAG;
+    @FXML
+    private ComboBox comboboxDeroulement;
+    @FXML
+    private TextField textfieldThematique;
+    @FXML
+    private TextField textfieldNumDossier;
+    @FXML
+    private ListView listviewPatients;
+
+
 
     @FXML
     private BarChart barChart;
@@ -166,6 +195,12 @@ public class HomeController {
                 }
             });
         anamList.refresh();
+
+        //add options to ComboBoxes
+
+        comboboxAge.getItems().addAll("Adulte", "Enfant");
+
+        comboboxDeroulement.getItems().addAll("ENLIGNE", "ENPRESENTIEL");
     }
 
     public void updateInfos(ActionEvent event)throws IOException {
@@ -190,6 +225,56 @@ public class HomeController {
         orthophonist.setAdr(adr.getText().toString());
         label1.setText(orthophonist.getUserName());
         orthophonist.affichInfo();
+    }
+    private LocalTime parseTime(String timeText) {
+        try {
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm");
+            return LocalTime.parse(timeText, formatter);
+        } catch (DateTimeParseException e) {
+            // Afficher une alerte en cas de format incorrect
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText("Invalid Time Format");
+            alert.setContentText("Please enter the time in the format HH:mm");
+            alert.showAndWait();
+            return null;
+        }
+    }
+    private boolean checkIfAdult(String selectedOption) {
+        return "Adulte".equals(selectedOption);
+    }
+    public void ajouterConsultation()
+    {
+        Consultation consultation;
+        String timeText = textfieldHeureC.getText();
+        LocalTime heure = parseTime(timeText);
+        String option = comboboxAge.getValue().toString();
+        Boolean adult = checkIfAdult(option);
+        consultation= new Consultation(datepickerDateC.getValue(),heure,textfieldNom.getText().toString(),textfieldPrenom.getText().toString(),Integer.parseInt(textfieldAge.getText()),adult);
+        orthophonist.addRendezVous(consultation);
+        orthophonist.afficherRendezVous();
+    }
+
+    public void ajouterSeanceSuivi()
+    {
+        SeanceSuivi seance;
+        String timeText = textfieldHeureSS.getText();
+        LocalTime heure = parseTime(timeText);
+        seance= new SeanceSuivi(datepickerDateSS.getValue(),heure,Integer.parseInt(textfieldNumDossier.getText().toString()));
+        seance.setDeroulement(Deroulement.valueOf(comboboxDeroulement.getValue().toString()));
+        orthophonist.addRendezVous(seance);
+        orthophonist.afficherRendezVous();
+    }
+
+    public void ajouterAtelierGroupe()
+    {
+        /*Atelier atelier;
+        String timeText = textfieldHeureSS.getText();
+        LocalTime heure = parseTime(timeText);
+        seance= new SeanceSuivi(datepickerDateSS.getValue(),heure,Integer.parseInt(textfieldNumDossier.getText().toString()));
+        seance.setDeroulement(Deroulement.valueOf(comboboxDeroulement.getValue().toString()));
+        orthophonist.addRendezVous(seance);
+        orthophonist.afficherRendezVous();*/
     }
 
     public  void signOut ()throws IOException{

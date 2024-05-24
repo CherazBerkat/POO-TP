@@ -31,6 +31,8 @@ public class HomeController {
     public static Anamnese anam;
     public static SerieExo sExo;
     public static SerieQuestion sQuest;
+
+    public static boolean isSQuest;
     @FXML
     private TextField username;
     @FXML
@@ -461,5 +463,41 @@ public class HomeController {
         ObservableList<Anamnese> observableAnamneses = FXCollections.observableArrayList(orthophonist.getAnamneses());
         anamList.setItems(observableAnamneses);
     }
+
+
+    @FXML
+    public void AddSerie(ActionEvent event) {
+        try {
+            // Load the FXML file
+            Parent root = FXMLLoader.load(getClass().getResource("AddSerie.fxml"));
+
+            // Create a new stage
+            Stage popupStage = new Stage();
+
+            // Set the scene with the loaded FXML content
+            Scene scene = new Scene(root);
+            popupStage.setScene(scene);
+
+            // Set properties of the stage (e.g., title)
+            popupStage.setTitle("Form");
+
+            // Check which button triggered the event
+            if (((Button) event.getSource()).getId().equals("addSE")) {
+                // Action for btnSerieExo
+                popupStage.setOnHidden(e -> serieE.setItems(FXCollections.observableArrayList(orthophonist.getSerieExos())));
+                isSQuest=false;
+            } else if (((Button) event.getSource()).getId().equals("addSQ")) {
+                // Action for btnSerieQ
+                popupStage.setOnHidden(e -> serieQ.setItems(FXCollections.observableArrayList(orthophonist.getSerieQuestions())));
+                isSQuest=true;
+            }
+
+            // Show the stage
+            popupStage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 
 }

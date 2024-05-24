@@ -132,7 +132,7 @@
                                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                        <children>
                                           <ListView fx:id="serieE" prefHeight="438.0" prefWidth="900.0" />
-                                          <Button layoutX="741.0" layoutY="448.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="142.0" style="-fx-background-color: #48efa6; -fx-font-weight: 700;" text="Ajouter Serie" textFill="WHITE" />
+                                          <Button fx:id="addSE" layoutX="741.0" layoutY="448.0" mnemonicParsing="false" onAction="#AddSerie" prefHeight="31.0" prefWidth="142.0" style="-fx-background-color: #48efa6; -fx-font-weight: 700;" text="Ajouter Serie" textFill="WHITE" />
                                        </children>
                                     </AnchorPane>
                                 </content>
@@ -142,7 +142,7 @@
                                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="347.0" prefWidth="598.0">
                                        <children>
                                           <ListView fx:id="serieQ" layoutX="-1.0" prefHeight="438.0" prefWidth="900.0" />
-                                          <Button layoutX="735.0" layoutY="448.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="142.0" style="-fx-background-color: #48efa6; -fx-font-weight: 700;" text="Ajouter Serie" textFill="WHITE" />
+                                          <Button fx:id="addSQ" layoutX="735.0" layoutY="448.0" mnemonicParsing="false" onAction="#AddSerie" prefHeight="31.0" prefWidth="142.0" style="-fx-background-color: #48efa6; -fx-font-weight: 700;" text="Ajouter Serie" textFill="WHITE" />
                                        </children></AnchorPane>
                               </content>
                             </TitledPane>

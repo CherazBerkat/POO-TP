@@ -1,6 +1,12 @@
 package com.example.tp;
 
 import java.io.IOException;
+
+import javafx.fxml.FXMLLoader;
+import javafx.geometry.Insets;
+import javafx.scene.Parent;
+import javafx.stage.Stage;
+import javafx.scene.Scene;
 import javafx.geometry.Pos;
 import javafx.scene.control.*;
 import javafx.scene.layout.Priority;
@@ -30,7 +36,7 @@ public class ModifAnamController {
 
         Button retourButton = new Button("retour");
         retourButton.setStyle("-fx-background-color:#48efa6; -fx-text-fill:white ; -fx-font-weight: 700;-fx-font-size:18;");
-        retourButton.prefWidth(450);
+        retourButton.prefWidth(300);
         retourButton.prefHeight(10);
         // Set button actions
         retourButton.setOnAction(event -> {
@@ -42,12 +48,53 @@ public class ModifAnamController {
             }
         });
 
+        Button addButton = new Button("Add Question");
+        addButton.setStyle("-fx-background-color:#48efa6; -fx-text-fill:white ; -fx-font-weight: 700;-fx-font-size:18;");
+        addButton.prefWidth(500);
+        addButton.prefHeight(10);
+        // Set button actions
+        addButton.setOnAction(event -> {
+            try {
+                // Load the FXML file
+                Parent root = null;
+                if (anam.getClass().getSimpleName().equals("AnamneseAdulte"))
+                    root = FXMLLoader.load(getClass().getResource("AddQuestionAnamAdult.fxml"));
+                else if (anam.getClass().getSimpleName().equals("AnamneseEnfant"))
+                    root = FXMLLoader.load(getClass().getResource("AddQuestionAnamEnfant.fxml"));
+
+                // Create a new stage
+                Stage popupStage = new Stage();
+
+                // Set the scene with the loaded FXML content
+                Scene scene = new Scene(root);
+                popupStage.setScene(scene);
+
+                // Set properties of the stage (e.g., title)
+                popupStage.setTitle("Form");
+
+                // Add event handler to refresh listQ when the stage is closed
+                popupStage.setOnHidden(e -> listQ.setItems(FXCollections.observableArrayList(anam.getQuestions())));
+
+                // Show the stage
+                popupStage.show();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
+
+
+
         // Add a region to create space between name and buttons
         Region spacer = new Region();
         HBox.setHgrow(spacer, Priority.ALWAYS);
 
-        upHbox.getChildren().addAll(titre,spacer,retourButton);
- //************************************************* La list des questions ***********************************************//
+        // Create a nested HBox for buttons
+        HBox buttonsBox = new HBox(20);
+        buttonsBox.getChildren().addAll(addButton,retourButton);
+        buttonsBox.setAlignment(Pos.CENTER_LEFT);
+
+        upHbox.getChildren().addAll(titre,spacer,buttonsBox);
+   //************************************************ La list des questions ****************************************** //
 
         // Disable selection effect in the ListView
         listQ.setFocusTraversable(false);
@@ -71,9 +118,9 @@ public class ModifAnamController {
                             Label name = new Label("Question" + (getIndex() + 1));
                             Label type;
                             if (item instanceof QuestionAnamEnfant)
-                                type = new Label(item.getTypeAdult().stringfy(item.getTypeAdult()));
+                                type = new Label(((QuestionAnamEnfant)item).getTypeEnfant().stringfy(((QuestionAnamEnfant) item).getTypeEnfant()));
                             else
-                                type = new Label(item.getTypeEnfant().stringfy(item.getTypeEnfant()));
+                                type = new Label(((QuestionAnamAdult)item).getTypeAdult().stringfy(((QuestionAnamAdult) item).getTypeAdult()));
 
                             TextField text =new TextField(item.getText());
 
@@ -122,7 +169,6 @@ public class ModifAnamController {
             }
         });
         listQ.refresh();
-
     }
 
     // Custom NoSelectionModel class to disable selection

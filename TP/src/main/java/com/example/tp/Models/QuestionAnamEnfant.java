@@ -19,7 +19,6 @@ public class QuestionAnamEnfant extends QuestionAnam implements Serializable {
     }
     /******************************************************** GETTER **************************************************/
 
-    @Override
     public TypeAnamneseEnfant getTypeEnfant(){
         return type;
     }

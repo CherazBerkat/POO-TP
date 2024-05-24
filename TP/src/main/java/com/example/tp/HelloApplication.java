@@ -110,7 +110,11 @@ public class HelloApplication extends Application {
         for (int i=0;i<=5;i++){
             s.addExo(new Exo("consigne0","materiel0"));
         }
-
+        Anamnese anam2=orthophonist.getAnamneses().get(1);
+        for (int i=0;i<=10;i++){
+            txt="text"+i;
+            anam2.ajouterQuestion(new QuestionAnamEnfant(txt,TypeAnamneseEnfant.DEVELOPPEMENTLANGAGIER));
+        }
         SerieQuestion sq=orthophonist.getSerieQuestions().get(0);
         QCM qcm=new QCM("text");
         qcm.addChoix("choix1",false);

@@ -7,11 +7,15 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.chart.*;
 import javafx.scene.control.*;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
+import javafx.stage.Stage;
 import javafx.util.Duration;
 import java.io.IOException;
 import javafx.scene.chart.XYChart;
@@ -447,4 +451,15 @@ public class HomeController {
         public void selectNext() {
         }
     }
+    public void addAnamAdult(){
+        orthophonist.addAnamnese(new AnamneseAdulte());
+        ObservableList<Anamnese> observableAnamneses = FXCollections.observableArrayList(orthophonist.getAnamneses());
+        anamList.setItems(observableAnamneses);
+    }
+    public void addAnamEnfant(){
+        orthophonist.addAnamnese(new AnamneseEnfant());
+        ObservableList<Anamnese> observableAnamneses = FXCollections.observableArrayList(orthophonist.getAnamneses());
+        anamList.setItems(observableAnamneses);
+    }
+
 }

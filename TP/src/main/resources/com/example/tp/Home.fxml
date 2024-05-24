@@ -131,16 +131,18 @@
                                 <content>
                                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                        <children>
-                                          <ListView fx:id="serieE" prefHeight="494.0" prefWidth="900.0" />
+                                          <ListView fx:id="serieE" prefHeight="438.0" prefWidth="900.0" />
+                                          <Button layoutX="741.0" layoutY="448.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="142.0" style="-fx-background-color: #48efa6; -fx-font-weight: 700;" text="Ajouter Serie" textFill="WHITE" />
                                        </children>
                                     </AnchorPane>
                                 </content>
                               </TitledPane>
-                            <TitledPane animated="false" prefHeight="358.0" prefWidth="643.0" text="Serie de Questions">
+                            <TitledPane animated="false" prefHeight="358.0" prefWidth="900.0" text="Serie de Questions">
                               <content>
                                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="347.0" prefWidth="598.0">
                                        <children>
-                                          <ListView fx:id="serieQ" prefHeight="519.0" prefWidth="900.0" />
+                                          <ListView fx:id="serieQ" layoutX="-1.0" prefHeight="438.0" prefWidth="900.0" />
+                                          <Button layoutX="735.0" layoutY="448.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="142.0" style="-fx-background-color: #48efa6; -fx-font-weight: 700;" text="Ajouter Serie" textFill="WHITE" />
                                        </children></AnchorPane>
                               </content>
                             </TitledPane>
@@ -148,7 +150,9 @@
                               <content>
                                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                        <children>
-                                          <ListView fx:id="anamList" layoutX="1.0" prefHeight="519.0" prefWidth="900.0" />
+                                          <ListView fx:id="anamList" layoutX="1.0" prefHeight="438.0" prefWidth="900.0" />
+                                          <Button layoutX="718.0" layoutY="450.0" mnemonicParsing="false" onAction="#addAnamAdult" prefHeight="31.0" prefWidth="168.0" style="-fx-background-color: #48efa6; -fx-font-weight: 700;" text="Ajouter Anamnese Adult" textFill="WHITE" />
+                                          <Button layoutX="531.0" layoutY="450.0" mnemonicParsing="false" onAction="#addAnamEnfant" prefHeight="31.0" prefWidth="168.0" style="-fx-background-color: #48efa6; -fx-font-weight: 700;" text="Ajouter Anamnese Enfant" textFill="WHITE" />
                                        </children>
                                 </AnchorPane>
                               </content>

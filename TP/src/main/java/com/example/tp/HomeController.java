@@ -160,7 +160,11 @@ public class HomeController {
 
                             modifierButton.setOnAction(event -> {
                                 sQuest=item;
-
+                                try {
+                                    m.changeScene("modifSerieQuestion.fxml",900,600);
+                                } catch (IOException e) {
+                                    throw new RuntimeException(e);
+                                }
                             });
 
                             // Add hover effect

@@ -39,7 +39,7 @@ public class HelloApplication extends Application {
             createFile();
         }
         /************************************************test Data***********************************************/
-      /*  TypeTrouble troubleType1 = TypeTrouble.DEGLUTITION;
+     /*   TypeTrouble troubleType1 = TypeTrouble.DEGLUTITION;
         TypeTrouble troubleType2 = TypeTrouble.NEURODEVELOPPEMENTAUX;
         TypeTrouble troubleType3 = TypeTrouble.COGNITIFS;
 
@@ -109,7 +109,22 @@ public class HelloApplication extends Application {
         SerieExo s=orthophonist.getSerieExos().get(0);
         for (int i=0;i<=5;i++){
             s.addExo(new Exo("consigne0","materiel0"));
-        }*/
+        }
+
+        SerieQuestion sq=orthophonist.getSerieQuestions().get(0);
+        QCM qcm=new QCM("text");
+        qcm.addChoix("choix1",false);
+        qcm.addChoix("choix2",false);
+        qcm.addChoix("choix3",true);
+        qcm.addChoix("choix4",false);
+        sq.addQuestion(new QRL("text"));
+        sq.addQuestion(qcm);
+        QCU qcu =new QCU("text");
+        qcu.addPropo("choix1",false);
+        qcu.addPropo("choix2",false);
+        qcu.addPropo("choix3",true);
+        qcu.addPropo("choix4",false);
+        sq.addQuestion(qcu);*/
 
         /*******************************************************************************************************/
         stage.setTitle("CabinetPro ManageX");

@@ -13,6 +13,9 @@ public class SerieQuestion extends Test implements Serializable {
        super(n,c);
     }
 
+    public Set<Question> getQuestions(){
+        return questions;
+    }
 
     public float calculerScoreTotale(){
         float sum=0;
@@ -22,6 +25,10 @@ public class SerieQuestion extends Test implements Serializable {
         return sum/questions.size();
     }
 
+    public Question getQuestionByIndex(int ind){
+        List<Question> questionList = new ArrayList<>(questions);
+        return questionList.get(ind);
+    }
 
     public  void compteRendu(){
         Scanner scanner = new Scanner(System.in);
@@ -62,7 +69,6 @@ public class SerieQuestion extends Test implements Serializable {
             System.out.println("Invalid index. No question deleted.");
             return;
         }
-
         List<Question> questionList = new ArrayList<>(questions);
         questionList.remove(index);
         questions = new HashSet<>(questionList);

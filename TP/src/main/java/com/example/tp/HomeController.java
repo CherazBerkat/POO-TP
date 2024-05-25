@@ -1,6 +1,10 @@
 package com.example.tp;
 
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
+import java.util.ArrayList;
 import java.util.Map;
+import java.time.*;
 
 import javafx.beans.binding.Bindings;
 import javafx.collections.FXCollections;
@@ -32,6 +36,8 @@ public class HomeController {
     public static SerieExo sExo;
     public static SerieQuestion sQuest;
 
+    public static Dossier doss;
+
     public static boolean isSQuest;
     @FXML
     private TextField username;
@@ -59,12 +65,33 @@ public class HomeController {
     @FXML
     private DatePicker datepickerDateSS;
     @FXML
-    private TextField textfieldDateC;
+    private TextField textfieldHeureC;
     @FXML
-    private TextField textfieldDateAG;
+    private TextField textfieldHeureAG;
     @FXML
-    private TextField textfieldDateSS;
-
+    private TextField textfieldHeureSS;
+    @FXML
+    private TextField textfieldNom;
+    @FXML
+    private TextField textfieldPrenom;
+    @FXML
+    private TextField textfieldAge;
+    @FXML
+    private TextField textfieldDuree;
+    @FXML
+    private ComboBox comboboxAge;
+    @FXML
+    private ComboBox comboboxDeroulement;
+    @FXML
+    private TextField textfieldThematique;
+    @FXML
+    private TextField textfieldNumDossier;
+    @FXML
+    private ListView listviewPatients;
+    @FXML
+    private TextField textfieldNum;
+    @FXML
+    private ListView<Dossier> listviewDossiers;
     @FXML
     private BarChart barChart;
     @FXML
@@ -245,7 +272,7 @@ public class HomeController {
                             });
 
                             modifierButton.setOnAction(event -> {
-                               sExo=item;
+                                sExo=item;
                                 try {
                                     m.changeScene("modifSerieExo.fxml",900,600);
                                 } catch (IOException e) {
@@ -353,10 +380,92 @@ public class HomeController {
         });
         anamList.refresh();
 
+        //Dossier list
+
+// Disable selection effect in the ListView
+        listviewDossiers.setFocusTraversable(false);
+        listviewDossiers.setSelectionModel(new HomeController.NoSelectionModel<>());
+
+        ObservableList<Dossier> observableDossier = FXCollections.observableArrayList(orthophonist.getDossiers());
+        listviewDossiers.setItems(observableDossier);
+        listviewDossiers.setCellFactory(new Callback<>() {
+            @Override
+            public ListCell<Dossier> call(ListView<Dossier> listView) {
+                return new ListCell<Dossier>() {
+                    @Override
+                    protected void updateItem(Dossier item, boolean empty) {
+                        super.updateItem(item, empty);
+                        if (item != null && !empty) {
+                            HBox hBox = new HBox(20);
+                            hBox.setPrefHeight(50);
+                            hBox.setAlignment(Pos.CENTER_LEFT);
+
+                            // Create Labels instead of Text nodes
+                            Label name = new Label("Dossier" + (getIndex() + 1));
+                            Label type = new Label(item.getClass().getSimpleName());
+
+                            // Set fixed widths for Labels
+                            name.setPrefWidth(100);
+                            type.setPrefWidth(100);
+
+                            Button supprimerButton = new Button("Supprimer");
+                            Button modifierButton = new Button("Modifier");
+
+                            // Styling buttons
+                            supprimerButton.setStyle("-fx-background-color:white; -fx-text-fill: #48efa6; -fx-font-weight: 700;");
+                            modifierButton.setStyle("-fx-background-color: white; -fx-text-fill: #48efa6; -fx-font-weight: 700;");
+
+                            // Set button actions
+                            supprimerButton.setOnAction(event -> {
+                                getListView().getItems().remove(item);
+                                orthophonist.deleteDossierIndx(getIndex());
+                            });
+
+                            modifierButton.setOnAction(event -> {
+                                doss= item;
+                                try {
+                                    m.changeScene("Dossier.fxml", 900, 600);
+                                } catch (IOException e) {
+                                    throw new RuntimeException(e);
+                                }
+                            });
+
+
+                            // Add hover effect
+                            setOnMouseEntered(event -> setStyle("-fx-background-color: #e6e7e5;"));
+                            setOnMouseExited(event -> setStyle("-fx-background-color: white;"));
+
+                            // Create a nested HBox for buttons
+                            HBox buttonsBox = new HBox(10);
+                            buttonsBox.getChildren().addAll(supprimerButton, modifierButton);
+                            buttonsBox.setAlignment(Pos.CENTER_LEFT);
+
+                            // Add a region to create space between name and buttons
+                            Region spacer = new Region();
+                            HBox.setHgrow(spacer, Priority.ALWAYS);
+
+                            // Add elements to outer HBox
+                            hBox.getChildren().addAll(name, type, spacer, buttonsBox);
+                            setGraphic(hBox);
+                        } else {
+                            setGraphic(null);
+                        }
+                    }
+                };
+            }
+        });
+        listviewDossiers.refresh();
+
+
+        //add options to ComboBoxes
+
+        comboboxAge.getItems().addAll("Adulte", "Enfant");
+
+        comboboxDeroulement.getItems().addAll("ENLIGNE", "ENPRESENTIEL");
     }
 
     public void updateInfos(ActionEvent event)throws IOException {
-      majInfos();
+        majInfos();
     }
 
     public void majInfos(){
@@ -377,6 +486,86 @@ public class HomeController {
         orthophonist.setAdr(adr.getText().toString());
         label1.setText(orthophonist.getUserName());
         orthophonist.affichInfo();
+    }
+    private LocalTime parseTime(String timeText) {
+        try {
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm");
+            return LocalTime.parse(timeText, formatter);
+        } catch (DateTimeParseException e) {
+            // Afficher une alerte en cas de format incorrect
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText("Invalid Time Format");
+            alert.setContentText("Please enter the time in the format HH:mm");
+            alert.showAndWait();
+            return null;
+        }
+    }
+    private boolean checkIfAdult(String selectedOption) {
+        return "Adulte".equals(selectedOption);
+    }
+    public void ajouterConsultation()
+    {
+        Consultation consultation;
+        String timeText = textfieldHeureC.getText();
+        LocalTime heure = parseTime(timeText);
+        String option = comboboxAge.getValue().toString();
+        Boolean adult = checkIfAdult(option);
+        consultation= new Consultation(datepickerDateC.getValue(),heure,textfieldNom.getText().toString(),textfieldPrenom.getText().toString(),Integer.parseInt(textfieldAge.getText()),adult);
+        orthophonist.addRendezVous(consultation);
+    }
+
+    public void ajouterSeanceSuivi()
+    {
+        SeanceSuivi seance;
+        String timeText = textfieldHeureSS.getText();
+        LocalTime heure = parseTime(timeText);
+        seance= new SeanceSuivi(datepickerDateSS.getValue(),heure,Integer.parseInt(textfieldNumDossier.getText().toString()));
+        seance.setDeroulement(Deroulement.valueOf(comboboxDeroulement.getValue().toString()));
+        orthophonist.addRendezVous(seance);
+        orthophonist.recherchePatient(Integer.parseInt(textfieldNumDossier.getText().toString())).ajouterRendezVous(seance);
+    }
+
+    public void ajouterAtelierGroupe()
+    {
+        Atelier atelier;
+        String timeText = textfieldHeureAG.getText();
+        LocalTime heure = parseTime(timeText);
+        atelier = new Atelier(datepickerDateAG.getValue(),heure,textfieldThematique.getText().toString());
+        for(int i=0;i<listviewPatients.getItems().size();i++)
+        {
+            atelier.ajouterPatient(Integer.parseInt(listviewPatients.getItems().get(i).toString()));
+            orthophonist.recherchePatient(Integer.parseInt(listviewPatients.getItems().get(i).toString())).ajouterRendezVous(atelier);
+        }
+        orthophonist.addRendezVous(atelier);
+    }
+
+    public void ajouterNum()
+    {
+        listviewPatients.getItems().add(textfieldNum.getText().toString());
+    }
+
+    public void pageAjoutPatient() throws IOException {
+        try {
+            // Load the FXML file
+            Parent root = FXMLLoader.load(getClass().getResource("ajouterDossier.fxml"));
+
+            // Create a new stage
+            Stage popupStage = new Stage();
+
+            // Set the scene with the loaded FXML content
+            Scene scene = new Scene(root);
+            popupStage.setScene(scene);
+
+            // Set properties of the stage (e.g., title)
+            popupStage.setTitle("Form");
+
+            popupStage.setOnHidden(e -> listviewDossiers.setItems(FXCollections.observableArrayList(orthophonist.getDossiers())));
+            // Show the stage
+            popupStage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public  void signOut ()throws IOException{

@@ -8,10 +8,13 @@ public class EpreuveClinique implements Serializable {
     private ArrayList<SerieQuestion> serieQuestions= new ArrayList<>();
     private  ArrayList<SerieExo> serieExercices=new ArrayList<>() ;
 
- /*   public EpreuveClinique(String o, SerieQuestions q, SerieExercices e) je pense pas na7tajo hado fe constructeur
+    public void ajouterSerieQuestions(SerieQuestion s)
     {
-        observations = o;
-        serieExercices = e;
-        serieQuestions = q;
-    }*/
+        serieQuestions.add(s);
+    }
+
+    public void ajouterSerieExercices(SerieExo s)
+    {
+        serieExercices.add(s);
+    }
 }

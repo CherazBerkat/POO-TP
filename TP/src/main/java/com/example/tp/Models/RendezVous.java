@@ -13,5 +13,27 @@ public abstract class RendezVous implements Serializable
         date=d;
         heure=h;
     }
+
+    public LocalDate getDate() {
+        return date;
+    }
+
+    public LocalTime getHeure() {
+        return heure;
+    }
+
+    public void setDate(LocalDate date) {
+        this.date = date;
+    }
+
+    public void setHeure(LocalTime heure) {
+        this.heure = heure;
+    }
+
     public abstract void programmerRendezVous();
+
+    public void affichRendezVous()
+    {
+        System.out.println("la date : "+date+" et l'heure : "+heure);
+    }
 }

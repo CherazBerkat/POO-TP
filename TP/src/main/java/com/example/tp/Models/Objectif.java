@@ -37,10 +37,11 @@ public class Objectif implements Serializable {
         this.type = type;
     }
 
-    public void evaluerObjectif()
+    public void evaluer(int n)
     {
-        Scanner sc = new Scanner(System.in);
-        System.out.println("Entrer la note entre 1 et 5 que vous voulez attribuer");
-        note=sc.nextInt();
+        if(n<=5 && n>=1)
+           note=n;
+        else
+            System.out.println("Note non valide");
     }
 }

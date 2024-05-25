@@ -1,3 +1,4 @@
+
 package com.example.tp.Models;
 
 import java.io.IOException;
@@ -70,21 +71,21 @@ public class Ortho implements  Serializable{
     public void setUserName(String userName) {
         this.userName = userName;
     }
-     public String getUserName(){
+    public String getUserName(){
         return userName;
-     }
-     public void setAdr(String a){
+    }
+    public void setAdr(String a){
         adr=a;
-     }
-     public String getAdr(){
+    }
+    public String getAdr(){
         return adr;
-     }
-     public ArrayList<Anamnese> getAnamneses(){
+    }
+    public ArrayList<Anamnese> getAnamneses(){
         return anamneses;
-     }
-     public ArrayList<SerieExo> getSerieExos(){
+    }
+    public ArrayList<SerieExo> getSerieExos(){
         return serieExos;
-     }
+    }
     public ArrayList<SerieQuestion> getSerieQuestions(){
         return serieQuestions;
     }
@@ -93,7 +94,7 @@ public class Ortho implements  Serializable{
     public ArrayList<Dossier> getDossiers(){
         return dossiers;
     }
-     /***********************************************************************************************/
+    /***********************************************************************************************/
     public void addSerieExos(SerieExo s){
         serieExos.add(s);
     }

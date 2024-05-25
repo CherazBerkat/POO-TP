@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="262.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.tp.AddObjectifController">
+   <children>
+      <TextField fx:id="nom" layoutX="25.0" layoutY="57.0" prefHeight="26.0" prefWidth="250.0" />
+      <ChoiceBox fx:id="type" layoutX="25.0" layoutY="137.0" prefHeight="26.0" prefWidth="250.0" />
+      <Label fx:id="label" alignment="CENTER" layoutX="9.0" layoutY="177.0" prefHeight="18.0" prefWidth="278.0" textAlignment="CENTER" />
+      <Text layoutX="25.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" text="nom :" wrappingWidth="58.93670654296875" />
+      <Text layoutX="25.0" layoutY="115.0" strokeType="OUTSIDE" strokeWidth="0.0" text="type :" wrappingWidth="49.60003471374512" />
+      <Button layoutX="25.0" layoutY="205.0" mnemonicParsing="false" onAction="#save" prefWidth="250.0" style="-fx-background-color: #48efa6; -fx-font-weight: 700;" text="sauvegarder" textFill="WHITE" />
+   </children>
+</AnchorPane>

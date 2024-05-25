@@ -1,32 +1,18 @@
 package com.example.tp;
 
-import javafx.beans.binding.Bindings;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.chart.*;
 import javafx.scene.control.*;
-import javafx.animation.KeyFrame;
-import javafx.animation.Timeline;
-import javafx.stage.Stage;
-import javafx.util.Duration;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.LocalTime;
-
-import javafx.scene.chart.XYChart;
 import javafx.scene.layout.HBox;
 import javafx.util.Callback;
-import javafx.scene.layout.Region;
 import javafx.scene.layout.Priority;
 import com.example.tp.Models.*;
-
-import static com.example.tp.HelloApplication.orthophonist;
 import static com.example.tp.HomeController.doss;
 
 public class DossierController {
@@ -42,9 +28,7 @@ public class DossierController {
     private ListView<FicheSuivi> listviewFiches;
     @FXML
     private Button buttonRetour;
-    @FXML
     public static BO bo;
-    @FXML
     public static FicheSuivi fiche;
     @FXML
     private Button buttonAjouterBO;
@@ -127,7 +111,7 @@ public class DossierController {
                                 // doss.DeleteRDV(getIndex());
                             });
 
-                           sauvButton.setOnAction(event -> {
+                            sauvButton.setOnAction(event -> {
                                 item.setDate(LocalDate.parse(Date.getText()));
                                 item.setHeure(LocalTime.parse(Heure.getText()));
                             });
@@ -194,7 +178,7 @@ public class DossierController {
                             supprimerButton.setStyle("-fx-background-color:white; -fx-text-fill: #48efa6; -fx-font-weight: 700;");
                             ModifierButton.setStyle("-fx-background-color:white; -fx-text-fill: #48efa6; -fx-font-weight: 700;");
 
-                             //Set button actions
+                            //Set button actions
                             supprimerButton.setOnAction(event -> {
                                 getListView().getItems().remove(item);
                                 doss.deleteBO(getIndex());
@@ -210,14 +194,13 @@ public class DossierController {
                                     throw new RuntimeException(e);
                                 }
                                     } else {
-                                try {
-                                    m.changeScene("ModifierBO.fxml",900,600);
-                                } catch (IOException e) {
-                                    throw new RuntimeException(e);
+                                    try {
+                                        m.changeScene("ModifierBO.fxml", 900, 600);
+                                    } catch (IOException e) {
+                                        throw new RuntimeException(e);
+                                    }
                                 }
-                                }
-                        });
-
+                            });
                             // Add hover effect
                             setOnMouseEntered(event -> setStyle("-fx-background-color: #e6e7e5;"));
                             setOnMouseExited(event -> setStyle("-fx-background-color: white;"));

@@ -272,7 +272,7 @@ public class HomeController {
                             });
 
                             modifierButton.setOnAction(event -> {
-                               sExo=item;
+                                sExo=item;
                                 try {
                                     m.changeScene("modifSerieExo.fxml",900,600);
                                 } catch (IOException e) {
@@ -465,7 +465,7 @@ public class HomeController {
     }
 
     public void updateInfos(ActionEvent event)throws IOException {
-      majInfos();
+        majInfos();
     }
 
     public void majInfos(){
@@ -546,7 +546,26 @@ public class HomeController {
     }
 
     public void pageAjoutPatient() throws IOException {
-        m.changeScene("ajouterDossier.fxml",500,400);
+        try {
+            // Load the FXML file
+            Parent root = FXMLLoader.load(getClass().getResource("ajouterDossier.fxml"));
+
+            // Create a new stage
+            Stage popupStage = new Stage();
+
+            // Set the scene with the loaded FXML content
+            Scene scene = new Scene(root);
+            popupStage.setScene(scene);
+
+            // Set properties of the stage (e.g., title)
+            popupStage.setTitle("Form");
+
+            popupStage.setOnHidden(e -> listviewDossiers.setItems(FXCollections.observableArrayList(orthophonist.getDossiers())));
+            // Show the stage
+            popupStage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public  void signOut ()throws IOException{

@@ -1,10 +1,12 @@
 package com.example.tp;
 
 
+import javafx.animation.PauseTransition;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import java.io.IOException;
 import com.example.tp.Models.*;
+import javafx.util.Duration;
 
 import static com.example.tp.HelloApplication.orthophonist;
 
@@ -37,30 +39,53 @@ public class ajouterDossierController {
     private DatePicker datepickerDateA;
     @FXML
     private DatePicker datepickerDateE;
-    HelloApplication m = new HelloApplication();
+
+    @FXML
+    private Label label;
+    @FXML
+    private Label label2;
 
 
     public void ajouterEnfant() throws IOException {
-        Enfant enfant = new Enfant(textfieldNomE.getText(), textfieldPrenomE.getText(), textfieldTelE.getText(), datepickerDateE.getValue(), textfieldLieuE.getText(), textfieldClasseE.getText(), textfieldTel2E.getText());
-        Dossier dossier = new Dossier();
-        dossier.setPatient(enfant);
-        orthophonist.addDossier(dossier);
-        try {
-            m.changeScene("Home.fxml",900,600);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
+        if (textfieldNomE.getText().isEmpty() || textfieldPrenomE.getText().isEmpty() || textfieldTelE.getText().isEmpty() ||
+                datepickerDateE.getValue() == null || textfieldLieuE.getText().isEmpty() || textfieldClasseE.getText().isEmpty() || textfieldTel2E.getText().isEmpty()) {
+            label.setText("Veuillez remplir tous les champs");
+            label.setStyle("-fx-text-fill: red;");
+
+        } else {
+            Enfant enfant = new Enfant(textfieldNomE.getText(), textfieldPrenomE.getText(), textfieldTelE.getText(), datepickerDateE.getValue(), textfieldLieuE.getText(), textfieldClasseE.getText(), textfieldTel2E.getText());
+            Dossier dossier = new Dossier();
+            dossier.setPatient(enfant);
+            orthophonist.addDossier(dossier);
+            label.setText("Dossier ajoutée avec succès");
+            label.setStyle("-fx-text-fill: green;");
+            // Reset label after 6 seconds
+            PauseTransition visiblePause = new PauseTransition(Duration.seconds(6));
+            visiblePause.setOnFinished(event -> {
+                label.setText("");
+                label.setStyle(""); // Clear text color style
+            });
         }
     }
 
     public void ajouterAdulte() throws IOException {
-        Adult adult = new Adult(textfieldNomA.getText(), textfieldPrenomA.getText(), textfieldTelA.getText(), datepickerDateA.getValue(), textfieldLieuA.getText(), textfieldDiplomeA.getText(), textfieldProfA.getText());
-        Dossier dossier = new Dossier();
-        dossier.setPatient(adult);
-        orthophonist.addDossier(dossier);
-        try {
-            m.changeScene("Home.fxml",900,600);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
+
+        if(textfieldNomA.getText().isEmpty()|| textfieldPrenomA.getText().isEmpty()|| textfieldTelA.getText().isEmpty()|| datepickerDateA.getValue()==null|| textfieldLieuA.getText().isEmpty()|| textfieldDiplomeA.getText().isEmpty()|| textfieldProfA.getText().isEmpty()){
+            label2.setText("Veuillez remplir tous les champs");
+            label2.setStyle("-fx-text-fill: red;");
+        }else {
+            Adult adult = new Adult(textfieldNomA.getText(), textfieldPrenomA.getText(), textfieldTelA.getText(), datepickerDateA.getValue(), textfieldLieuA.getText(), textfieldDiplomeA.getText(), textfieldProfA.getText());
+            Dossier dossier = new Dossier();
+            dossier.setPatient(adult);
+            orthophonist.addDossier(dossier);
+            label2.setText("Dossier ajoutée avec succès");
+            label2.setStyle("-fx-text-fill: green;");
+            // Reset label after 6 seconds
+            PauseTransition visiblePause = new PauseTransition(Duration.seconds(6));
+            visiblePause.setOnFinished(event -> {
+                label2.setText("");
+                label2.setStyle(""); // Clear text color style
+            });
         }
     }
 

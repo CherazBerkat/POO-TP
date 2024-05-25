@@ -1,3 +1,4 @@
+
 package com.example.tp.Models;
 
 import java.io.Serializable;
@@ -89,9 +90,9 @@ public class Dossier implements Serializable {
                 Diagnostic diagnostic = bo.getDiagnostic();
                 if (diagnostic != null) { // Check if diagnostic is not null
                     for (Trouble trouble : diagnostic.getTroubles()) {
-                      if(!troubles.contains(trouble)){
-                          troubles.add(trouble);
-                      }
+                        if(!troubles.contains(trouble)){
+                            troubles.add(trouble);
+                        }
                     }
                 }
             }

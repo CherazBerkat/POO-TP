@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="300.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.tp.AddChoixController">
+   <children>
+      <TextArea fx:id="choix" layoutX="52.0" layoutY="45.0" prefHeight="127.0" prefWidth="196.0" />
+      <Text layoutX="52.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Choix :" wrappingWidth="97.33667755126953" />
+      <CheckBox fx:id="correct" layoutX="100.0" layoutY="194.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="97.0" text="correct" />
+      <Label fx:id="label" alignment="CENTER" layoutX="16.0" layoutY="222.0" prefHeight="18.0" prefWidth="255.0" textAlignment="CENTER" />
+      <Button layoutX="48.0" layoutY="248.0" mnemonicParsing="false" onAction="#save" prefHeight="26.0" prefWidth="196.0" style="-fx-background-color: #48efa6; -fx-font-weight: 700;" text="sauvegarder" textFill="WHITE" />
+   </children>
+</AnchorPane>

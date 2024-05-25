@@ -11,11 +11,15 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.chart.*;
 import javafx.scene.control.*;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
+import javafx.stage.Stage;
 import javafx.util.Duration;
 import java.io.IOException;
 import javafx.scene.chart.XYChart;
@@ -28,6 +32,11 @@ import com.example.tp.Models.*;
 import static com.example.tp.HelloApplication.orthophonist;
 
 public class HomeController {
+    public static Anamnese anam;
+    public static SerieExo sExo;
+    public static SerieQuestion sQuest;
+
+    public static boolean isSQuest;
     @FXML
     private TextField username;
     @FXML
@@ -181,7 +190,12 @@ public class HomeController {
                             });
 
                             modifierButton.setOnAction(event -> {
-                                System.out.println("in modifier");
+                                sQuest=item;
+                                try {
+                                    m.changeScene("modifSerieQuestion.fxml",900,600);
+                                } catch (IOException e) {
+                                    throw new RuntimeException(e);
+                                }
                             });
 
                             // Add hover effect
@@ -256,7 +270,12 @@ public class HomeController {
                             });
 
                             modifierButton.setOnAction(event -> {
-                                System.out.println("in modifier");
+                               sExo=item;
+                                try {
+                                    m.changeScene("modifSerieExo.fxml",900,600);
+                                } catch (IOException e) {
+                                    throw new RuntimeException(e);
+                                }
                             });
 
                             // Add hover effect
@@ -326,6 +345,7 @@ public class HomeController {
                             });
 
                             modifierButton.setOnAction(event -> {
+                                anam=item;
                                 try {
                                     m.changeScene("modifAnam.fxml",900,600);
                                 } catch (IOException e) {
@@ -619,4 +639,51 @@ public class HomeController {
         public void selectNext() {
         }
     }
+    public void addAnamAdult(){
+        orthophonist.addAnamnese(new AnamneseAdulte());
+        ObservableList<Anamnese> observableAnamneses = FXCollections.observableArrayList(orthophonist.getAnamneses());
+        anamList.setItems(observableAnamneses);
+    }
+    public void addAnamEnfant(){
+        orthophonist.addAnamnese(new AnamneseEnfant());
+        ObservableList<Anamnese> observableAnamneses = FXCollections.observableArrayList(orthophonist.getAnamneses());
+        anamList.setItems(observableAnamneses);
+    }
+
+
+    @FXML
+    public void AddSerie(ActionEvent event) {
+        try {
+            // Load the FXML file
+            Parent root = FXMLLoader.load(getClass().getResource("AddSerie.fxml"));
+
+            // Create a new stage
+            Stage popupStage = new Stage();
+
+            // Set the scene with the loaded FXML content
+            Scene scene = new Scene(root);
+            popupStage.setScene(scene);
+
+            // Set properties of the stage (e.g., title)
+            popupStage.setTitle("Form");
+
+            // Check which button triggered the event
+            if (((Button) event.getSource()).getId().equals("addSE")) {
+                // Action for btnSerieExo
+                popupStage.setOnHidden(e -> serieE.setItems(FXCollections.observableArrayList(orthophonist.getSerieExos())));
+                isSQuest=false;
+            } else if (((Button) event.getSource()).getId().equals("addSQ")) {
+                // Action for btnSerieQ
+                popupStage.setOnHidden(e -> serieQ.setItems(FXCollections.observableArrayList(orthophonist.getSerieQuestions())));
+                isSQuest=true;
+            }
+
+            // Show the stage
+            popupStage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+
 }

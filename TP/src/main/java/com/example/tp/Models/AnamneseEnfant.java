@@ -7,7 +7,7 @@ public class AnamneseEnfant extends Anamnese implements Serializable{
     /************************************************* METHODS ********************************************************/
     public void ajouterQuestion(QuestionAnam q) {
         if (q instanceof QuestionAnamEnfant) {
-            questions.add((QuestionAnamEnfant) q);
+            questions.add(q);
         }
     }
 }

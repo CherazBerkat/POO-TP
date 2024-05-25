@@ -21,6 +21,6 @@ public class QuestionAnam  implements Serializable {
     public String getText() {
         return text;
     }
-    public TypeAnamneseAdulte getTypeAdult (){ return TypeAnamneseAdulte.SUIVIMEDICAL;}
-    public TypeAnamneseEnfant getTypeEnfant (){ return TypeAnamneseEnfant.CONDITIONSNATALES;}
+  /*  public TypeAnamneseAdulte getTypeAdult (){ return TypeAnamneseAdulte.SUIVIMEDICAL;}
+    public TypeAnamneseEnfant getTypeEnfant (){ return TypeAnamneseEnfant.CONDITIONSNATALES;}*/
 }

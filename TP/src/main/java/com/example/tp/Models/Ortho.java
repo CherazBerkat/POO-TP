@@ -24,17 +24,6 @@ public class Ortho implements  Serializable{
     private ArrayList<Anamnese> anamneses=new ArrayList<>();
     private ArrayList<RendezVous> rendezVous=new ArrayList<>();
 
-
-
-
-
-    public Ortho (String n,String p,String t,String m,String pd){
-        nom=n;
-        prenom=p;
-        tel=t;
-        mail=m;
-        passwd=pd;
-    }
     public Ortho(){}
 
     /**************************************************************************************************/

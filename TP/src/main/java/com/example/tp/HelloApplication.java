@@ -39,7 +39,7 @@ public class HelloApplication extends Application {
             createFile();
         }
         /************************************************test Data***********************************************/
-      /* TypeTrouble troubleType1 = TypeTrouble.DEGLUTITION;
+        /*TypeTrouble troubleType1 = TypeTrouble.DEGLUTITION;
         TypeTrouble troubleType2 = TypeTrouble.NEURODEVELOPPEMENTAUX;
         TypeTrouble troubleType3 = TypeTrouble.COGNITIFS;
 
@@ -93,14 +93,42 @@ public class HelloApplication extends Application {
         orthophonist.addDossier(d2);
          String nom, capacite;
        for (int i=0;i<=10;i++) {
-            nom="nom"+i;
-            capacite="capacite"+i;
-            orthophonist.addSerieQuestions(new SerieQuestion(nom,capacite));
-            orthophonist.addSerieExos(new SerieExo(nom,capacite));
-            orthophonist.addAnamnese(new AnamneseAdulte());
-            orthophonist.addAnamnese(new AnamneseEnfant());
-       }*/
-
+           nom = "nom" + i;
+           capacite = "capacite" + i;
+           orthophonist.addSerieQuestions(new SerieQuestion(nom, capacite));
+           orthophonist.addSerieExos(new SerieExo(nom, capacite));
+           orthophonist.addAnamnese(new AnamneseAdulte());
+           orthophonist.addAnamnese(new AnamneseEnfant());
+       }
+       Anamnese anam=orthophonist.getAnamneses().get(0);
+        String txt;
+        for (int i=0;i<=10;i++){
+            txt="text"+i;
+            anam.ajouterQuestion(new QuestionAnamAdult(txt,TypeAnamneseAdulte.HISTOIREDEMALADIE));
+        }
+        SerieExo s=orthophonist.getSerieExos().get(0);
+        for (int i=0;i<=5;i++){
+            s.addExo(new Exo("consigne0","materiel0"));
+        }
+        Anamnese anam2=orthophonist.getAnamneses().get(1);
+        for (int i=0;i<=10;i++){
+            txt="text"+i;
+            anam2.ajouterQuestion(new QuestionAnamEnfant(txt,TypeAnamneseEnfant.DEVELOPPEMENTLANGAGIER));
+        }
+        SerieQuestion sq=orthophonist.getSerieQuestions().get(0);
+        QCM qcm=new QCM("text");
+        qcm.addChoix("choix1",false);
+        qcm.addChoix("choix2",false);
+        qcm.addChoix("choix3",true);
+        qcm.addChoix("choix4",false);
+        sq.addQuestion(new QRL("text"));
+        sq.addQuestion(qcm);
+        QCU qcu =new QCU("text");
+        qcu.addPropo("choix1",false);
+        qcu.addPropo("choix2",false);
+        qcu.addPropo("choix3",true);
+        qcu.addPropo("choix4",false);
+        sq.addQuestion(qcu);*/
 
         /*******************************************************************************************************/
         stage.setTitle("CabinetPro ManageX");

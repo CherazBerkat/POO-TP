@@ -14,7 +14,7 @@
             <ListView fx:id="listQ" prefHeight="518.0" prefWidth="900.0" BorderPane.alignment="CENTER" />
          </center>
          <top>
-            <HBox fx:id="upHbox" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+            <HBox fx:id="upHbox" prefHeight="100.0" prefWidth="900.0" BorderPane.alignment="CENTER">
                <BorderPane.margin>
                   <Insets top="4.0" />
                </BorderPane.margin>

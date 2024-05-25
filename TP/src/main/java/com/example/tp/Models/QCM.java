@@ -2,15 +2,29 @@ package com.example.tp.Models;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class QCM extends Question implements Serializable {
-    private ArrayList<String> choix= new ArrayList<>();
-    private ArrayList<String> correctes=new ArrayList<>();
+    private Map<String,Integer> choix =new HashMap<>();
+
 
     public QCM (String t){
         super(t);
     }
-    public  void addChoix (String c){
+
+    public Map<String,Integer> getChoix(){
+        return choix;
+    }
+
+    public  void addChoix (String c,boolean correct){
+        if(correct)
+           choix.put(c,1);
+        else
+            choix.put(c,0);
+    }
+
+  /*  public  void addChoix (String c){
         choix.add(c);
     }
     public void addCorrect (String c){
@@ -47,5 +61,5 @@ public class QCM extends Question implements Serializable {
         } else {
             System.out.println("Invalid index. No choix deleted.");
         }
-    }
+    }*/
 }

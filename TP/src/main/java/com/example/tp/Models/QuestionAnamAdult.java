@@ -18,7 +18,7 @@ public class QuestionAnamAdult extends QuestionAnam implements Serializable {
     }
 
    /******************************************************** GETTER **************************************************/
-    @Override
+
     public TypeAnamneseAdulte getTypeAdult(){
         return type;
     }

@@ -50,6 +50,8 @@ public class DossierController {
     private Button buttonAjouterBO;
     @FXML
     private Button buttonAjouterFiche;
+    private ObservableList<FicheSuivi> observableFiches;
+    private ObservableList<BO> observableBO;
 
 
     HelloApplication m = new HelloApplication();
@@ -156,7 +158,7 @@ public class DossierController {
         listviewBO.setSelectionModel(new NoSelectionModel<>());
 
         // Populate the ListView with BO objects
-        ObservableList<BO> observableBO = FXCollections.observableArrayList(doss.getBOs());
+        observableBO = FXCollections.observableArrayList(doss.getBOs());
         listviewBO.setItems(observableBO);
 
         listviewBO.setCellFactory(new Callback<>() {
@@ -181,7 +183,9 @@ public class DossierController {
 
                             //Set fixed widths for Labels
                             name.setPrefWidth(70);
-                            type.setPrefWidth(150);
+                            // Ensure the type takes up remaining space
+                            HBox.setHgrow(type, Priority.ALWAYS);
+                            type.setMaxWidth(Double.MAX_VALUE);
 
                             Button supprimerButton = new Button("Supprimer");
                             Button ModifierButton = new Button("Modifier");
@@ -230,7 +234,7 @@ public class DossierController {
         listviewFiches.setSelectionModel(new NoSelectionModel<>());
 
         // Populate the ListView with BO objects
-        ObservableList<FicheSuivi> observableFiches = FXCollections.observableArrayList(doss.getFicheSuivis());
+        observableFiches = FXCollections.observableArrayList(doss.getFicheSuivis());
         listviewFiches.setItems(observableFiches);
 
         listviewFiches.setCellFactory(new Callback<>() {
@@ -250,7 +254,9 @@ public class DossierController {
 
                             //Set fixed widths for Labels
                             name.setPrefWidth(70);
-                            type.setPrefWidth(150);
+                            // Ensure the type takes up remaining space
+                            HBox.setHgrow(type, Priority.ALWAYS);
+                            type.setMaxWidth(Double.MAX_VALUE);
 
                             Button supprimerButton = new Button("Supprimer");
                             Button ModifierButton = new Button("Modifier");
@@ -366,11 +372,13 @@ public class DossierController {
     public void addBO(){
         BO bo = new BO();
         doss.ajouterBO(bo);
+        observableBO.add(bo);
         listviewBO.refresh();
     }
     public void addFiche(){
         FicheSuivi fiche = new FicheSuivi();
         doss.ajouterFicheSuivi(fiche);
+        observableFiches.add(fiche);
         listviewFiches.refresh();
     }
 }

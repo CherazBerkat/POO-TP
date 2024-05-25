@@ -1,10 +1,12 @@
 package com.example.tp;
 
-import com.example.tp.Models.Question;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
@@ -12,6 +14,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.Region;
 import javafx.scene.paint.Color;
+import javafx.stage.Stage;
 import javafx.util.Callback;
 
 import java.io.IOException;
@@ -158,6 +161,9 @@ public class ModifierQCUController {
                             setText(null);
                             setGraphic(null);
                             setBackground(null);
+                            setStyle(null);
+                            setOnMouseEntered(null);
+                            setOnMouseExited(null);
                         } else {
                             textField.setText(item.getKey());
                             toggleCorrectButton.setText(item.getValue() == 1 ? "Set Incorrect" : "Set Correct");
@@ -241,6 +247,28 @@ public class ModifierQCUController {
 
         @Override
         public void selectNext() {
+        }
+    }
+    public  void addPropo(){
+        try {
+            // Load the FXML file
+            Parent root = FXMLLoader.load(getClass().getResource("AddPropo.fxml"));
+
+            // Create a new stage
+            Stage popupStage = new Stage();
+
+            // Set the scene with the loaded FXML content
+            Scene scene = new Scene(root);
+            popupStage.setScene(scene);
+
+            // Set properties of the stage (e.g., title)
+            popupStage.setTitle("Form");
+            popupStage.setOnHidden(e -> listC.setItems(FXCollections.observableArrayList(qcu.getPropos().entrySet())));
+
+            // Show the stage
+            popupStage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 }

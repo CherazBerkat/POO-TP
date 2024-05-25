@@ -202,12 +202,21 @@ public class DossierController {
 
                             ModifierButton.setOnAction(event -> {
                                 bo=item;
+                                if(bo instanceof PremierBO)
+                                {
+                                try {
+                                    m.changeScene("ModifierPremierBO.fxml",900,600);
+                                } catch (IOException e) {
+                                    throw new RuntimeException(e);
+                                }
+                                    } else {
                                 try {
                                     m.changeScene("ModifierBO.fxml",900,600);
                                 } catch (IOException e) {
                                     throw new RuntimeException(e);
                                 }
-                            });
+                                }
+                        });
 
                             // Add hover effect
                             setOnMouseEntered(event -> setStyle("-fx-background-color: #e6e7e5;"));
@@ -371,6 +380,7 @@ public class DossierController {
 
     public void addBO(){
         BO bo = new BO();
+        bo.setDiagnostic(new Diagnostic());
         doss.ajouterBO(bo);
         observableBO.add(bo);
         listviewBO.refresh();

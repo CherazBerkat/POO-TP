@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.tp.ModifierBOController">
+<AnchorPane prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.tp.ModifierPremierBOController">
    <children>
       <Text fill="#48efa6" layoutX="50.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-family: poppins; -fx-font-size: 30; -fx-font-weight: 700;" text="Bilan Orthophonique" />
       <Text fill="#48efa6" layoutX="24.0" layoutY="430.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-family: poppins; -fx-font-size: 17; -fx-font-weight: 700;" text="Epreuves Cliniques" />
@@ -15,9 +15,10 @@
       <ListView fx:id="listviewDiag" layoutX="12.0" layoutY="275.0" prefHeight="120.0" prefWidth="880.0" />
       <ListView fx:id="listviewEpreuve" layoutX="12.0" layoutY="455.0" prefHeight="120.0" prefWidth="880.0" />
       <TextField fx:id="textfieldProjet" layoutX="10.0" layoutY="140.0" prefHeight="75.0" prefWidth="880.0" />
-      <Button fx:id="buttonSauv" layoutX="799.0" layoutY="94.0" mnemonicParsing="false" onAction="#saveProjet" prefHeight="30.0" prefWidth="90.0" style="-fx-background-color: #48efa6; -fx-font-family: poppins; -fx-font-weight: 700;" text="Sauvegarder" textFill="WHITE" />
-      <Button fx:id="buttonAjouterEp" layoutX="799.0" layoutY="409.0" mnemonicParsing="false" onAction="#addFiche" prefHeight="30.0" prefWidth="90.0" style="-fx-background-color: #48efa6; -fx-font-family: poppins; -fx-font-weight: 700;" text="Ajouter" textFill="WHITE" />
-      <Button fx:id="buttonAjouterDiag" layoutX="799.0" layoutY="229.0" mnemonicParsing="false" onAction="#addTrouble" prefHeight="30.0" prefWidth="90.0" style="-fx-background-color: #48efa6; -fx-font-family: poppins; -fx-font-weight: 700;" text="Ajouter" textFill="WHITE" />
+      <Button fx:id="buttonAnam" layoutX="430.0" layoutY="29.0" mnemonicParsing="false" onAction="#ConsultAnam" prefHeight="30.0" prefWidth="135.0" style="-fx-background-color: #48efa6; -fx-font-family: poppins; -fx-font-weight: 700;" text="Consulter Anamnése" textFill="WHITE" />
+      <Button fx:id="buttonSauv" layoutX="799.0" layoutY="94.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="90.0" style="-fx-background-color: #48efa6; -fx-font-family: poppins; -fx-font-weight: 700;" text="Sauvegarder" textFill="WHITE" />
       <Button fx:id="buttonRetour" layoutX="799.0" layoutY="29.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="90.0" style="-fx-background-color: #48efa6; -fx-font-family: poppins; -fx-font-weight: 700;" text="Retour" textFill="WHITE" />
+      <Button fx:id="buttonAjouterDiag" layoutX="799.0" layoutY="229.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="90.0" style="-fx-background-color: #48efa6; -fx-font-family: poppins; -fx-font-weight: 700;" text="Ajouter" textFill="WHITE" />
+      <Button fx:id="buttonAjouterEp" layoutX="799.0" layoutY="409.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="90.0" style="-fx-background-color: #48efa6; -fx-font-family: poppins; -fx-font-weight: 700;" text="Ajouter" textFill="WHITE" />
    </children>
 </AnchorPane>

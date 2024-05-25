@@ -13,4 +13,17 @@ public class Diagnostic implements Serializable
     public ArrayList<Trouble> getTroubles(){
         return troubles;
     }
+
+    public Trouble getTrouble(int ind){
+        if (ind >= 0 && ind < troubles.size())
+            return troubles.get(ind);
+        else return null;
+    }
+
+    public  void deleteTrouble(int ind){
+        if (ind >= 0 && ind < troubles.size())
+            troubles.remove(ind);
+        else System.out.println("Index non valid , No question has been removed");
+    }
+
 }

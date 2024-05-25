@@ -7,6 +7,10 @@ public class Trouble implements Serializable {
     private String nom;
     private TypeTrouble type;
 
+    public Trouble()
+    {
+    }
+
     public Trouble(String n, TypeTrouble t)
     {
         nom = n;
@@ -19,6 +23,19 @@ public class Trouble implements Serializable {
     }
 
     public String getNom(){return nom;}
+
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
+
+    public void setType(TypeTrouble type) {
+        this.type = type;
+    }
+
+    public TypeTrouble getType() {
+        return type;
+    }
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj) return true;

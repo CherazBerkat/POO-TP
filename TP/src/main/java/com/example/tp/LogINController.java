@@ -22,6 +22,8 @@ public class LogINController {
     private TextField username;
     @FXML
     private PasswordField password;
+
+    HelloApplication m = new HelloApplication();
     public void userLogIn(ActionEvent event) throws IOException {
         checkLogin();
 
@@ -32,7 +34,6 @@ public class LogINController {
     }
 
     public void checkLogin() throws IOException {
-        HelloApplication m = new HelloApplication();
         if(username.getText().toString().equals(orthophonist.getUserName()) && password.getText().toString().equals(orthophonist.getPasswd())) {
             wrongLogIn.setText("Success!");
 

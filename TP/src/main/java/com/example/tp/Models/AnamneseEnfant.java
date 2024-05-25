@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.io.Serializable;
 public class AnamneseEnfant extends Anamnese implements Serializable{
 
-    /************************************************* METHODS ********************************************************/
+    //************************************************* METHODS ******************************************************//
     public void ajouterQuestion(QuestionAnam q) {
         if (q instanceof QuestionAnamEnfant) {
             questions.add(q);

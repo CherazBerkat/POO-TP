@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Text?>
+
+
+<AnchorPane prefHeight="500.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.tp.AddExoCntroller">
+   <children>
+      <TextArea fx:id="consigne" layoutX="70.0" layoutY="39.0" prefHeight="301.0" prefWidth="260.0" />
+      <TextField fx:id="materiel" layoutX="68.0" layoutY="378.0" prefHeight="26.0" prefWidth="260.0" />
+      <Label fx:id="label" alignment="CENTER" layoutX="18.0" layoutY="417.0" prefHeight="18.0" prefWidth="370.0" textAlignment="CENTER" />
+      <Button layoutX="68.0" layoutY="451.0" mnemonicParsing="false" onAction="#save" prefHeight="26.0" prefWidth="260.0" style="-fx-background-color: #48efa6; -fx-font-weight: 700;" text="sauvegarder" textFill="WHITE" />
+      <Text layoutX="68.0" layoutY="366.0" strokeType="OUTSIDE" strokeWidth="0.0" text="materiel :" wrappingWidth="94.13671875" />
+      <Text layoutX="70.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="consigne :" wrappingWidth="94.13671875" />
+   </children>
+</AnchorPane>

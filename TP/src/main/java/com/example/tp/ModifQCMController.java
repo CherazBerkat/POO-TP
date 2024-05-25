@@ -246,7 +246,7 @@ public class ModifQCMController {
     public  void addChoix(){
         try {
             // Load the FXML file
-            Parent root = FXMLLoader.load(getClass().getResource("AddChoix.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("addChoix.fxml"));
 
             // Create a new stage
             Stage popupStage = new Stage();

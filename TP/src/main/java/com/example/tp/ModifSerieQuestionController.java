@@ -238,4 +238,5 @@ public class ModifSerieQuestionController {
         }
     }
 
+    public void addQuest(){}
 }

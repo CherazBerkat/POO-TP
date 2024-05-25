@@ -28,9 +28,7 @@ public class DossierController {
     private ListView<FicheSuivi> listviewFiches;
     @FXML
     private Button buttonRetour;
-    @FXML
     public static BO bo;
-    @FXML
     public static FicheSuivi fiche;
     @FXML
     private Button buttonAjouterBO;

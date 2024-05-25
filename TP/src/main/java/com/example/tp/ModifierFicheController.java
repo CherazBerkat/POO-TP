@@ -16,26 +16,29 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.layout.HBox;
 import com.example.tp.Models.*;
-import static com.example.tp.HomeController.anam;
-public class ModifAnamController {
+
+import static com.example.tp.DossierController.fiche;
+
+
+public class ModifierFicheController {
     @FXML
-    private ListView<QuestionAnam> listQ;
+    private ListView<Objectif> listO;
     @FXML
     private HBox upHbox=new HBox(20);;
     @FXML
     public void initialize() {
-     //************************************************* The upper Section ******************************************//
+        //************************************************* The upper Section ******************************************//
         upHbox.setPrefHeight(100);
         upHbox.setAlignment(Pos.CENTER_LEFT);
         upHbox.setStyle("-fx-padding: 0 20;");
 
-        Label titre = new Label(anam.getClass().getSimpleName());
-        titre.setPrefWidth(500);
+        Label titre = new Label("Fiche de Suivi");
+        titre.setPrefWidth(300);
         titre.setStyle("-fx-text-fill:#48efa6; -fx-font-weight: 800; -fx-font-size:30;");
 
         Button retourButton = new Button("retour");
-        retourButton.setStyle("-fx-background-color:#48efa6; -fx-text-fill:white ; -fx-font-weight: 700;-fx-font-size:18;");
-        retourButton.prefWidth(300);
+        retourButton.setStyle("-fx-background-color:#48efa6; -fx-text-fill:white ; -fx-font-weight: 700;-fx-font-size:15;");
+        retourButton.prefWidth(500);
         retourButton.prefHeight(10);
         // Set button actions
         retourButton.setOnAction(event -> {
@@ -46,9 +49,24 @@ public class ModifAnamController {
                 throw new RuntimeException(e);
             }
         });
+        Button atteint = new Button("Objectifs non atteints");
+        atteint.setStyle("-fx-background-color:red; -fx-text-fill:white ; -fx-font-weight: 700;-fx-font-size:15;");
+        atteint.prefWidth(500);
+        atteint.prefHeight(10);
+        // Set button actions
+        atteint.setOnAction(event -> {
+            if (atteint.getText().equals("Objectifs non atteints")) {
+                atteint.setText("Objectifs atteints");
+                atteint.setStyle("-fx-background-color:#48efa6; -fx-text-fill:white ; -fx-font-weight: 700;-fx-font-size:15;");
+            } else {
+                atteint.setText("Objectifs non atteints");
+                atteint.setStyle("-fx-background-color:red; -fx-text-fill:white ; -fx-font-weight: 700;-fx-font-size:15;");
 
-        Button addButton = new Button("Add Question");
-        addButton.setStyle("-fx-background-color:#48efa6; -fx-text-fill:white ; -fx-font-weight: 700;-fx-font-size:18;");
+            }
+        });
+
+        Button addButton = new Button("Ajouter Objectif");
+        addButton.setStyle("-fx-background-color:#48efa6; -fx-text-fill:white ; -fx-font-weight: 700;-fx-font-size:15;");
         addButton.prefWidth(500);
         addButton.prefHeight(10);
         // Set button actions
@@ -56,10 +74,7 @@ public class ModifAnamController {
             try {
                 // Load the FXML file
                 Parent root = null;
-                if (anam.getClass().getSimpleName().equals("AnamneseAdulte"))
-                    root = FXMLLoader.load(getClass().getResource("AddQuestionAnamAdult.fxml"));
-                else if (anam.getClass().getSimpleName().equals("AnamneseEnfant"))
-                    root = FXMLLoader.load(getClass().getResource("AddQuestionAnamEnfant.fxml"));
+                root = FXMLLoader.load(getClass().getResource("AddObjectif.fxml"));
 
                 // Create a new stage
                 Stage popupStage = new Stage();
@@ -72,7 +87,7 @@ public class ModifAnamController {
                 popupStage.setTitle("Form");
 
                 // Add event handler to refresh listQ when the stage is closed
-                popupStage.setOnHidden(e -> listQ.setItems(FXCollections.observableArrayList(anam.getQuestions())));
+                popupStage.setOnHidden(e -> listO.setItems(FXCollections.observableArrayList(fiche.getObjectifs())));
 
                 // Show the stage
                 popupStage.show();
@@ -88,48 +103,41 @@ public class ModifAnamController {
         HBox.setHgrow(spacer, Priority.ALWAYS);
 
         // Create a nested HBox for buttons
-        HBox buttonsBox = new HBox(20);
-        buttonsBox.getChildren().addAll(addButton,retourButton);
+        HBox buttonsBox = new HBox(10);
+        buttonsBox.getChildren().addAll(atteint,addButton,retourButton);
         buttonsBox.setAlignment(Pos.CENTER_LEFT);
 
         upHbox.getChildren().addAll(titre,spacer,buttonsBox);
-   //************************************************ La list des questions ****************************************** //
+        //************************************************ La list des questions ****************************************** //
 
         // Disable selection effect in the ListView
-        listQ.setFocusTraversable(false);
-        listQ.setSelectionModel(new NoSelectionModel<>());
+        listO.setFocusTraversable(false);
+        listO.setSelectionModel(new ModifierFicheController.NoSelectionModel<>());
 
-        ObservableList<QuestionAnam> observableQuestionAnam = FXCollections.observableArrayList(anam.getQuestions());
-        listQ.setItems(observableQuestionAnam);
+        ObservableList<Objectif> observableQuestionAnam = FXCollections.observableArrayList(fiche.getObjectifs());
+        listO.setItems(observableQuestionAnam);
 
-        listQ.setCellFactory(new Callback<>() {
+        listO.setCellFactory(new Callback<>() {
             @Override
-            public ListCell<QuestionAnam> call(ListView<QuestionAnam> listView) {
-                return new ListCell<QuestionAnam>() {
+            public ListCell<Objectif> call(ListView<Objectif> listView) {
+                return new ListCell<Objectif>() {
                     @Override
-                    protected void updateItem(QuestionAnam item, boolean empty) {
+                    protected void updateItem(Objectif item, boolean empty) {
                         super.updateItem(item, empty);
                         if (item != null && !empty) {
                             HBox hBox = new HBox(20);
                             hBox.setPrefHeight(50);
                             hBox.setAlignment(Pos.CENTER_LEFT);
 
-                            Label name = new Label("Question" + (getIndex() + 1));
-                            Label type;
-                            if (item instanceof QuestionAnamEnfant)
-                                type = new Label(((QuestionAnamEnfant)item).getTypeEnfant().stringfy(((QuestionAnamEnfant) item).getTypeEnfant()));
-                            else
-                                type = new Label(((QuestionAnamAdult)item).getTypeAdult().stringfy(((QuestionAnamAdult) item).getTypeAdult()));
+                            TextField name = new TextField(item.getNom());
+                            TextField type= new TextField(item.getType().stringfy());
 
-                            TextField text =new TextField(item.getText());
+                            TextField note =new TextField(String.valueOf(item.getNote()));
 
                             // Set fixed widths for Labels
-                            name.setPrefWidth(70);
+                            name.setPrefWidth(200);
                             type.setPrefWidth(150);
 
-                            // Ensure the TextField takes up remaining space
-                            HBox.setHgrow(text, Priority.ALWAYS);
-                            text.setMaxWidth(Double.MAX_VALUE);
 
                             Button supprimerButton = new Button("Supprimer");
                             Button sauvButton = new Button("Sauvegarder");
@@ -141,11 +149,17 @@ public class ModifAnamController {
                             // Set button actions
                             supprimerButton.setOnAction(event -> {
                                 getListView().getItems().remove(item);
-                                anam.deleteQuestion(getIndex());
+                                fiche.deleteObjectif(getIndex());
                             });
 
                             sauvButton.setOnAction(event -> {
-                                item.setText(text.getText().toString());
+                                item.setNom(name.getText().toString());
+                                if(type.getText().toString().replace(" ","").toUpperCase().equals("MOYENTERME")||type.getText().toString().replace(" ","").toUpperCase().equals("LONGTERME")
+                                ||type.getText().toString().replace(" ","").toUpperCase().equals("COURTTERME"))
+                                     item.setType(TypeObjectif.valueOf(type.getText().toString().replace(" ","").toUpperCase()));
+                                else
+                                    System.out.println("Type non valide, non savegarde");
+                                item.setNote( Integer.valueOf(note.getText().toString()));
                             });
 
                             // Add hover effect
@@ -157,8 +171,12 @@ public class ModifAnamController {
                             buttonsBox.getChildren().addAll(supprimerButton,sauvButton);
                             buttonsBox.setAlignment(Pos.CENTER_LEFT);
 
+                            // Add a region to create space between name and buttons
+                            Region spacer = new Region();
+                            HBox.setHgrow(spacer, Priority.ALWAYS);
+
                             // Add elements to outer HBox
-                            hBox.getChildren().addAll(name, type,text, buttonsBox);
+                            hBox.getChildren().addAll(name,type,note,spacer,buttonsBox);
                             setGraphic(hBox);
                         } else {
                             setGraphic(null);
@@ -167,7 +185,7 @@ public class ModifAnamController {
                 };
             }
         });
-        listQ.refresh();
+        listO.refresh();
     }
 
     // Custom NoSelectionModel class to disable selection

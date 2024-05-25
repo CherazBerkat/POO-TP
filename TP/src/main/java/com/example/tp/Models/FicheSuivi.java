@@ -1,26 +1,28 @@
 package com.example.tp.Models;
-public class FicheSuivi {
-    private Objectif[] objectifs = new Objectif[100];
-    private int nbObjectifs;
+
+import java.io.Serializable;
+import java.util.ArrayList;
+
+public class FicheSuivi implements Serializable {
+    private ArrayList<Objectif> objectifs = new ArrayList<>();
+
+    public ArrayList<Objectif> getObjectifs(){
+        return objectifs;
+    }
+
     private boolean objectifsAttient;
 
     public void ajouterObjectif(Objectif o)
     {
-        objectifs[nbObjectifs]=o;
-        nbObjectifs++;
+        objectifs.add(o);
     }
-    public void affichObjectifs()
-    {
-        for(int i=0; i<nbObjectifs; i++)
-        {
-            // objectifs[i].affichObjectif(); method doesn't exist
+
+    public void deleteObjectif (int index){
+        if (index >= 0 && index < objectifs.size()) {
+            objectifs.remove(index);
+        } else {
+            System.out.println("Invalid index. No objectif deleted.");
         }
     }
-    public void evaluerObjectifs()
-    {
-        for(int i=0; i<nbObjectifs; i++)
-        {
-            // objectifs[i].evaluerObjectif();
-        }
-    }
+
 }

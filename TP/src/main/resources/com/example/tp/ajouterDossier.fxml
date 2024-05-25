@@ -58,7 +58,7 @@
                         <Text layoutX="245.0" layoutY="193.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Profession :" />
                         <TextField fx:id="textfieldProfA" layoutX="340.0" layoutY="177.0" prefWidth="150.0" />
                         <Button fx:id="buttonSauvA" layoutX="375.0" layoutY="228.0" mnemonicParsing="false" onAction="#ajouterAdulte" prefHeight="25.0" prefWidth="90.0" style="-fx-background-color: #48efa6; -fx-font-family: poppins; -fx-font-weight: 700;" text="Sauvgarder" textFill="WHITE" />
-                        <Label fx:id="label2" alignment="CENTER" layoutX="15.0" layoutY="232.0" prefHeight="18.0" prefWidth="346.0" text="Label" />
+                        <Label fx:id="label2" alignment="CENTER" layoutX="15.0" layoutY="232.0" prefHeight="18.0" prefWidth="346.0" />
                      </children>
                   </AnchorPane>
             </content>

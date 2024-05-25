@@ -13,6 +13,14 @@ public class AddPropoController {
     private TextArea choix;
     @FXML
     private Label label;
+    public void initialize() {
+        choix.focusedProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue) {
+                label.setText("");
+            }
+        });
+    }
+
     public void save() {
         if (choix.getText().isEmpty()) {
             // If any field is empty, show error message in red

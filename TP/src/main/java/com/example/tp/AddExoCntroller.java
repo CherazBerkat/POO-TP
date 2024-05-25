@@ -17,6 +17,20 @@ public class AddExoCntroller {
     private TextField materiel;
     @FXML
     private Label label;
+
+    public void initialize() {
+        consigne.focusedProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue) {
+                label.setText("");
+            }
+        });
+        materiel.focusedProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue) {
+                label.setText("");
+            }
+        });
+
+    }
     public void save() {
         if (consigne.getText().isEmpty() || materiel.getText().isEmpty()) {
             // If any field is empty, show error message in red

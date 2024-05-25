@@ -18,6 +18,20 @@ public class AddSerieController {
     private TextField capacite;
     @FXML
     private Label label;
+    public void initialize() {
+        nom.focusedProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue) {
+                label.setText("");
+            }
+        });
+        capacite.focusedProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue) {
+                label.setText("");
+            }
+        });
+
+    }
+
     public void save() {
         if (nom.getText().isEmpty() || capacite.getText().isEmpty()) {
             // If any field is empty, show error message in red

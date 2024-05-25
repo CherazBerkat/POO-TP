@@ -99,6 +99,11 @@ public class Ortho implements  Serializable{
     public ArrayList<SerieQuestion> getSerieQuestions(){
         return serieQuestions;
     }
+
+
+    public ArrayList<Dossier> getDossiers(){
+        return dossiers;
+    }
      /***********************************************************************************************/
     public void addSerieExos(SerieExo s){
         serieExos.add(s);

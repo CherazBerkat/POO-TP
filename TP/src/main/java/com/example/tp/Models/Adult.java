@@ -3,7 +3,7 @@ package com.example.tp.Models;
 import java.io.Serializable;
 import java.time.LocalDate;
 
-public class Adult extends Patient implements Serializable {
+public class      Adult extends Patient implements Serializable {
     private String diplome;
     private String prof;
     public Adult (String n, String p, String t, LocalDate d, String l,String dp,String pf){

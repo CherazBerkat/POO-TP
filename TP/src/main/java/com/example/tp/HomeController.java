@@ -2,6 +2,7 @@ package com.example.tp;
 
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
+import java.util.ArrayList;
 import java.util.Map;
 import java.time.*;
 
@@ -69,12 +70,6 @@ public class HomeController {
     @FXML
     private ComboBox comboboxAge;
     @FXML
-    private Button buttonSauvegarderC;
-    @FXML
-    private Button buttonSauvegarderSS;
-    @FXML
-    private Button buttonSauvegarderAG;
-    @FXML
     private ComboBox comboboxDeroulement;
     @FXML
     private TextField textfieldThematique;
@@ -85,9 +80,7 @@ public class HomeController {
     @FXML
     private TextField textfieldNum;
     @FXML
-    private Button buttonAjouterPatient;
-
-
+    private ListView listviewDossiers;
     @FXML
     private BarChart barChart;
     @FXML
@@ -365,11 +358,106 @@ public class HomeController {
         });
         anamList.refresh();
 
+        //Anamneses list
+
+        // Disable selection effect in the ListView
+        // Anamneses list
+
+// Disable selection effect in the ListView
+        listviewDossiers.setFocusTraversable(false);
+        listviewDossiers.setSelectionModel(new HomeController.NoSelectionModel<>());
+
+        ObservableList<Dossier> observableDossier = FXCollections.observableArrayList(orthophonist.getDossiers());
+        listviewDossiers.setItems(observableDossier);
+        listviewDossiers.setCellFactory(new Callback<ListView<Dossier>, ListCell<Dossier>>() {
+            @Override
+            public ListCell<Dossier> call(ListView<Dossier> listView) {
+                return new ListCell<Dossier>() {
+                    @Override
+                    protected void updateItem(Dossier item, boolean empty) {
+                        super.updateItem(item, empty);
+                        if (item != null && !empty) {
+                            HBox hBox = new HBox(20);
+                            hBox.setPrefHeight(50);
+                            hBox.setAlignment(Pos.CENTER_LEFT);
+
+                            // Create Labels instead of Text nodes
+                            Label name = new Label("Dossier" + (getIndex() + 1));
+                            Label type = new Label(item.getClass().getSimpleName());
+
+                            // Set fixed widths for Labels
+                            name.setPrefWidth(100);
+                            type.setPrefWidth(100);
+
+                            Button supprimerButton = new Button("Supprimer");
+                            Button modifierButton = new Button("Modifier");
+                            Button ConsulterButton = new Button("Consulter");
+
+                            // Styling buttons
+                            supprimerButton.setStyle("-fx-background-color:white; -fx-text-fill: #48efa6; -fx-font-weight: 700;");
+                            modifierButton.setStyle("-fx-background-color: white; -fx-text-fill: #48efa6; -fx-font-weight: 700;");
+                            ConsulterButton.setStyle("-fx-background-color: white; -fx-text-fill: #48efa6; -fx-font-weight: 700;");
+
+                            // Set button actions
+                            supprimerButton.setOnAction(event -> {
+                                getListView().getItems().remove(item);
+                                orthophonist.deleteDossierIndx(getIndex());
+                            });
+
+                            modifierButton.setOnAction(event -> {
+                                try {
+                                    m.changeScene("ajouterDossier.fxml", 500, 400);
+                                } catch (IOException e) {
+                                    throw new RuntimeException(e);
+                                }
+                            });
+
+                            ConsulterButton.setOnAction(event -> {
+                                try {
+                                    m.changeScene("Dossier.fxml", 900, 600);
+                                } catch (IOException e) {
+                                    throw new RuntimeException(e);
+                                }
+                            });
+
+                            // Add hover effect
+                            setOnMouseEntered(event -> setStyle("-fx-background-color: #e6e7e5;"));
+                            setOnMouseExited(event -> setStyle("-fx-background-color: white;"));
+
+                            // Create a nested HBox for buttons
+                            HBox buttonsBox = new HBox(10);
+                            buttonsBox.getChildren().addAll(supprimerButton, modifierButton, ConsulterButton);
+                            buttonsBox.setAlignment(Pos.CENTER_LEFT);
+
+                            // Add a region to create space between name and buttons
+                            Region spacer = new Region();
+                            HBox.setHgrow(spacer, Priority.ALWAYS);
+
+                            // Add elements to outer HBox
+                            hBox.getChildren().addAll(name, type, spacer, buttonsBox);
+                            setGraphic(hBox);
+                        } else {
+                            setGraphic(null);
+                        }
+                    }
+                };
+            }
+        });
+        listviewDossiers.refresh();
+
+
         //add options to ComboBoxes
 
         comboboxAge.getItems().addAll("Adulte", "Enfant");
 
         comboboxDeroulement.getItems().addAll("ENLIGNE", "ENPRESENTIEL");
+
+        // Initialize list des dossiers
+        ArrayList<Dossier> dossiers = orthophonist.getDossiers();
+        for (Dossier dossier : dossiers)
+        {
+            listviewDossiers.getItems().add(dossier.getNumeroDossier()+"\t"+dossier.getPatient().getNom()+"\t"+dossier.getPatient().getPrenom());
+        }
     }
 
     public void updateInfos(ActionEvent event)throws IOException {
@@ -421,7 +509,6 @@ public class HomeController {
         Boolean adult = checkIfAdult(option);
         consultation= new Consultation(datepickerDateC.getValue(),heure,textfieldNom.getText().toString(),textfieldPrenom.getText().toString(),Integer.parseInt(textfieldAge.getText()),adult);
         orthophonist.addRendezVous(consultation);
-        orthophonist.afficherRendezVous();
     }
 
     public void ajouterSeanceSuivi()
@@ -433,7 +520,6 @@ public class HomeController {
         seance.setDeroulement(Deroulement.valueOf(comboboxDeroulement.getValue().toString()));
         orthophonist.addRendezVous(seance);
         orthophonist.recherchePatient(Integer.parseInt(textfieldNumDossier.getText().toString())).ajouterRendezVous(seance);
-        orthophonist.afficherRendezVous();
     }
 
     public void ajouterAtelierGroupe()
@@ -448,12 +534,15 @@ public class HomeController {
             orthophonist.recherchePatient(Integer.parseInt(listviewPatients.getItems().get(i).toString())).ajouterRendezVous(atelier);
         }
         orthophonist.addRendezVous(atelier);
-        orthophonist.afficherRendezVous();
     }
 
     public void ajouterNum()
     {
         listviewPatients.getItems().add(textfieldNum.getText().toString());
+    }
+
+    public void pageAjoutPatient() throws IOException {
+        m.changeScene("ajouterDossier.fxml",500,400);
     }
 
     public  void signOut ()throws IOException{

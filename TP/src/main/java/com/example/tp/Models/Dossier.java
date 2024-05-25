@@ -7,6 +7,7 @@ import com.example.tp.Models.Trouble;
 public class Dossier implements Serializable {
     private static int num=0;
     private int numeroDossier;
+    private Patient patient;
     private ArrayList<RendezVous> rendezVous = new ArrayList<>();
     private ArrayList<BO> BOs = new ArrayList<>();
     private ArrayList<FicheSuivi> ficheSuivis = new ArrayList<>();
@@ -15,6 +16,14 @@ public class Dossier implements Serializable {
     {
         numeroDossier = num;
         num++;
+    }
+
+    public void setPatient(Patient patient) {
+        this.patient = patient;
+    }
+
+    public Patient getPatient() {
+        return patient;
     }
 
     public int getNumeroDossier() {

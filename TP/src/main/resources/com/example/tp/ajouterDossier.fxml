@@ -25,7 +25,7 @@
                         <Text layoutX="19.0" layoutY="93.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tel :" />
                         <TextField fx:id="textfieldTelE" layoutX="62.0" layoutY="76.0" prefWidth="150.0" />
                         <Text layoutX="230.0" layoutY="93.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Lieu De Naissance :" />
-                        <TextField layoutX="340.0" layoutY="76.0" prefWidth="150.0" />
+                        <TextField fx:id="textfieldLieuE" layoutX="340.0" layoutY="76.0" prefWidth="150.0" />
                         <Text layoutX="97.0" layoutY="143.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date De Naissance :" />
                         <DatePicker fx:id="datepickerDateE" layoutX="230.0" layoutY="128.0" />
                         <Text layoutX="14.0" layoutY="194.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tel 2 :" />

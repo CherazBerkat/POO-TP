@@ -52,6 +52,36 @@ public class Dossier implements Serializable {
         return BOs;
     }
 
+    public ArrayList<RendezVous> getRendezVous() {
+        return rendezVous;
+    }
+
+    public ArrayList<BO> getBOs() {
+        return BOs;
+    }
+
+    public ArrayList<FicheSuivi> getFicheSuivis() {
+        return ficheSuivis;
+    }
+
+    public  void deleteRDV(int ind){
+        if (ind >= 0 && ind < rendezVous.size())
+            rendezVous.remove(ind);
+        else System.out.println("Index non valid , No question has been removed");
+    }
+
+    public  void deleteBO(int ind){
+        if (ind >= 0 && ind < BOs.size())
+            BOs.remove(ind);
+        else System.out.println("Index non valid , No question has been removed");
+    }
+
+    public  void deleteFiche(int ind){
+        if (ind >= 0 && ind < ficheSuivis.size())
+            ficheSuivis.remove(ind);
+        else System.out.println("Index non valid , No question has been removed");
+    }
+
     public Set<Trouble> allTroubles(){
         Set<Trouble> troubles = new HashSet<>();
         for (BO bo : BOs) {

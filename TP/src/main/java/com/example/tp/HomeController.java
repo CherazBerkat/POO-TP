@@ -36,6 +36,8 @@ public class HomeController {
     public static SerieExo sExo;
     public static SerieQuestion sQuest;
 
+    public static Dossier doss;
+
     public static boolean isSQuest;
     @FXML
     private TextField username;
@@ -89,7 +91,7 @@ public class HomeController {
     @FXML
     private TextField textfieldNum;
     @FXML
-    private ListView listviewDossiers;
+    private ListView<Dossier> listviewDossiers;
     @FXML
     private BarChart barChart;
     @FXML
@@ -378,10 +380,7 @@ public class HomeController {
         });
         anamList.refresh();
 
-        //Anamneses list
-
-        // Disable selection effect in the ListView
-        // Anamneses list
+        //Dossier list
 
 // Disable selection effect in the ListView
         listviewDossiers.setFocusTraversable(false);
@@ -389,7 +388,7 @@ public class HomeController {
 
         ObservableList<Dossier> observableDossier = FXCollections.observableArrayList(orthophonist.getDossiers());
         listviewDossiers.setItems(observableDossier);
-        listviewDossiers.setCellFactory(new Callback<ListView<Dossier>, ListCell<Dossier>>() {
+        listviewDossiers.setCellFactory(new Callback<>() {
             @Override
             public ListCell<Dossier> call(ListView<Dossier> listView) {
                 return new ListCell<Dossier>() {
@@ -411,12 +410,10 @@ public class HomeController {
 
                             Button supprimerButton = new Button("Supprimer");
                             Button modifierButton = new Button("Modifier");
-                            Button ConsulterButton = new Button("Consulter");
 
                             // Styling buttons
                             supprimerButton.setStyle("-fx-background-color:white; -fx-text-fill: #48efa6; -fx-font-weight: 700;");
                             modifierButton.setStyle("-fx-background-color: white; -fx-text-fill: #48efa6; -fx-font-weight: 700;");
-                            ConsulterButton.setStyle("-fx-background-color: white; -fx-text-fill: #48efa6; -fx-font-weight: 700;");
 
                             // Set button actions
                             supprimerButton.setOnAction(event -> {
@@ -425,14 +422,7 @@ public class HomeController {
                             });
 
                             modifierButton.setOnAction(event -> {
-                                try {
-                                    m.changeScene("ajouterDossier.fxml", 500, 400);
-                                } catch (IOException e) {
-                                    throw new RuntimeException(e);
-                                }
-                            });
-
-                            ConsulterButton.setOnAction(event -> {
+                                doss= item;
                                 try {
                                     m.changeScene("Dossier.fxml", 900, 600);
                                 } catch (IOException e) {
@@ -440,13 +430,14 @@ public class HomeController {
                                 }
                             });
 
+
                             // Add hover effect
                             setOnMouseEntered(event -> setStyle("-fx-background-color: #e6e7e5;"));
                             setOnMouseExited(event -> setStyle("-fx-background-color: white;"));
 
                             // Create a nested HBox for buttons
                             HBox buttonsBox = new HBox(10);
-                            buttonsBox.getChildren().addAll(supprimerButton, modifierButton, ConsulterButton);
+                            buttonsBox.getChildren().addAll(supprimerButton, modifierButton);
                             buttonsBox.setAlignment(Pos.CENTER_LEFT);
 
                             // Add a region to create space between name and buttons
@@ -471,13 +462,6 @@ public class HomeController {
         comboboxAge.getItems().addAll("Adulte", "Enfant");
 
         comboboxDeroulement.getItems().addAll("ENLIGNE", "ENPRESENTIEL");
-
-        // Initialize list des dossiers
-        ArrayList<Dossier> dossiers = orthophonist.getDossiers();
-        for (Dossier dossier : dossiers)
-        {
-            listviewDossiers.getItems().add(dossier.getNumeroDossier()+"\t"+dossier.getPatient().getNom()+"\t"+dossier.getPatient().getPrenom());
-        }
     }
 
     public void updateInfos(ActionEvent event)throws IOException {

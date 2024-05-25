@@ -1,31 +1,10 @@
 package com.example.tp;
 
-import java.time.format.DateTimeFormatter;
-import java.time.format.DateTimeParseException;
-import java.util.Map;
-import java.time.*;
 
-import javafx.beans.binding.Bindings;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.geometry.Pos;
-import javafx.scene.chart.*;
 import javafx.scene.control.*;
-import javafx.animation.KeyFrame;
-import javafx.animation.Timeline;
-import javafx.util.Duration;
 import java.io.IOException;
-import javafx.scene.chart.XYChart;
-import javafx.scene.layout.HBox;
-import javafx.util.Callback;
-import javafx.scene.layout.Region;
-import javafx.scene.layout.Priority;
 import com.example.tp.Models.*;
-
-import static com.example.tp.HelloApplication.orthophonist;
-
 
 import static com.example.tp.HelloApplication.orthophonist;
 
@@ -35,7 +14,7 @@ public class ajouterDossierController {
     @FXML
     private TextField textfieldNomE;
     @FXML
-    private TextField textfieldPreomE;
+    private TextField textfieldPrenomE;
     @FXML
     private TextField textfieldPrenomA;
     @FXML
@@ -55,28 +34,34 @@ public class ajouterDossierController {
     @FXML
     private TextField textfieldClasseE;
     @FXML
-    private Button buttonSauvE;
-    @FXML
-    private Button buttonSauvA;
-    @FXML
     private DatePicker datepickerDateA;
     @FXML
     private DatePicker datepickerDateE;
+    HelloApplication m = new HelloApplication();
 
-    public void ajouterEnfant()
-    {
-        Enfant enfant = new Enfant(textfieldNomE.getText().toString(), textfieldPreomE.getText().toString(), textfieldTelE.getText().toString(), datepickerDateE.getValue(), textfieldLieuE.getText().toString(), textfieldClasseE.getText().toString(), textfieldTel2E.getText().toString());
+
+    public void ajouterEnfant() throws IOException {
+        Enfant enfant = new Enfant(textfieldNomE.getText(), textfieldPrenomE.getText(), textfieldTelE.getText(), datepickerDateE.getValue(), textfieldLieuE.getText(), textfieldClasseE.getText(), textfieldTel2E.getText());
         Dossier dossier = new Dossier();
         dossier.setPatient(enfant);
         orthophonist.addDossier(dossier);
+        try {
+            m.changeScene("Home.fxml",900,600);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
-    public void ajouterAdulte()
-    {
-        Adult adult = new Adult(textfieldNomA.getText().toString(), textfieldPrenomA.getText().toString(), textfieldTelA.getText().toString(), datepickerDateA.getValue(), textfieldLieuA.getText().toString(), textfieldDiplomeA.getText().toString(), textfieldProfA.getText().toString());
+    public void ajouterAdulte() throws IOException {
+        Adult adult = new Adult(textfieldNomA.getText(), textfieldPrenomA.getText(), textfieldTelA.getText(), datepickerDateA.getValue(), textfieldLieuA.getText(), textfieldDiplomeA.getText(), textfieldProfA.getText());
         Dossier dossier = new Dossier();
         dossier.setPatient(adult);
         orthophonist.addDossier(dossier);
+        try {
+            m.changeScene("Home.fxml",900,600);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
 }

@@ -10,7 +10,7 @@
 <AnchorPane prefHeight="400.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.tp.AddQSQController">
    <children>
       <TextArea fx:id="text" layoutX="50.0" layoutY="39.0" prefHeight="200.0" prefWidth="200.0" />
-      <Label fx:id="label" alignment="CENTER" layoutX="6.0" layoutY="317.0" prefHeight="18.0" prefWidth="288.0" text="Label" textAlignment="CENTER" />
+      <Label fx:id="label" alignment="CENTER" layoutX="6.0" layoutY="317.0" prefHeight="18.0" prefWidth="288.0" textAlignment="CENTER" />
       <Text layoutX="50.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="text :" wrappingWidth="87.73676300048828" />
       <Text layoutX="50.0" layoutY="264.0" strokeType="OUTSIDE" strokeWidth="0.0" text="type :" wrappingWidth="87.73676300048828" />
       <ChoiceBox fx:id="type" layoutX="51.0" layoutY="275.0" prefHeight="26.0" prefWidth="200.0" />

@@ -60,7 +60,15 @@ public class ModifierEpreuveController {
                             Label nom = new Label(item.getNom());
                             Label capacite = new Label(item.getCapacite());
                             TextField conclusion=new TextField(item.getConclusion());
-                            Label ScoreTotale= new Label(String.valueOf(item.calculerScoreTotale()));
+                            Float scoreTotale = item.calculerScoreTotale();
+                            Label ScoreTotale;
+
+                            if (scoreTotale == null || scoreTotale.isNaN()) {
+                                ScoreTotale = new Label("0.0");
+                            } else {
+                                ScoreTotale = new Label(String.valueOf(scoreTotale));
+                            }
+
                             // Set fixed widths for Labels
                             nom.setPrefWidth(70);
                             nom.setMaxWidth(70);

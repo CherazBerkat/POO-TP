@@ -2,16 +2,16 @@
 
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-
 <?import javafx.geometry.Insets?>
+
 <AnchorPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.example.tp.SerieExoEpreuveController"
+            fx:controller="com.example.tp.SerieQuestionEpreuveController"
             prefHeight="600.0" prefWidth="900.0">
     <children>
     <BorderPane prefHeight="600.0" prefWidth="900.0">
     <center>
-        <ListView fx:id="listE" prefHeight="518.0" prefWidth="900.0" BorderPane.alignment="CENTER" />
+        <ListView fx:id="listQ" prefHeight="518.0" prefWidth="900.0" BorderPane.alignment="CENTER" />
     </center>
     <top>
         <HBox fx:id="upHbox" prefHeight="100.0" prefWidth="900.0" BorderPane.alignment="CENTER">

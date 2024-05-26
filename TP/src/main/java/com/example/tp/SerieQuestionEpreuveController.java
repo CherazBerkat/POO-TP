@@ -1,6 +1,7 @@
 package com.example.tp;
 
-import com.example.tp.Models.Exo;
+
+import com.example.tp.Models.Question;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -13,25 +14,28 @@ import javafx.util.Callback;
 
 import java.io.IOException;
 
-import static com.example.tp.ModifierEpreuveController.sExo;
+import static com.example.tp.ModifierEpreuveController.sQuest;
 
-public class SerieExoEpreuveController {
+public class SerieQuestionEpreuveController {
+    HelloApplication m = new HelloApplication();
     @FXML
-    private ListView<Exo> listE;
+    private ListView<Question> listQ;
     @FXML
-    private HBox upHbox=new HBox(30);;
+    private HBox upHbox = new HBox(30);
+    ;
+
     @FXML
     public void initialize() {
-        //************************************************* The upper Section ******************************************//
+        //************************************************* The upper Section ****************************************//
         upHbox.setPrefHeight(100);
         upHbox.setAlignment(Pos.CENTER_LEFT);
         upHbox.setStyle("-fx-padding: 0 20;");
 
-        Label titre = new Label(sExo.getNom());
+        Label titre = new Label(sQuest.getNom());
         titre.setPrefWidth(200);
         titre.setStyle("-fx-text-fill:#48efa6; -fx-font-weight: 800; -fx-font-size:18;");
 
-        Label capacite = new Label(sExo.getCapacite());
+        Label capacite = new Label(sQuest.getCapacite());
         capacite.setPrefWidth(400);
         capacite.setStyle("-fx-font-weight: 800; -fx-font-size:18;");
 
@@ -49,7 +53,6 @@ public class SerieExoEpreuveController {
             }
         });
 
-
         // Add a region to create space between name and buttons
         Region spacer = new Region();
         HBox.setHgrow(spacer, Priority.ALWAYS);
@@ -58,46 +61,40 @@ public class SerieExoEpreuveController {
         fixedSpacer.setPrefWidth(20);
 
         upHbox.getChildren().addAll(titre, fixedSpacer, capacite, spacer, retourButton);
-        //************************************************* La list des Exos *****************************************//
+        //************************************************* La list des Questions *****************************************//
         // Disable selection effect in the ListView
-        listE.setFocusTraversable(false);
-        listE.setSelectionModel(new SerieExoEpreuveController.NoSelectionModel<>());
+        listQ.setFocusTraversable(false);
+        listQ.setSelectionModel(new SerieQuestionEpreuveController.NoSelectionModel<>());
 
-        ObservableList<Exo> observableExos = FXCollections.observableArrayList(sExo.getExos());
-        listE.setItems(observableExos);
-
-        listE.setCellFactory(new Callback<>() {
+        ObservableList<Question> observableQuestions = FXCollections.observableArrayList(sQuest.getQuestions());
+        listQ.setItems(observableQuestions);
+        listQ.setCellFactory(new Callback<>() {
             @Override
-            public ListCell<Exo> call(ListView<Exo> listView) {
-                return new ListCell<Exo>() {
+            public ListCell<Question> call(ListView<Question> listView) {
+                return new ListCell<Question>() {
                     @Override
-                    protected void updateItem(Exo item, boolean empty) {
+                    protected void updateItem(Question item, boolean empty) {
                         super.updateItem(item, empty);
                         if (item != null && !empty) {
                             HBox hBox = new HBox(20);
                             hBox.setPrefHeight(50);
                             hBox.setAlignment(Pos.CENTER_LEFT);
 
-                            Label name = new Label("Exercice" + (getIndex() + 1));
-                            Label consigne= new Label(item.getConsigne());
-                            Label materiel= new Label(item.getMateriel());
+                            Label type = new Label(item.getClass().getSimpleName());
+                            Label text= new Label(item.getText());
                             TextField score=new TextField(String.valueOf(item.getScore()));
 
                             // Set fixed widths for Labels
-                            name.setPrefWidth(70);
-                            materiel.setPrefWidth(200);
+                            type.setPrefWidth(70);
                             score.setPrefWidth(70);
 
                             // Ensure the TextField takes up remaining space
-                            HBox.setHgrow(consigne, Priority.ALWAYS);
-                            consigne.setMaxWidth(Double.MAX_VALUE);
-
+                            HBox.setHgrow(text, Priority.ALWAYS);
+                            text.setMaxWidth(Double.MAX_VALUE);
 
                             Button sauvButton = new Button("Sauvegarder");
-
                             // Styling buttons
                             sauvButton.setStyle("-fx-background-color:white; -fx-text-fill: #48efa6; -fx-font-weight: 700;");
-
                             // Set button actions
 
                             sauvButton.setOnAction(event -> {
@@ -108,8 +105,9 @@ public class SerieExoEpreuveController {
                             setOnMouseEntered(event -> setStyle("-fx-background-color: #e6e7e5;"));
                             setOnMouseExited(event -> setStyle("-fx-background-color: white;"));
 
+
                             // Add elements to outer HBox
-                            hBox.getChildren().addAll(name, materiel,consigne,score, sauvButton);
+                            hBox.getChildren().addAll(type,text,score, sauvButton);
                             setGraphic(hBox);
                         } else {
                             setGraphic(null);
@@ -118,7 +116,7 @@ public class SerieExoEpreuveController {
                 };
             }
         });
-        listE.refresh();
+        listQ.refresh();
     }
 
     // Custom NoSelectionModel class to disable selection

@@ -30,7 +30,7 @@ public class SerieQuestion extends Test implements Serializable {
         return questionList.get(ind);
     }
 
-    public  void compteRendu(){
+ /*   public  void compteRendu(){
         Scanner scanner = new Scanner(System.in);
         for(Question q: questions){
                 int score;
@@ -43,7 +43,7 @@ public class SerieQuestion extends Test implements Serializable {
                 } while (score < 1 || score > 10);
                 q.setScore(score);
         }
-    }
+    }*/
 
 
     public void addQuestion(Question question) {

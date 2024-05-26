@@ -38,7 +38,7 @@ public class SerieExo extends Test implements Serializable {
         }
     }
 
-    public void compteRendu() {
+  /*  public void compteRendu() {
         Scanner scanner = new Scanner(System.in);
         for (Exo exo : exos) {
             int score;
@@ -51,7 +51,7 @@ public class SerieExo extends Test implements Serializable {
             } while (score < 1 || score > 10);
             exo.setScore(score);
         }
-    }
+    }*/
     public float calculerScoreTotale(){
         int sum=0;
         int counter=0;
@@ -75,11 +75,6 @@ public class SerieExo extends Test implements Serializable {
         }
         return sumtot/compt;
     }
-    public void afficher(){
-        super.afficher();
-        for (Exo exo : exos) {
-            exo.afficher();
-        }
-    }
+
 
 }

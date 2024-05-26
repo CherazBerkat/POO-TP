@@ -39,7 +39,7 @@ public class HelloApplication extends Application {
             createFile();
         }
         /************************************************test Data***********************************************/
-       /* TypeTrouble troubleType1 = TypeTrouble.DEGLUTITION;
+        TypeTrouble troubleType1 = TypeTrouble.DEGLUTITION;
         TypeTrouble troubleType2 = TypeTrouble.NEURODEVELOPPEMENTAUX;
         TypeTrouble troubleType3 = TypeTrouble.COGNITIFS;
 
@@ -128,7 +128,7 @@ public class HelloApplication extends Application {
         qcu.addPropo("choix2",false);
         qcu.addPropo("choix3",true);
         qcu.addPropo("choix4",false);
-        sq.addQuestion(qcu);*/
+        sq.addQuestion(qcu);
 
         /*******************************************************************************************************/
         stage.setTitle("CabinetPro ManageX");

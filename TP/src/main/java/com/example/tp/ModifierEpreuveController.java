@@ -60,7 +60,7 @@ public class ModifierEpreuveController {
                             Label nom = new Label(item.getNom());
                             Label capacite = new Label(item.getCapacite());
                             TextField conclusion=new TextField(item.getConclusion());
-                            TextField ScoreTotale= new TextField(String.valueOf(item.calculerScoreTotale()));
+                            Label ScoreTotale= new Label(String.valueOf(item.calculerScoreTotale()));
                             // Set fixed widths for Labels
                             nom.setPrefWidth(70);
                             nom.setMaxWidth(70);
@@ -144,7 +144,7 @@ public class ModifierEpreuveController {
                             Label nom = new Label(item.getNom());
                             Label capacite = new Label(item.getCapacite());
                             TextField conclusion=new TextField(item.getConclusion());
-                            TextField ScoreTotale= new TextField(String.valueOf(item.calculerScoreTotale()));
+                            Label ScoreTotale= new Label(String.valueOf(item.calculerScoreTotale()));
                             // Set fixed widths for Labels
                             nom.setPrefWidth(70);
                             nom.setMaxWidth(70);

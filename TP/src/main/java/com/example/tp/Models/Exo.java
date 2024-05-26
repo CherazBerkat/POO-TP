@@ -10,6 +10,7 @@ public class Exo implements Serializable {
     public  Exo(String c, String m){
         consigne=c;
         materiel=m;
+        Score=0;
     }
 
     @Override
@@ -41,7 +42,10 @@ public class Exo implements Serializable {
     }
 
     public void setScore(int score) {
-        Score = score;
+        if (score >=1 && score <=10)
+            Score = score;
+        else
+            System.out.println("score non valide");
     }
     public void afficher(){
         System.out.println("Consigne: "+consigne);

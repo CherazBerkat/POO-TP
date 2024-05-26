@@ -9,6 +9,7 @@ public class Question implements Serializable {
 
     public Question(String t){
         text=t;
+        Score=0;
     }
 
     public void setScore(int score) {

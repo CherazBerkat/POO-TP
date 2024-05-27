@@ -6,12 +6,13 @@ import java.util.ArrayList;
 public abstract class Anamnese implements Serializable {
   protected ArrayList<QuestionAnam> questions= new ArrayList<>();
 
-    /******************************************************** GETTER **************************************************/
+    //******************************************************** GETTER *************************************************//
 
     public ArrayList<QuestionAnam> getQuestions() {
     return questions;
   }
-    /******************************************************** METHODS **************************************************/
+
+    //******************************************************** METHODS ************************************************//
 
     public  abstract void ajouterQuestion(QuestionAnam q);
     public  void deleteQuestion(int ind){

@@ -5,7 +5,7 @@ import java.io.Serializable;
 
 public class AnamneseAdulte extends Anamnese implements Serializable{
 
-    /************************************************* METHODS ********************************************************/
+    //************************************************* METHODS ******************************************************//
     public void ajouterQuestion(QuestionAnam q) {
         if (q instanceof QuestionAnamAdult) {
             questions.add(q);

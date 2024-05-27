@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.util.Scanner;
 import java.time.*;
 public class Consultation extends RendezVous implements Serializable {
+
+    //***********************************************LES ATTRIBUTS****************************************************//
     private final String dureeEnfant="2h30min";
     private final String dureeAdulte="1h30min";
     private String nom;
@@ -11,6 +13,7 @@ public class Consultation extends RendezVous implements Serializable {
     private int age;
     private boolean adult;
 
+    //***********************************************CONSTRUCTEUR*****************************************************//
     public Consultation(LocalDate d, LocalTime h, String n, String p, int a, boolean ad)
     {
         super(d,h);
@@ -19,13 +22,9 @@ public class Consultation extends RendezVous implements Serializable {
         age = a;
         adult = ad;
     }
-
+    //****************************************************GETTERS*****************************************************//
     public int getAge() {
         return age;
-    }
-
-    public void setAge(int age) {
-        this.age = age;
     }
 
     public String getDureeEnfant() {
@@ -40,26 +39,31 @@ public class Consultation extends RendezVous implements Serializable {
         return nom;
     }
 
-    public void setNom(String nom) {
-        this.nom = nom;
-    }
-
     public String getPrenom() {
         return prenom;
-    }
-
-    public void setPrenom(String prenom) {
-        this.prenom = prenom;
     }
 
     public boolean getAdult() {
         return adult;
     }
 
+    //****************************************************SETTERS*****************************************************//
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
+
+    public void setPrenom(String prenom) {
+        this.prenom = prenom;
+    }
+
     public void setAdult(boolean adult) {
         this.adult = adult;
     }
-
+    //************************************************* METHODS ******************************************************//
     public void programmerRendezVous()
     {
         Scanner sc = new Scanner(System.in);

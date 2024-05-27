@@ -5,28 +5,29 @@ import java.util.Scanner;
 import java.time.*;
 import java.util.ArrayList;
 public class Atelier extends RendezVous implements Serializable {
-    private String thematique;
-   private ArrayList<Integer>patients= new ArrayList<Integer>();///should be integers array list
 
-    public Atelier(LocalDate d, LocalTime h, String t) //Rendez vous n'a pas de constructeur marakich dayratalha.
+    //***********************************************LES ATTRIBUTS****************************************************//
+    private String thematique;
+    private ArrayList<Integer>patients= new ArrayList<Integer>();
+
+    //***********************************************CONSTRUCTEUR*****************************************************//
+    public Atelier(LocalDate d, LocalTime h, String t)
     {
         super(d, h);
         thematique = t;
     }
+
+    //****************************************************GETTERS*****************************************************//
     public String getThematique() {
         return thematique;
     }
 
+    //****************************************************SETTERS*****************************************************//
     public void setThematique(String thematique) {
         this.thematique = thematique;
     }
 
-    public void affichPatients() {
-        for (int patient : patients) {
-            //e.affichPatient();
-        }
-    }
-
+    //************************************************* METHODS ******************************************************//
     public void ajouterPatient(int id) {
         patients.add(id);
     }

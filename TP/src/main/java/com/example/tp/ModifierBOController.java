@@ -44,7 +44,7 @@ public class ModifierBOController {
     private ObservableList<Trouble> observableDiag;
     private ObservableList<EpreuveClinique> observableEpreuve;
 
-    private static EpreuveClinique ep;
+    public static EpreuveClinique ep;
 
     private HelloApplication m= new HelloApplication();
 

@@ -34,10 +34,6 @@ public abstract class Test implements Serializable {
     }
 
     public abstract float calculerScoreTotale();
-    public  abstract void compteRendu();
-    public void afficher(){
-        System.out.println("Nom: "+nom);
-        System.out.println("Capacite: "+capacite);
-        System.out.println("Conclusion: "+conclusion);
-    }
+   // public  abstract void compteRendu();
+
 }

@@ -1,15 +1,11 @@
 package com.example.tp.Models;
 import java.io.Serializable;
 import java.util.ArrayList;
-public class Diagnostic implements Serializable
-{
+public class Diagnostic implements Serializable {
+    //***********************************************LES ATTRIBUTS****************************************************//
     private ArrayList<Trouble> troubles = new ArrayList<>();
 
-    public void ajouterTrouble(Trouble t)
-    {
-        troubles.add(t);
-    }
-
+    //****************************************************GETTERS*****************************************************//
     public ArrayList<Trouble> getTroubles(){
         return troubles;
     }
@@ -18,6 +14,12 @@ public class Diagnostic implements Serializable
         if (ind >= 0 && ind < troubles.size())
             return troubles.get(ind);
         else return null;
+    }
+
+    //************************************************* METHODS ******************************************************//
+    public void ajouterTrouble(Trouble t)
+    {
+        troubles.add(t);
     }
 
     public  void deleteTrouble(int ind){

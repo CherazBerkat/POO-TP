@@ -12,6 +12,7 @@ import java.util.Map;
 import static com.example.tp.HelloApplication.*;
 
 public class Ortho implements  Serializable{
+    //***********************************************LES ATTRIBUTS****************************************************//
     private String nom;
     private String prenom;
     private String tel;
@@ -24,10 +25,10 @@ public class Ortho implements  Serializable{
     private  ArrayList<Dossier> dossiers=new ArrayList<>();
     private ArrayList<Anamnese> anamneses=new ArrayList<>();
     private ArrayList<RendezVous> rendezVous=new ArrayList<>();
-
+    //***********************************************CONSTRUCTEUR*****************************************************//
     public Ortho(){}
 
-    /**************************************************************************************************/
+    //****************************************************GETTERS*****************************************************//
     public String getNom() {
         return nom;
     }
@@ -39,7 +40,31 @@ public class Ortho implements  Serializable{
     public String getTel() {
         return tel;
     }
-
+    public String getPasswd(){
+        return passwd;
+    }
+    public String getUserName(){
+        return userName;
+    }
+    public String getAdr(){
+        return adr;
+    }
+    public String getMail() {
+        return mail;
+    }
+    public ArrayList<Anamnese> getAnamneses(){
+        return anamneses;
+    }
+    public ArrayList<SerieExo> getSerieExos(){
+        return serieExos;
+    }
+    public ArrayList<SerieQuestion> getSerieQuestions(){
+        return serieQuestions;
+    }
+    public ArrayList<Dossier> getDossiers(){
+        return dossiers;
+    }
+    //****************************************************SETTERS*****************************************************//
     public void setNom(String nom) {
         this.nom = nom;
     }
@@ -55,15 +80,6 @@ public class Ortho implements  Serializable{
         this.passwd = passwd;
     }
 
-    public String getPasswd(){
-        return passwd;
-    }
-
-
-    public String getMail() {
-        return mail;
-    }
-
     public void setMail(String mail) {
         this.mail = mail;
     }
@@ -71,30 +87,10 @@ public class Ortho implements  Serializable{
     public void setUserName(String userName) {
         this.userName = userName;
     }
-    public String getUserName(){
-        return userName;
-    }
     public void setAdr(String a){
         adr=a;
     }
-    public String getAdr(){
-        return adr;
-    }
-    public ArrayList<Anamnese> getAnamneses(){
-        return anamneses;
-    }
-    public ArrayList<SerieExo> getSerieExos(){
-        return serieExos;
-    }
-    public ArrayList<SerieQuestion> getSerieQuestions(){
-        return serieQuestions;
-    }
-
-
-    public ArrayList<Dossier> getDossiers(){
-        return dossiers;
-    }
-    /***********************************************************************************************/
+   //************************************************* METHODS ******************************************************//
     public void addSerieExos(SerieExo s){
         serieExos.add(s);
     }
@@ -158,7 +154,6 @@ public class Ortho implements  Serializable{
         }
     }
 
-    /****************************************************************************************************/
     public  void affichInfo(){
         System.out.println("Nom: "+nom);
         System.out.println("Prenom: "+prenom);
@@ -167,14 +162,6 @@ public class Ortho implements  Serializable{
         System.out.println("email: "+mail);
         System.out.println("psswd: "+passwd);
         System.out.println("username: "+userName);
-    }
-
-    public void afficherRendezVous()
-    {
-        for (RendezVous r : rendezVous)
-        {
-            r.affichRendezVous();
-        }
     }
 
     public Map<Trouble, Integer> countTroubles() {

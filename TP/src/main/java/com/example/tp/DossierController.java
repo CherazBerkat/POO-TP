@@ -124,7 +124,7 @@ public class DossierController {
                             // Set button actions
                             supprimerButton.setOnAction(event -> {
                                 getListView().getItems().remove(item);
-                                // doss.DeleteRDV(getIndex());
+                                doss.deleteRDV(getIndex());
                             });
 
                             sauvButton.setOnAction(event -> {
@@ -277,7 +277,7 @@ public class DossierController {
                             //Set button actions
                             supprimerButton.setOnAction(event -> {
                                 getListView().getItems().remove(item);
-                                doss.deleteBO(getIndex());
+                                doss.deleteFiche(getIndex());
                             });
 
                             ModifierButton.setOnAction(event -> {

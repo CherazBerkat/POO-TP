@@ -1,23 +1,21 @@
 package com.example.tp.Models;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
 public class QCU extends Question implements Serializable {
-   /* private ArrayList<String> propos=new ArrayList<>();
-    private  String juste ;*/
+    //************************************************* LES ATTRIBUTS ******************************************************//
    private Map<String,Integer> propos =new HashMap<>();
-
+    //***********************************************CONSTRUCTEUR*****************************************************//
     public  QCU (String t){
         super(t);
     }
-
+    //****************************************************GETTERS*****************************************************//
     public Map<String,Integer> getPropos(){
         return propos;
     }
-
+    //****************************************************METHODS*****************************************************//
     public void addPropo(String c, boolean correct) {
         if (correct) {
             // If correct is true, set all values to 0
@@ -30,30 +28,4 @@ public class QCU extends Question implements Serializable {
         }
     }
 
-  /*  public void setJuste(String juste) {
-        this.juste = juste;
-    }
-
-    public String getJuste() {
-        return juste;
-    }
-    public void deletePropo (String c){
-        ArrayList<String> toRemove= new ArrayList<>();
-        for (String propo : propos){
-            if(propo==c){
-                toRemove.add(propo);
-            }
-        }
-        propos.removeAll(toRemove);
-    }
-    public void deletePropoIndex(int index) {
-        if (index >= 0 && index < propos.size()) {
-            propos.remove(index);
-        } else {
-            System.out.println("Invalid index. No Proposition deleted.");
-        }
-    }
-    public  void addPropo (String c){
-        propos.add(c);
-    }*/
 }

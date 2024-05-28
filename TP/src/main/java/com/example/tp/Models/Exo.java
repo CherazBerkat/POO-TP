@@ -3,24 +3,17 @@ package com.example.tp.Models;
 import java.io.Serializable;
 
 public class Exo implements Serializable {
+    //***********************************************LES ATTRIBUTS****************************************************//
     private String consigne;
     private String materiel;
     private  int Score;
-
+    //***********************************************CONSTRUCTEUR*****************************************************//
     public  Exo(String c, String m){
         consigne=c;
         materiel=m;
         Score=0;
     }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) return true;
-        if (obj == null || getClass() != obj.getClass()) return false;
-        Exo other = (Exo) obj;
-        return consigne.equals(other.consigne) && materiel.equals(other.materiel);
-    }
-
+    //****************************************************GETTERS*****************************************************//
     public int getScore() {
         return Score;
     }
@@ -33,6 +26,7 @@ public class Exo implements Serializable {
         return materiel;
     }
 
+    //****************************************************SETTERS*****************************************************//
     public void setConsigne(String consigne) {
         this.consigne = consigne;
     }
@@ -47,9 +41,13 @@ public class Exo implements Serializable {
         else
             System.out.println("score non valide");
     }
-    public void afficher(){
-        System.out.println("Consigne: "+consigne);
-        System.out.println("Materiel: "+materiel);
-        System.out.println("Score: "+Score);
+    //************************************************* METHODS ******************************************************//
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        Exo other = (Exo) obj;
+        return consigne.equals(other.consigne) && materiel.equals(other.materiel);
     }
+    
 }

@@ -4,13 +4,14 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 public class FicheSuivi implements Serializable {
+    //***********************************************LES ATTRIBUTS****************************************************//
     private ArrayList<Objectif> objectifs = new ArrayList<>();
 
     public ArrayList<Objectif> getObjectifs(){
         return objectifs;
     }
 
-    private boolean objectifsAttient;
+    //************************************************* METHODS ******************************************************//
 
     public void ajouterObjectif(Objectif o)
     {

@@ -5,22 +5,20 @@ import java.io.Serializable;
 public class QuestionAnam  implements Serializable {
     private String text;
 
-    /**************************************************** CONSTRUCTEUR *****************************************************/
+    //**************************************************** CONSTRUCTEUR ***********************************************//
      public QuestionAnam(String t){
          text=t;
      }
 
-    /**************************************************** SETTER *****************************************************/
+    //**************************************************** SETTER *****************************************************//
 
     public void setText (String t){
         text=t;
     }
 
-    /******************************************************** GETTER **************************************************/
+    //******************************************************** GETTER *************************************************//
 
     public String getText() {
         return text;
     }
-  /*  public TypeAnamneseAdulte getTypeAdult (){ return TypeAnamneseAdulte.SUIVIMEDICAL;}
-    public TypeAnamneseEnfant getTypeEnfant (){ return TypeAnamneseEnfant.CONDITIONSNATALES;}*/
 }

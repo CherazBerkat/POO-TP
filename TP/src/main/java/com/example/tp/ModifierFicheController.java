@@ -159,7 +159,7 @@ public class ModifierFicheController {
                                      item.setType(TypeObjectif.valueOf(type.getText().toString().replace(" ","").toUpperCase()));
                                 else
                                     System.out.println("Type non valide, non savegarde");
-                                item.setNote( Integer.valueOf(note.getText().toString()));
+                                item.evaluer( Integer.valueOf(note.getText().toString()));
                             });
 
                             // Add hover effect

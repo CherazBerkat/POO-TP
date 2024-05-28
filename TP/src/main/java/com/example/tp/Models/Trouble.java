@@ -4,9 +4,10 @@ import java.io.Serializable;
 import java.util.Objects;
 
 public class Trouble implements Serializable {
+    //************************************************* LES ATTRIBUTS ******************************************************//
     private String nom;
     private TypeTrouble type;
-
+    //************************************************* LES CONSTRUCTEURS ******************************************************//
     public Trouble()
     {
     }
@@ -16,13 +17,13 @@ public class Trouble implements Serializable {
         nom = n;
         type = t;
     }
-
-    public void affichTrouble()
-    {
-        System.out.println("Le nom du trouble : "+nom+" et son type : "+type);
+    //****************************************************GETTERS*****************************************************//
+    public String getNom(){return nom;}
+    public TypeTrouble getType() {
+        return type;
     }
 
-    public String getNom(){return nom;}
+    //****************************************************SETTERS*****************************************************//
 
     public void setNom(String nom) {
         this.nom = nom;
@@ -32,10 +33,7 @@ public class Trouble implements Serializable {
         this.type = type;
     }
 
-    public TypeTrouble getType() {
-        return type;
-    }
-
+    //************************************************* METHODS ******************************************************//
     @Override
     public boolean equals(Object obj) {
         if (this == obj) return true;

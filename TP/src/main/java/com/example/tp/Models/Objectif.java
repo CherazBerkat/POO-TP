@@ -1,22 +1,19 @@
 package com.example.tp.Models;
 
 import java.io.Serializable;
-import java.util.Scanner;
 
 public class Objectif implements Serializable {
+    //***********************************************LES ATTRIBUTS****************************************************//
     private String nom;
     private TypeObjectif type;
     private int note;
+    //***********************************************CONSTRUCTEUR*****************************************************//
     public Objectif(String n, TypeObjectif t)
     {
         nom = n;
         type = t;
     }
-
-    public void setNom(String nom) {
-        this.nom = nom;
-    }
-
+    //****************************************************GETTERS*****************************************************//
     public String getNom() {
         return nom;
     }
@@ -24,19 +21,21 @@ public class Objectif implements Serializable {
     public int getNote() {
         return note;
     }
-
-    public void setNote(int note) {
-        this.note = note;
-    }
-
     public TypeObjectif getType() {
         return type;
+    }
+
+    //****************************************************SETTERS*****************************************************//
+
+    public void setNom(String nom) {
+        this.nom = nom;
     }
 
     public void setType(TypeObjectif type) {
         this.type = type;
     }
 
+    //************************************************* METHODS ******************************************************//
     public void evaluer(int n)
     {
         if(n<=5 && n>=1)

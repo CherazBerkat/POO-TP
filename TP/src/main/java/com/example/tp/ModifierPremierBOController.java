@@ -28,182 +28,96 @@ import javafx.scene.layout.Region;
 import javafx.scene.layout.Priority;
 import com.example.tp.Models.*;
 
-import static com.example.tp.DossierController.bo;
+import static com.example.tp.DossierController.premierBO;
 import static com.example.tp.HelloApplication.orthophonist;
 import static com.example.tp.HomeController.doss;
 
 public class ModifierPremierBOController {
     @FXML
-    private TextField textfieldProjet;
-    @FXML
-    private ListView<Trouble> listviewDiag1;
-    @FXML
-    private ListView<EpreuveClinique> listviewEpreuve1;
+    private ListView<QuestionAnam> listviewAnam;
     @FXML
     private Button buttonRetour;
-    private ObservableList<Trouble> observableDiag1;
-    private ObservableList<EpreuveClinique> observableEpreuve1;
+    private ObservableList<QuestionAnam> observableAnam;
 
     private static EpreuveClinique ep;
 
     private HelloApplication m= new HelloApplication();
+    @FXML
+    private Button buttonAjouterAnam;
 
     public void initialize() {
-        textfieldProjet.setText(bo.getProjetTherapeutique());
 
         // Set button actions
         buttonRetour.setOnAction(event -> {
             HelloApplication m = new HelloApplication();
             try {
-                m.changeScene("Home.fxml", 900, 600);
+                m.changeScene("Dossier.fxml", 900, 600);
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
         });
 
-        //************************list trouble de diagnostic********************************
-        // Disable selection effect in the ListView
-        listviewDiag1.setFocusTraversable(false);
-        listviewDiag1.setSelectionModel(new ModifierPremierBOController.NoSelectionModel<>());
-
-        // Populate the ListView with Trouble objects
-        observableDiag1 = FXCollections.observableArrayList(bo.getDiagnostic().getTroubles());
-        listviewDiag1.setItems(observableDiag1);
-
-        listviewDiag1.setCellFactory(new Callback<>() {
-            @Override
-            public ListCell<Trouble> call(ListView<Trouble> listView) {
-                return new ListCell<Trouble>() {
-                    @Override
-                    protected void updateItem(Trouble item, boolean empty) {
-                        super.updateItem(item, empty);
-                        if (item != null && !empty) {
-                            HBox hBox = new HBox(20);
-                            hBox.setPrefHeight(50);
-                            hBox.setAlignment(Pos.CENTER_LEFT);
-
-                            Label name = new Label("Trouble" + (getIndex() + 1));
-                            TextField type = new TextField(item.getType().toString());
-                            TextField Nom = new TextField(item.getNom().toString());
-
-                            //Set fixed widths for Labels
-                            name.setPrefWidth(70);
-                            Nom.setPrefWidth(150);
-                            // Ensure the type takes up remaining space
-                            HBox.setHgrow(type, Priority.ALWAYS);
-                            type.setMaxWidth(Double.MAX_VALUE);
-
-                            Button supprimerButton = new Button("Supprimer");
-                            Button SauvButton = new Button("Sauvgarder");
-
-                            // Styling buttons
-                            supprimerButton.setStyle("-fx-background-color:white; -fx-text-fill: #48efa6; -fx-font-weight: 700;");
-                            SauvButton.setStyle("-fx-background-color:white; -fx-text-fill: #48efa6; -fx-font-weight: 700;");
-
-                            //Set button actions
-                            supprimerButton.setOnAction(event -> {
-                                getListView().getItems().remove(item);
-                                bo.getDiagnostic().deleteTrouble(getIndex());
-                            });
-
-                            SauvButton.setOnAction(event -> {
-                                bo.getDiagnostic().getTrouble(getIndex()).setNom(Nom.getText());
-                                bo.getDiagnostic().getTrouble(getIndex()).setType(TypeTrouble.valueOf(type.getText()));
-                            });
-
-                            // Add hover effect
-                            setOnMouseEntered(event -> setStyle("-fx-background-color: #e6e7e5;"));
-                            setOnMouseExited(event -> setStyle("-fx-background-color: white;"));
-
-                            // Create a nested HBox for buttons
-                            HBox buttonsBox = new HBox(20);
-                            buttonsBox.getChildren().addAll(supprimerButton, SauvButton);
-                            buttonsBox.setAlignment(Pos.CENTER_LEFT);
-
-                            // Add elements to outer HBox
-                            hBox.getChildren().addAll(name, type, buttonsBox);
-                            setGraphic(hBox);
-                        } else {
-                            setGraphic(null);
-                        }
-                    }
-                };
-            }
-        });
-        listviewDiag1.refresh();
-
         //************************list Epreuves********************************
         // Disable selection effect in the ListView
-        listviewEpreuve1.setFocusTraversable(false);
-        listviewEpreuve1.setSelectionModel(new ModifierPremierBOController.NoSelectionModel<>());
+        if(premierBO.getAnamnese()!=null) {
+            listviewAnam.setFocusTraversable(false);
+            listviewAnam.setSelectionModel(new ModifierPremierBOController.NoSelectionModel<>());
 
-        // Populate the ListView with Epreuve objects
-        observableEpreuve1 = FXCollections.observableArrayList(bo.getEpreuveClinique());
-        listviewEpreuve1.setItems(observableEpreuve1);
+            // Populate the ListView with Epreuve objects
+            observableAnam = FXCollections.observableArrayList(premierBO.getAnamnese().getQuestions());
+            listviewAnam.setItems(observableAnam);
+        }
+            listviewAnam.setCellFactory(new Callback<>() {
+                @Override
+                public ListCell<QuestionAnam> call(ListView<QuestionAnam> listView) {
+                    return new ListCell<QuestionAnam>() {
+                        @Override
+                        protected void updateItem(QuestionAnam item, boolean empty) {
+                            super.updateItem(item, empty);
+                            if (item != null && !empty) {
+                                HBox hBox = new HBox(20);
+                                hBox.setPrefHeight(50);
+                                hBox.setAlignment(Pos.CENTER_LEFT);
 
-        listviewEpreuve1.setCellFactory(new Callback<>() {
-            @Override
-            public ListCell<EpreuveClinique> call(ListView<EpreuveClinique> listView) {
-                return new ListCell<EpreuveClinique>() {
-                    @Override
-                    protected void updateItem(EpreuveClinique item, boolean empty) {
-                        super.updateItem(item, empty);
-                        if (item != null && !empty) {
-                            HBox hBox = new HBox(20);
-                            hBox.setPrefHeight(50);
-                            hBox.setAlignment(Pos.CENTER_LEFT);
-
-                            Label name = new Label("Epreuve" + (getIndex() + 1));
-                            Label type= new Label("Epreuve Clinique");
-
-                            //Set fixed widths for Labels
-                            name.setPrefWidth(70);
-                            // Ensure the type takes up remaining space
-                            HBox.setHgrow(type, Priority.ALWAYS);
-                            type.setMaxWidth(Double.MAX_VALUE);
-
-                            Button supprimerButton = new Button("Supprimer");
-                            Button ModifierButton = new Button("Modifier");
-
-                            // Styling buttons
-                            supprimerButton.setStyle("-fx-background-color:white; -fx-text-fill: #48efa6; -fx-font-weight: 700;");
-                            ModifierButton.setStyle("-fx-background-color:white; -fx-text-fill: #48efa6; -fx-font-weight: 700;");
-
-                            //Set button actions
-                            supprimerButton.setOnAction(event -> {
-                                getListView().getItems().remove(item);
-                                bo.getDiagnostic().deleteTrouble(getIndex());
-                            });
-
-                            ModifierButton.setOnAction(event -> {
-                                ep=item;
-                                try {
-                                    m.changeScene("ModifierEpreuve.fxml",900,600);
-                                } catch (IOException e) {
-                                    throw new RuntimeException(e);
+                                Label name = new Label("Question Anamnese" + (getIndex() + 1));
+                                Label type;
+                                if (item instanceof QuestionAnamAdult) {
+                                    type = new Label("Anamnese Adulte");
+                                } else {
+                                    type = new Label("Anamnese Enfant");
                                 }
-                            });
+                                Label categorie;
+                                if (item instanceof QuestionAnamAdult) {
+                                    categorie = new Label(((QuestionAnamAdult) item).getTypeAdult().toString());
+                                } else {
+                                    categorie = new Label(((QuestionAnamEnfant) item).getTypeEnfant().toString());
+                                }
+                                Label text = new Label(item.getText());
+                                //Set fixed widths for Labels
+                                name.setPrefWidth(100);
+                                type.setPrefWidth(100);
+                                categorie.setPrefWidth(200);
+                                // Ensure the type takes up remaining space
+                                HBox.setHgrow(text, Priority.ALWAYS);
+                                text.setMaxWidth(Double.MAX_VALUE);
 
-                            // Add hover effect
-                            setOnMouseEntered(event -> setStyle("-fx-background-color: #e6e7e5;"));
-                            setOnMouseExited(event -> setStyle("-fx-background-color: white;"));
 
-                            // Create a nested HBox for buttons
-                            HBox buttonsBox = new HBox(20);
-                            buttonsBox.getChildren().addAll(supprimerButton, ModifierButton);
-                            buttonsBox.setAlignment(Pos.CENTER_LEFT);
+                                // Add hover effect
+                                setOnMouseEntered(event -> setStyle("-fx-background-color: #e6e7e5;"));
+                                setOnMouseExited(event -> setStyle("-fx-background-color: white;"));
 
-                            // Add elements to outer HBox
-                            hBox.getChildren().addAll(name, type, buttonsBox);
-                            setGraphic(hBox);
-                        } else {
-                            setGraphic(null);
+                                // Add elements to outer HBox
+                                hBox.getChildren().addAll(name, type, categorie, text);
+                                setGraphic(hBox);
+                            } else {
+                                setGraphic(null);
+                            }
                         }
-                    }
-                };
-            }
-        });
-        listviewEpreuve1.refresh();
+                    };
+                }
+            });
+            listviewAnam.refresh();
+        listviewAnam.refresh();
     }
 
     // Custom NoSelectionModel class to disable selection
@@ -273,30 +187,33 @@ public class ModifierPremierBOController {
         }
     }
 
-    public void saveProjet()
-    {
-        bo.setProjetTherapeutique(textfieldProjet.getText());
-    }
-
-    public void addTrouble(){
-        Trouble t = new Trouble();
-        bo.getDiagnostic().ajouterTrouble(t);
-        observableDiag1.add(t);
-        listviewDiag1.refresh();
-    }
-    public void addFiche(){
-        EpreuveClinique e = new EpreuveClinique();
-        bo.ajouterEpreuveClinique(e);
-        observableEpreuve1.add(e);
-        listviewEpreuve1.refresh();
-    }
-
-    public void ConsultAnam()
-    {
+    public void AddAnam(ActionEvent event) {
         try {
-            m.changeScene("ConsultAnam.fxml",900,600);
+            // Load the FXML file
+            Parent root = FXMLLoader.load(getClass().getResource("addAnam.fxml"));
+
+            // Create a new stage
+            Stage popupStage = new Stage();
+
+            // Set the scene with the loaded FXML content
+            Scene scene = new Scene(root);
+            popupStage.setScene(scene);
+
+            // Set properties of the stage (e.g., title)
+            popupStage.setTitle("Form");
+
+            // Refresh the ListView when the popup is closed
+            popupStage.setOnHidden(e -> { listviewAnam.setItems(FXCollections.observableArrayList(premierBO.getAnamnese().getQuestions()));
+                listviewAnam.refresh();
+                // Re-enable the button and restore its original color
+                buttonAjouterAnam.setDisable(true);
+                buttonAjouterAnam.setStyle("-fx-background-color:gray; -fx-text-fill: #000000; -fx-font-weight: 700;");
+            });
+
+            // Show the stage
+            popupStage.show();
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            e.printStackTrace();
         }
     }
 }

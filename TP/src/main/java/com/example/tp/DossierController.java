@@ -18,6 +18,7 @@ import javafx.util.Duration;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.ArrayList;
 
 import javafx.scene.chart.XYChart;
 import javafx.scene.layout.HBox;
@@ -44,6 +45,8 @@ public class DossierController {
     private Button buttonRetour;
     @FXML
     public static BO bo;
+    @FXML
+    public static PremierBO premierBO;
     @FXML
     public static FicheSuivi fiche;
     @FXML
@@ -201,15 +204,16 @@ public class DossierController {
                             });
 
                             ModifierButton.setOnAction(event -> {
-                                bo=item;
-                                if(bo instanceof PremierBO)
+                                if(item instanceof PremierBO)
                                 {
+                                    premierBO=(PremierBO) item;
                                     try {
                                         m.changeScene("ModifierPremierBO.fxml",900,600);
                                     } catch (IOException e) {
                                         throw new RuntimeException(e);
                                     }
                                 } else {
+                                    bo = item;
                                     try {
                                         m.changeScene("ModifierBO.fxml", 900, 600);
                                     } catch (IOException e) {
@@ -378,10 +382,17 @@ public class DossierController {
     }
 
     public void addBO(){
-        BO bo = new BO();
-        bo.setDiagnostic(new Diagnostic());
-        doss.ajouterBO(bo);
-        observableBO.add(bo);
+        ArrayList<BO> bos = doss.getBOs();
+        BO Bo;
+        if(!bos.isEmpty())
+        {
+            Bo = new BO();
+        } else {
+            Bo = new PremierBO();
+        }
+        Bo.setDiagnostic(new Diagnostic());
+        doss.ajouterBO(Bo);
+        observableBO.add(Bo);
         listviewBO.refresh();
     }
     public void addFiche(){

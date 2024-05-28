@@ -56,6 +56,9 @@ public class ajouterDossierController {
             Enfant enfant = new Enfant(textfieldNomE.getText(), textfieldPrenomE.getText(), textfieldTelE.getText(), datepickerDateE.getValue(), textfieldLieuE.getText(), textfieldClasseE.getText(), textfieldTel2E.getText());
             Dossier dossier = new Dossier();
             dossier.setPatient(enfant);
+            if(orthophonist.getConsultation(enfant)!=null) {
+                dossier.ajouterRendezVous(orthophonist.getConsultation(enfant));
+            }
             orthophonist.addDossier(dossier);
             label.setText("Dossier ajoutée avec succès");
             label.setStyle("-fx-text-fill: green;");
@@ -77,6 +80,9 @@ public class ajouterDossierController {
             Adult adult = new Adult(textfieldNomA.getText(), textfieldPrenomA.getText(), textfieldTelA.getText(), datepickerDateA.getValue(), textfieldLieuA.getText(), textfieldDiplomeA.getText(), textfieldProfA.getText());
             Dossier dossier = new Dossier();
             dossier.setPatient(adult);
+            if(orthophonist.getConsultation(adult)!=null) {
+                dossier.ajouterRendezVous(orthophonist.getConsultation(adult));
+            }
             orthophonist.addDossier(dossier);
             label2.setText("Dossier ajoutée avec succès");
             label2.setStyle("-fx-text-fill: green;");

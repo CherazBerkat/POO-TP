@@ -7,6 +7,7 @@ import java.time.*;
 public class SeanceSuivi extends RendezVous implements Serializable {
     private int numeroDossier;
     private Deroulement deroulement;
+    private final String duree="1h";
 
     public SeanceSuivi(LocalDate d, LocalTime h, int n)
     {

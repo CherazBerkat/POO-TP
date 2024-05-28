@@ -1,18 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<<<<<<< HEAD
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.example.tp.ModifierFiche"
-            prefHeight="400.0" prefWidth="600.0">
-
-=======
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -34,5 +22,4 @@
            </top>
        </BorderPane>
    </children>
->>>>>>> 9764b7fdbe4f23b90d263c82c8941b8c0dd682e8
 </AnchorPane>

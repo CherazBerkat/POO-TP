@@ -29,8 +29,8 @@ public class SignUpController {
     private TextField tel;
     @FXML
     private PasswordField passwd;
-
     HelloApplication m = new HelloApplication();
+
     public void signUp (ActionEvent event) throws IOException{
         userSignUp();
     }

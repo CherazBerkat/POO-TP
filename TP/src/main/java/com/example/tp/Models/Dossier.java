@@ -4,8 +4,8 @@ package com.example.tp.Models;
 import java.io.Serializable;
 import java.util.*;
 
-import com.example.tp.Models.Trouble;
 public class Dossier implements Serializable {
+    //***********************************************LES ATTRIBUTS****************************************************//
     private static int num=0;
     private int numeroDossier;
     private Patient patient;
@@ -13,28 +13,36 @@ public class Dossier implements Serializable {
     private ArrayList<BO> BOs = new ArrayList<>();
     private ArrayList<FicheSuivi> ficheSuivis = new ArrayList<>();
 
+    //***********************************************CONSTRUCTEUR*****************************************************//
     public Dossier()
     {
         numeroDossier = num;
         num++;
     }
+    //****************************************************GETTERS*****************************************************//
+    public Patient getPatient() {
+        return patient;
+    }
+    public int getNumeroDossier() {
+        return numeroDossier;
+    }
+    public ArrayList<RendezVous> getRendezVous() {
+        return rendezVous;
+    }
+    public ArrayList<BO> getBOs() {
+        return BOs;
+    }
+    public ArrayList<FicheSuivi> getFicheSuivis() {
+        return ficheSuivis;
+    }
 
+
+    //****************************************************SETTERS*****************************************************//
     public void setPatient(Patient patient) {
         this.patient = patient;
     }
 
-    public Patient getPatient() {
-        return patient;
-    }
-
-    public int getNumeroDossier() {
-        return numeroDossier;
-    }
-
-    public void setNumeroDossier(int numeroDossier) {
-        this.numeroDossier = numeroDossier;
-    }
-
+    //************************************************* METHODS ******************************************************//
     public void ajouterRendezVous(RendezVous rv)
     {
         rendezVous.add(rv);
@@ -48,21 +56,6 @@ public class Dossier implements Serializable {
     public void ajouterFicheSuivi(FicheSuivi f)
     {
         ficheSuivis.add(f);
-    }
-    public ArrayList<BO> getBos() {
-        return BOs;
-    }
-
-    public ArrayList<RendezVous> getRendezVous() {
-        return rendezVous;
-    }
-
-    public ArrayList<BO> getBOs() {
-        return BOs;
-    }
-
-    public ArrayList<FicheSuivi> getFicheSuivis() {
-        return ficheSuivis;
     }
 
     public  void deleteRDV(int ind){

@@ -1,32 +1,22 @@
 package com.example.tp.Models;
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Scanner;
 public class SerieExo extends Test implements Serializable {
-
+    //***********************************************LES ATTRIBUTS****************************************************//
     private ArrayList<Exo> exos = new ArrayList<>();
-
-
+    //***********************************************CONSTRUCTEUR*****************************************************//
     public SerieExo(String n,String c){
         super(n,c);
     }
 
-    public void addExo(Exo exo) {
-        exos.add(exo);
-    }
+    //****************************************************GETTERS*****************************************************//
     public ArrayList<Exo> getExos(){
         return exos;
     }
 
-    // Method to delete all the occurences
-    public void deleteExo(Exo exoToDelete) {
-        ArrayList<Exo> exosToRemove = new ArrayList<>();
-        for (Exo exo : exos) {
-            if (exo.equals(exoToDelete)) {
-                exosToRemove.add(exo);
-            }
-        }
-        exos.removeAll(exosToRemove);
+    //************************************************* METHODS ******************************************************//
+    public void addExo(Exo exo) {
+        exos.add(exo);
     }
 
     // Method to delete an Exo from the list based on index
@@ -38,20 +28,6 @@ public class SerieExo extends Test implements Serializable {
         }
     }
 
-  /*  public void compteRendu() {
-        Scanner scanner = new Scanner(System.in);
-        for (Exo exo : exos) {
-            int score;
-            do {
-                System.out.print("Enter the score for " + exo.getConsigne() + ": ");
-                score = scanner.nextInt();
-                if (score < 1 || score > 10) {
-                    System.out.println("Invalid score. Please enter a score between 1 and 10.");
-                }
-            } while (score < 1 || score > 10);
-            exo.setScore(score);
-        }
-    }*/
     public float calculerScoreTotale(){
         int sum=0;
         int counter=0;

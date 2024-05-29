@@ -14,6 +14,7 @@ import java.util.Map;
 import static com.example.tp.HelloApplication.*;
 
 public class Ortho implements  Serializable{
+    //***********************************************LES ATTRIBUTS****************************************************//
     private String nom;
     private String prenom;
     private String tel;
@@ -26,10 +27,10 @@ public class Ortho implements  Serializable{
     private  ArrayList<Dossier> dossiers=new ArrayList<>();
     private ArrayList<Anamnese> anamneses=new ArrayList<>();
     private ArrayList<RendezVous> rendezVous=new ArrayList<>();
-
+    //***********************************************CONSTRUCTEUR*****************************************************//
     public Ortho(){}
 
-    /**************************************************************************************************/
+    //****************************************************GETTERS*****************************************************//
     public String getNom() {
         return nom;
     }
@@ -41,46 +42,17 @@ public class Ortho implements  Serializable{
     public String getTel() {
         return tel;
     }
-
-    public void setNom(String nom) {
-        this.nom = nom;
-    }
-
-    public void setPrenom(String prenom) {
-        this.prenom = prenom;
-    }
-
-    public void setTel(String tel) {
-        this.tel = tel;
-    }
-    public void setPasswd(String passwd) {
-        this.passwd = passwd;
-    }
-
     public String getPasswd(){
         return passwd;
-    }
-
-
-    public String getMail() {
-        return mail;
-    }
-
-    public void setMail(String mail) {
-        this.mail = mail;
-    }
-
-    public void setUserName(String userName) {
-        this.userName = userName;
     }
     public String getUserName(){
         return userName;
     }
-    public void setAdr(String a){
-        adr=a;
-    }
     public String getAdr(){
         return adr;
+    }
+    public String getMail() {
+        return mail;
     }
     public ArrayList<Anamnese> getAnamneses(){
         return anamneses;
@@ -90,6 +62,9 @@ public class Ortho implements  Serializable{
     }
     public ArrayList<SerieQuestion> getSerieQuestions(){
         return serieQuestions;
+    }
+    public ArrayList<Dossier> getDossiers(){
+        return dossiers;
     }
     public ArrayList<AnamneseAdulte> getAnamnesesAdult(){
         ArrayList<AnamneseAdulte> anamnesesAdulte = new ArrayList<>();
@@ -119,11 +94,34 @@ public class Ortho implements  Serializable{
         return null;
     }
 
-
-    public ArrayList<Dossier> getDossiers(){
-        return dossiers;
+    //****************************************************SETTERS*****************************************************//
+    public void setNom(String nom) {
+        this.nom = nom;
     }
-    /***********************************************************************************************/
+
+    public void setPrenom(String prenom) {
+        this.prenom = prenom;
+    }
+
+    public void setTel(String tel) {
+        this.tel = tel;
+    }
+    public void setPasswd(String passwd) {
+        this.passwd = passwd;
+    }
+
+    public void setMail(String mail) {
+        this.mail = mail;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+    public void setAdr(String a){
+        adr=a;
+    }
+
+   //************************************************* METHODS ******************************************************//
     public void addSerieExos(SerieExo s){
         serieExos.add(s);
     }
@@ -193,8 +191,6 @@ public class Ortho implements  Serializable{
         }
         return false;
     }
-
-    /****************************************************************************************************/
     public  void affichInfo(){
         System.out.println("Nom: "+nom);
         System.out.println("Prenom: "+prenom);
@@ -203,14 +199,6 @@ public class Ortho implements  Serializable{
         System.out.println("email: "+mail);
         System.out.println("psswd: "+passwd);
         System.out.println("username: "+userName);
-    }
-
-    public void afficherRendezVous()
-    {
-        for (RendezVous r : rendezVous)
-        {
-            r.affichRendezVous();
-        }
     }
 
     public Map<Trouble, Integer> countTroubles() {

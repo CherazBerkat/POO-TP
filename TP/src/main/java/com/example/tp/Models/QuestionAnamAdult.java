@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 public class QuestionAnamAdult extends QuestionAnam implements Serializable {
     private TypeAnamneseAdulte type;
-    /**************************************************** CONSTRUCTEUR *****************************************************/
+    /**************************************************** CONSTRUCTEUR ************************************************/
 
     public QuestionAnamAdult(String t,TypeAnamneseAdulte tp){
         super(t);

@@ -11,9 +11,8 @@ public class PremierBO extends BO implements Serializable {
     {
         super();
     }
-    public PremierBO( String p, Anamnese a)
+    public PremierBO( Anamnese a)
     {
-        super(p);
         anamnese = a;
     }
 
@@ -24,4 +23,5 @@ public class PremierBO extends BO implements Serializable {
     public void setAnamnese(Anamnese anamnese) {
         this.anamnese = anamnese;
     }
+
 }

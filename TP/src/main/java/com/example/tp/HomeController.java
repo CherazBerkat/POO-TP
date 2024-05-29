@@ -511,8 +511,10 @@ public class HomeController {
         LocalTime heure = parseTime(timeText);
         String option = comboboxAge.getValue().toString();
         Boolean adult = checkIfAdult(option);
+        System.out.println(orthophonist.rdvExist(datepickerDateC.getValue(), heure));
         if(!orthophonist.rdvExist(datepickerDateC.getValue(), heure))
         {
+            System.out.println("hi");
             consultation= new Consultation(datepickerDateC.getValue(),heure,textfieldNom.getText().toString(),textfieldPrenom.getText().toString(),Integer.parseInt(textfieldAge.getText()),adult);
             orthophonist.addRendezVous(consultation);
         }
@@ -521,6 +523,7 @@ public class HomeController {
             alert.setTitle("Error");
             alert.setHeaderText("Rendez-vous déjà existant");
             alert.setContentText("Veuillez choisir une autre date ou heure");
+            alert.showAndWait();
         }
     }
 
@@ -529,7 +532,7 @@ public class HomeController {
         SeanceSuivi seance;
         String timeText = textfieldHeureSS.getText();
         LocalTime heure = parseTime(timeText);
-        if(!orthophonist.rdvExist(datepickerDateC.getValue(), heure)) {
+        if(!orthophonist.rdvExist(datepickerDateSS.getValue(), heure)) {
             seance = new SeanceSuivi(datepickerDateSS.getValue(), heure, Integer.parseInt(textfieldNumDossier.getText().toString()));
             seance.setDeroulement(Deroulement.valueOf(comboboxDeroulement.getValue().toString()));
             orthophonist.addRendezVous(seance);
@@ -540,6 +543,7 @@ public class HomeController {
             alert.setTitle("Error");
             alert.setHeaderText("Rendez-vous déjà existant");
             alert.setContentText("Veuillez choisir une autre date ou heure");
+            alert.showAndWait();
         }
     }
 
@@ -548,7 +552,7 @@ public class HomeController {
         Atelier atelier;
         String timeText = textfieldHeureAG.getText();
         LocalTime heure = parseTime(timeText);
-        if(!orthophonist.rdvExist(datepickerDateC.getValue(), heure)) {
+        if(!orthophonist.rdvExist(datepickerDateAG.getValue(), heure)) {
             atelier = new Atelier(datepickerDateAG.getValue(),heure,textfieldThematique.getText().toString());
             for(int i=0;i<listviewPatients.getItems().size();i++)
             {
@@ -562,6 +566,7 @@ public class HomeController {
             alert.setTitle("Error");
             alert.setHeaderText("Rendez-vous déjà existant");
             alert.setContentText("Veuillez choisir une autre date ou heure");
+            alert.showAndWait();
         }
     }
 

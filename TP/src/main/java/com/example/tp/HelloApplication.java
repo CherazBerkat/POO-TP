@@ -42,7 +42,7 @@ public class HelloApplication extends Application {
             createFile();
         }
         /************************************************test Data***********************************************/
-       /*
+/*
         //creer deux anamneses
         orthophonist.addAnamnese(new AnamneseAdulte());
         orthophonist.addAnamnese(new AnamneseEnfant());

@@ -1,5 +1,4 @@
 package com.example.tp.Models;
-
 import java.io.Serializable;
 import java.util.ArrayList;
 public class Diagnostic implements Serializable {
@@ -28,4 +27,5 @@ public class Diagnostic implements Serializable {
             troubles.remove(ind);
         else System.out.println("Index non valid , No question has been removed");
     }
+
 }

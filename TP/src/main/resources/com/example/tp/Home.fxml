@@ -23,7 +23,7 @@
    <children>
       <TabPane prefHeight="600.0" prefWidth="900.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
-          <Tab text="Accuill">
+          <Tab text="Accueil">
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="371.0" prefWidth="601.0">
                      <children>
@@ -68,12 +68,10 @@
                                                     <Text fx:id="textNom" layoutX="109.0" layoutY="181.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nom :" />
                                                     <Text fx:id="textPrenom" layoutX="432.0" layoutY="183.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Prénom :" />
                                                     <Text fx:id="textAge" layoutX="112.0" layoutY="248.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Age :" />
-                                                    <Text fx:id="textDureeC" layoutX="101.0" layoutY="309.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Durée :" />
                                                     <TextField fx:id="textfieldNom" layoutX="164.0" layoutY="165.0" prefHeight="25.0" prefWidth="250.0" />
                                                     <TextField fx:id="textfieldPrenom" layoutX="500.0" layoutY="164.0" prefHeight="26.0" prefWidth="250.0" />
                                                     <TextField fx:id="textfieldAge" layoutX="164.0" layoutY="231.0" prefHeight="25.0" prefWidth="250.0" />
                                                     <ComboBox fx:id="comboboxAge" layoutX="490.0" layoutY="230.0" prefHeight="25.0" prefWidth="270.0" promptText="Choose" />
-                                                    <TextField fx:id="textfieldDuree" layoutX="164.0" layoutY="292.0" prefHeight="25.0" prefWidth="250.0" />
                                                     <Button fx:id="buttonSauvgarderC" layoutX="748.0" layoutY="340.0" mnemonicParsing="false" onAction="#ajouterConsultation" prefHeight="26.0" prefWidth="93.0" style="-fx-background-color: #48efa6; -fx-font-family: poppins; -fx-font-weight: 700;" text="Sauvegarder" textFill="WHITE" />
                                                 </children></AnchorPane>
                                         </content>

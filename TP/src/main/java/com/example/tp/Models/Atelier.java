@@ -9,6 +9,7 @@ public class Atelier extends RendezVous implements Serializable {
     //***********************************************LES ATTRIBUTS****************************************************//
     private String thematique;
     private ArrayList<Integer>patients= new ArrayList<Integer>();
+    private final String duree="1h";
 
     //***********************************************CONSTRUCTEUR*****************************************************//
     public Atelier(LocalDate d, LocalTime h, String t)

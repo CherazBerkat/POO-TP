@@ -55,7 +55,7 @@ public class ModifierBOController {
         buttonRetour.setOnAction(event -> {
             HelloApplication m = new HelloApplication();
             try {
-                m.changeScene("Home.fxml", 900, 600);
+                m.changeScene("Dossier.fxml", 900, 600);
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }

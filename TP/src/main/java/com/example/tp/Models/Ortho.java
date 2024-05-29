@@ -5,6 +5,8 @@ import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.nio.file.Files;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -64,6 +66,34 @@ public class Ortho implements  Serializable{
     public ArrayList<Dossier> getDossiers(){
         return dossiers;
     }
+    public ArrayList<AnamneseAdulte> getAnamnesesAdult(){
+        ArrayList<AnamneseAdulte> anamnesesAdulte = new ArrayList<>();
+        for (Anamnese anamnese : anamneses) {
+            if (anamnese instanceof AnamneseAdulte) {
+                anamnesesAdulte.add((AnamneseAdulte) anamnese);
+            }
+        }
+        return anamnesesAdulte;
+    }
+    public ArrayList<AnamneseEnfant> getAnamnesesEnfant(){
+        ArrayList<AnamneseEnfant> anamnesesEnfant = new ArrayList<>();
+        for (Anamnese anamnese : anamneses) {
+            if (anamnese instanceof AnamneseEnfant) {
+                anamnesesEnfant.add((AnamneseEnfant) anamnese);
+            }
+        }
+        return anamnesesEnfant;
+    }
+
+    public Consultation getConsultation(Patient p)
+    {
+        for(RendezVous r : rendezVous)
+        {
+            if(r instanceof Consultation && ((Consultation)r).getNom().equals(p.getNom()) && ((Consultation)r).getPrenom().equals(p.getPrenom())) {return ((Consultation) r);}
+        }
+        return null;
+    }
+
     //****************************************************SETTERS*****************************************************//
     public void setNom(String nom) {
         this.nom = nom;
@@ -90,6 +120,7 @@ public class Ortho implements  Serializable{
     public void setAdr(String a){
         adr=a;
     }
+
    //************************************************* METHODS ******************************************************//
     public void addSerieExos(SerieExo s){
         serieExos.add(s);
@@ -154,6 +185,12 @@ public class Ortho implements  Serializable{
         }
     }
 
+    public Boolean rdvExist(LocalDate date, LocalTime heure){
+        for(RendezVous r : rendezVous){
+            if(r.getDate().equals(date) && r.getHeure().equals(heure)) return true;
+        }
+        return false;
+    }
     public  void affichInfo(){
         System.out.println("Nom: "+nom);
         System.out.println("Prenom: "+prenom);

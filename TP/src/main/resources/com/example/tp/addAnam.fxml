@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="203.0" prefWidth="405.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.tp.addAnamController">
+   <children>
+      <ChoiceBox fx:id="choiceAnam" layoutX="79.0" layoutY="90.0" prefHeight="25.0" prefWidth="250.0" />
+      <Button fx:id="buttonSauv" layoutX="150.0" layoutY="150.0" mnemonicParsing="false" onAction="#save" prefHeight="25.0" prefWidth="109.0" style="-fx-background-color: #48efa6; -fx-font-weight: 700;" text="Sauvegarder" textFill="WHITE" />
+      <Text fill="#48efa6" layoutX="58.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-family: poppins; -fx-font-size: 25; -fx-font-weight: 700;" text="Choisir Une Anamnese" textAlignment="CENTER" wrappingWidth="293.619140625" />
+      <Label fx:id="label" layoutX="191.0" layoutY="123.0" />
+   </children>
+</AnchorPane>

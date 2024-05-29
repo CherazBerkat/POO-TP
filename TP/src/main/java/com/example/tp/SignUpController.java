@@ -29,6 +29,8 @@ public class SignUpController {
     private TextField tel;
     @FXML
     private PasswordField passwd;
+    HelloApplication m = new HelloApplication();
+
     public void signUp (ActionEvent event) throws IOException{
         userSignUp();
     }
@@ -38,7 +40,6 @@ public class SignUpController {
                 tel.getText().isEmpty() || username.getText().isEmpty() || adr.getText().isEmpty()) {
             wrongLogIn.setText("Please fill all your data.");
         }else{
-        HelloApplication m = new HelloApplication();
         orthophonist.setMail(email.getText().toString());
         orthophonist.setNom(nom.getText().toString());
         orthophonist.setPasswd(passwd.getText().toString());

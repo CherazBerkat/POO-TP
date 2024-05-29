@@ -45,12 +45,9 @@ public class BO implements Serializable {
     {
         epreuveClinique.add(ec);
     }
-
     public void deleteEpreuveClinique(int ind){
         if (ind >= 0 && ind < epreuveClinique.size())
             epreuveClinique.remove(ind);
         else System.out.println("Index non valid , No question has been removed");
     }
-
-
 }

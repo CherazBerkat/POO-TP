@@ -1,32 +1,18 @@
 package com.example.tp;
 
-import javafx.beans.binding.Bindings;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.chart.*;
 import javafx.scene.control.*;
-import javafx.animation.KeyFrame;
-import javafx.animation.Timeline;
-import javafx.stage.Stage;
-import javafx.util.Duration;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.LocalTime;
-
-import javafx.scene.chart.XYChart;
+import java.util.ArrayList;
 import javafx.scene.layout.HBox;
 import javafx.util.Callback;
-import javafx.scene.layout.Region;
 import javafx.scene.layout.Priority;
 import com.example.tp.Models.*;
-
-import static com.example.tp.HelloApplication.orthophonist;
 import static com.example.tp.HomeController.doss;
 
 public class DossierController {
@@ -45,11 +31,9 @@ public class DossierController {
     @FXML
     public static BO bo;
     @FXML
+    public static PremierBO premierBO;
+    @FXML
     public static FicheSuivi fiche;
-    @FXML
-    private Button buttonAjouterBO;
-    @FXML
-    private Button buttonAjouterFiche;
     private ObservableList<FicheSuivi> observableFiches;
     private ObservableList<BO> observableBO;
 
@@ -201,23 +185,23 @@ public class DossierController {
                             });
 
                             ModifierButton.setOnAction(event -> {
-                                bo=item;
-                                if(bo instanceof PremierBO)
+                                if(item instanceof PremierBO)
                                 {
+                                    premierBO=(PremierBO) item;
                                     try {
                                         m.changeScene("ModifierPremierBO.fxml",900,600);
                                     } catch (IOException e) {
                                         throw new RuntimeException(e);
                                     }
                                 } else {
+                                    bo = item;
                                     try {
-                                        m.changeScene("ModifierBO.fxml",900,600);
+                                        m.changeScene("ModifierBO.fxml", 900, 600);
                                     } catch (IOException e) {
                                         throw new RuntimeException(e);
                                     }
                                 }
                             });
-
                             // Add hover effect
                             setOnMouseEntered(event -> setStyle("-fx-background-color: #e6e7e5;"));
                             setOnMouseExited(event -> setStyle("-fx-background-color: white;"));
@@ -379,10 +363,17 @@ public class DossierController {
     }
 
     public void addBO(){
-        BO bo = new BO();
-        bo.setDiagnostic(new Diagnostic());
-        doss.ajouterBO(bo);
-        observableBO.add(bo);
+        ArrayList<BO> bos = doss.getBOs();
+        BO Bo;
+        if(!bos.isEmpty())
+        {
+            Bo = new BO();
+        } else {
+            Bo = new PremierBO();
+        }
+        Bo.setDiagnostic(new Diagnostic());
+        doss.ajouterBO(Bo);
+        observableBO.add(Bo);
         listviewBO.refresh();
     }
     public void addFiche(){
@@ -390,5 +381,12 @@ public class DossierController {
         doss.ajouterFicheSuivi(fiche);
         observableFiches.add(fiche);
         listviewFiches.refresh();
+    }
+    public void affichPLus() throws IOException {
+        if (doss.getPatient() instanceof Adult ){
+            m.changeScene("InfoAdult.fxml",900,600);
+        }else{
+            m.changeScene("InfoEnfant.fxml",900,600);
+       }
     }
 }

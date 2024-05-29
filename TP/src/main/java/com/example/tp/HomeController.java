@@ -511,8 +511,20 @@ public class HomeController {
         LocalTime heure = parseTime(timeText);
         String option = comboboxAge.getValue().toString();
         Boolean adult = checkIfAdult(option);
-        consultation= new Consultation(datepickerDateC.getValue(),heure,textfieldNom.getText().toString(),textfieldPrenom.getText().toString(),Integer.parseInt(textfieldAge.getText()),adult);
-        orthophonist.addRendezVous(consultation);
+        System.out.println(orthophonist.rdvExist(datepickerDateC.getValue(), heure));
+        if(!orthophonist.rdvExist(datepickerDateC.getValue(), heure))
+        {
+            System.out.println("hi");
+            consultation= new Consultation(datepickerDateC.getValue(),heure,textfieldNom.getText().toString(),textfieldPrenom.getText().toString(),Integer.parseInt(textfieldAge.getText()),adult);
+            orthophonist.addRendezVous(consultation);
+        }
+        else {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText("Rendez-vous déjà existant");
+            alert.setContentText("Veuillez choisir une autre date ou heure");
+            alert.showAndWait();
+        }
     }
 
     public void ajouterSeanceSuivi()
@@ -520,10 +532,19 @@ public class HomeController {
         SeanceSuivi seance;
         String timeText = textfieldHeureSS.getText();
         LocalTime heure = parseTime(timeText);
-        seance= new SeanceSuivi(datepickerDateSS.getValue(),heure,Integer.parseInt(textfieldNumDossier.getText().toString()));
-        seance.setDeroulement(Deroulement.valueOf(comboboxDeroulement.getValue().toString()));
-        orthophonist.addRendezVous(seance);
-        orthophonist.recherchePatient(Integer.parseInt(textfieldNumDossier.getText().toString())).ajouterRendezVous(seance);
+        if(!orthophonist.rdvExist(datepickerDateSS.getValue(), heure)) {
+            seance = new SeanceSuivi(datepickerDateSS.getValue(), heure, Integer.parseInt(textfieldNumDossier.getText().toString()));
+            seance.setDeroulement(Deroulement.valueOf(comboboxDeroulement.getValue().toString()));
+            orthophonist.addRendezVous(seance);
+            orthophonist.recherchePatient(Integer.parseInt(textfieldNumDossier.getText().toString())).ajouterRendezVous(seance);
+        }
+        else {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText("Rendez-vous déjà existant");
+            alert.setContentText("Veuillez choisir une autre date ou heure");
+            alert.showAndWait();
+        }
     }
 
     public void ajouterAtelierGroupe()
@@ -531,13 +552,22 @@ public class HomeController {
         Atelier atelier;
         String timeText = textfieldHeureAG.getText();
         LocalTime heure = parseTime(timeText);
-        atelier = new Atelier(datepickerDateAG.getValue(),heure,textfieldThematique.getText().toString());
-        for(int i=0;i<listviewPatients.getItems().size();i++)
-        {
-            atelier.ajouterPatient(Integer.parseInt(listviewPatients.getItems().get(i).toString()));
-            orthophonist.recherchePatient(Integer.parseInt(listviewPatients.getItems().get(i).toString())).ajouterRendezVous(atelier);
+        if(!orthophonist.rdvExist(datepickerDateAG.getValue(), heure)) {
+            atelier = new Atelier(datepickerDateAG.getValue(),heure,textfieldThematique.getText().toString());
+            for(int i=0;i<listviewPatients.getItems().size();i++)
+            {
+                atelier.ajouterPatient(Integer.parseInt(listviewPatients.getItems().get(i).toString()));
+                orthophonist.recherchePatient(Integer.parseInt(listviewPatients.getItems().get(i).toString())).ajouterRendezVous(atelier);
+            }
+            orthophonist.addRendezVous(atelier);
         }
-        orthophonist.addRendezVous(atelier);
+        else {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText("Rendez-vous déjà existant");
+            alert.setContentText("Veuillez choisir une autre date ou heure");
+            alert.showAndWait();
+        }
     }
 
     public void ajouterNum()

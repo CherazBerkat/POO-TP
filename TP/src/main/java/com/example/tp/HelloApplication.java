@@ -42,7 +42,7 @@ public class HelloApplication extends Application {
             createFile();
         }
         /************************************************test Data***********************************************/
-       /*
+/*
         //creer deux anamneses
         orthophonist.addAnamnese(new AnamneseAdulte());
         orthophonist.addAnamnese(new AnamneseEnfant());
@@ -149,8 +149,8 @@ public class HelloApplication extends Application {
         b21.setProjetTherapeutique("projet Therapeutique");
         b22.setProjetTherapeutique("projet Therapeutique");
         //creer des patients
-        Enfant enfant=new Enfant("nom1","prenom2","06512443",LocalDate.of(2023, 5, 28),"Alger","2CP","06542153");
-        Adult adult=new Adult("nom1","prenom2","06512443",LocalDate.of(2000, 5, 28),"Alger","Doctorant","Proffesseur");
+        Enfant enfant=new Enfant("nom1","prenom1","06512443",LocalDate.of(2023, 5, 28),"Alger","2CP","06542153");
+        Adult adult=new Adult("nom2","prenom2","06512443",LocalDate.of(2000, 5, 28),"Alger","Doctorant","Proffesseur");
        //creer des dossiers
         Dossier d1=new Dossier();
         Dossier d2=new Dossier();
@@ -170,9 +170,9 @@ public class HelloApplication extends Application {
         d2.ajouterBO(pb2);
         //ajouter les dossiers a l'objet orthophonist
         orthophonist.addDossier(d1);
-        orthophonist.addDossier(d2);
+        orthophonist.addDossier(d2);*/
 
-        */
+
 
         /*******************************************************************************************************/
         stage.setTitle("CabinetPro ManageX");

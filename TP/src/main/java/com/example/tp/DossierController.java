@@ -1,33 +1,18 @@
 package com.example.tp;
 
-import javafx.beans.binding.Bindings;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.chart.*;
 import javafx.scene.control.*;
-import javafx.animation.KeyFrame;
-import javafx.animation.Timeline;
-import javafx.stage.Stage;
-import javafx.util.Duration;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
-
-import javafx.scene.chart.XYChart;
 import javafx.scene.layout.HBox;
 import javafx.util.Callback;
-import javafx.scene.layout.Region;
 import javafx.scene.layout.Priority;
 import com.example.tp.Models.*;
-
-import static com.example.tp.HelloApplication.orthophonist;
 import static com.example.tp.HomeController.doss;
 
 public class DossierController {
@@ -49,10 +34,6 @@ public class DossierController {
     public static PremierBO premierBO;
     @FXML
     public static FicheSuivi fiche;
-    @FXML
-    private Button buttonAjouterBO;
-    @FXML
-    private Button buttonAjouterFiche;
     private ObservableList<FicheSuivi> observableFiches;
     private ObservableList<BO> observableBO;
 
@@ -400,5 +381,12 @@ public class DossierController {
         doss.ajouterFicheSuivi(fiche);
         observableFiches.add(fiche);
         listviewFiches.refresh();
+    }
+    public void affichPLus() throws IOException {
+        if (doss.getPatient() instanceof Adult ){
+            m.changeScene("InfoAdult.fxml",900,600);
+        }else{
+            m.changeScene("InfoEnfant.fxml",900,600);
+       }
     }
 }

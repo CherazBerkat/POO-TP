@@ -10,10 +10,10 @@
    <children>
       <Button fx:id="buttonRetour" layoutX="800.0" layoutY="26.0" maxWidth="90.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="90.0" style="-fx-background-color: #48efa6; -fx-font-family: poppins; -fx-font-weight: 700;" text="Retour" textFill="WHITE" />
       <Text fill="#48efa6" layoutX="360.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-family: poppins; -fx-font-size: 30; -fx-font-weight: 700;" text="File" />
-      <Text layoutX="540.0" layoutY="106.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Prénom :" />
+      <Text layoutX="402.0" layoutY="106.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Prénom :" />
       <Text layoutX="35.0" layoutY="106.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nom :" />
-      <TextField fx:id="textfieldNom" layoutX="135.0" layoutY="89.0" prefHeight="25.0" prefWidth="200.0" />
-      <TextField fx:id="textfieldPrenom" layoutX="640.0" layoutY="90.0" prefHeight="25.0" prefWidth="200.0" />
+      <TextField fx:id="textfieldNom" layoutX="105.0" layoutY="89.0" prefHeight="25.0" prefWidth="200.0" />
+      <TextField fx:id="textfieldPrenom" layoutX="473.0" layoutY="89.0" prefHeight="25.0" prefWidth="200.0" />
       <Text fill="#48efa6" layoutX="35.0" layoutY="145.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-family: poppins; -fx-font-size: 15; -fx-font-weight: 700;" text="Rendez-Vous :" />
       <Text fill="#48efa6" layoutX="35.0" layoutY="298.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-family: poppins; -fx-font-size: 15; -fx-font-weight: 700;" text="Bilans Orthophoniques :" />
       <Text fill="#48efa6" layoutX="35.0" layoutY="455.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-family: poppins; -fx-font-size: 15; -fx-font-weight: 700;" text="Fiches de Suivis" />
@@ -22,5 +22,6 @@
       <ListView fx:id="listviewBO" layoutX="10.0" layoutY="308.0" prefHeight="120.0" prefWidth="880.0" />
       <Button fx:id="buttonAjouterBO" layoutX="795.0" layoutY="279.0" maxWidth="90.0" mnemonicParsing="false" onAction="#addBO" prefHeight="25.0" prefWidth="90.0" style="-fx-background-color: #48efa6; -fx-font-family: poppins; -fx-font-weight: 700;" text="Ajouter" textFill="WHITE" />
       <Button fx:id="buttonAjouterFiche" layoutX="795.0" layoutY="434.0" maxWidth="90.0" mnemonicParsing="false" onAction="#addFiche" prefHeight="25.0" prefWidth="90.0" style="-fx-background-color: #48efa6; -fx-font-family: poppins; -fx-font-weight: 700;" text="Ajouter" textFill="WHITE" />
+      <Button layoutX="786.0" layoutY="87.0" maxWidth="90.0" mnemonicParsing="false" onAction="#affichPLus" prefHeight="30.0" prefWidth="90.0" style="-fx-background-color: #48efa6; -fx-font-family: poppins; -fx-font-weight: 700;" text="Voir plus" textFill="WHITE" />
    </children>
 </Pane>
